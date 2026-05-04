@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  papoca-scan:
+    build: .
+    container_name: papoca-scan
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - rede-proxy
+    # Caso você precise passar variáveis de ambiente, descomente e preencha as linhas abaixo:
+    # env_file:
+    #   - .env
+
+networks:
+  rede-proxy:
+    external: true
