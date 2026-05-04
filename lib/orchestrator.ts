@@ -112,11 +112,12 @@ export async function runScan(targetUrl: string): Promise<ScanResult> {
 
   if (!mainRes.ok && mainRes.status === 0) {
     // Erro de rede / timeout: retorna scan degradado
+    // Score mínimo 5 (não 0) — coerente com regra geral: zero parece bug, não diagnóstico.
     return {
       url: targetUrl,
       scannedAt: new Date().toISOString(),
       durationMs: Date.now() - start,
-      score: 0,
+      score: 5,
       scoreLevel: "critical",
       checks: [
         {
@@ -125,10 +126,10 @@ export async function runScan(targetUrl: string): Promise<ScanResult> {
           name: "Acesso ao site",
           status: "fail",
           weight: 10,
-          message: `Não conseguimos acessar seu site: ${mainRes.error || "timeout"}.`,
+          message: `Não conseguimos acessar seu site: ${mainRes.error || "timeout"}. O servidor pode estar fora do ar, atrás de WAF/Cloudflare bloqueando bots, ou demorando demais para responder.`,
         },
       ],
-      topActions: ["Verifique se o site está online e respondendo a requisições HTTP."],
+      topActions: ["Verifique se o site responde a requisições HTTP automatizadas (ex: curl). Bloqueios por WAF, Cloudflare anti-bot ou firewall agressivo podem impedir ferramentas legítimas."],
       summary: { pass: 0, warn: 0, fail: 1, error: 0 },
     };
   }

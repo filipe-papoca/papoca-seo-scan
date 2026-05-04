@@ -90,7 +90,11 @@ export async function checkSsrf(hostname: string): Promise<SsrfCheckResult> {
   }
 
   // Resolve DNS — precisa validar TODOS os IPs retornados
-  let addresses: string[];
+  // Usamos resolve4/6 primeiro (mais explícito), e dns.lookup como fallback.
+  // Razão: resolve4/6 só retornam registros A/AAAA literais. Sites que usam
+  // CNAME na raiz (apex) ou DNS proxies (Cloudflare, Vercel) podem falhar
+  // com ENODATA. dns.lookup segue CNAME chains via resolver do sistema.
+  let addresses: string[] = [];
   try {
     const [v4, v6] = await Promise.all([
       dns.resolve4(lower).catch(() => [] as string[]),
@@ -98,7 +102,17 @@ export async function checkSsrf(hostname: string): Promise<SsrfCheckResult> {
     ]);
     addresses = [...v4, ...v6];
   } catch {
-    return { safe: false, reason: "Não foi possível resolver o domínio." };
+    // ignora — vamos tentar lookup abaixo
+  }
+
+  // Fallback: se resolve4/6 não retornaram nada, tenta dns.lookup (segue CNAME)
+  if (addresses.length === 0) {
+    try {
+      const records = await dns.lookup(lower, { all: true });
+      addresses = records.map((r) => r.address);
+    } catch {
+      return { safe: false, reason: "Não foi possível resolver o domínio." };
+    }
   }
 
   if (addresses.length === 0) {

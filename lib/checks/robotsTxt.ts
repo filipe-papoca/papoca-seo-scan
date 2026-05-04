@@ -118,7 +118,7 @@ export const robotsTxtCheck: CheckFn = async (ctx): Promise<CheckResult> => {
       name: "robots.txt",
       status: "warn",
       weight: 8,
-      message: "Seu robots.txt funciona, mas trata todos os robôs igual. Declarar regras específicas para GPTBot, ClaudeBot e PerplexityBot mostra controle e é como sites maduros se posicionam frente a IA.",
+      message: "Seu robots.txt funciona, mas trata todos os robôs igual. Declarar regras específicas para GPTBot, ClaudeBot e PerplexityBot é controle fino. Vale meia hora de implementação.",
       technical: "Apenas regra wildcard (*) aplica.",
       evidence: { botStatus },
     };

@@ -188,7 +188,7 @@ export const htmlSemanticCheck: CheckFn = async (ctx): Promise<CheckResult> => {
       name: "HTML semântico",
       status: "fail",
       weight: 5,
-      message: `Estrutura HTML com problemas múltiplos: ${issues.join(", ")}. Robôs de IA leem páginas como árvore — quando a árvore está bagunçada, eles extraem texto fora de contexto. Hierarquia clara não é frescura: é o que diferencia 'citado pelo ChatGPT' de 'mencionado de leve'.`,
+      message: `Estrutura HTML com problemas múltiplos: ${issues.join(", ")}. Robôs de IA leem páginas como árvore — quando a árvore está bagunçada, eles extraem texto fora de contexto. Hierarquia clara é o que diferencia ser citado como fonte direta vs. aparecer só em referência tangencial.`,
     };
   }
 
