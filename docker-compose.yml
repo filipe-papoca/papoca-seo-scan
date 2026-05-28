@@ -9,9 +9,9 @@ services:
       - "3000:3000"
     networks:
       - rede-proxy
-    # Caso você precise passar variáveis de ambiente, descomente e preencha as linhas abaixo:
-    # env_file:
-    #   - .env
+    environment:
+      - UPSTASH_REDIS_REST_URL=${UPSTASH_REDIS_REST_URL}
+      - UPSTASH_REDIS_REST_TOKEN=${UPSTASH_REDIS_REST_TOKEN}
 
 networks:
   rede-proxy:
