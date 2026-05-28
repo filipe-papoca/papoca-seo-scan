@@ -160,25 +160,39 @@ html:has(.correio-container) {
 
 .correio-container .finput,
 .correio-container .ftextarea,
-.correio-container .fselect {
+.correio-container .fselect,
+.correio-container .fselect-trigger {
   width: 100%;
   background: rgba(245, 245, 245, .08);
   border: 1px solid rgba(245, 245, 245, .18);
   border-radius: 10px;
   color: #F5F5F5;
   font-family: 'Inter', sans-serif;
-  font-size: .88rem;
+  font-size: 1rem;
   font-weight: 400;
   padding: .7rem .95rem;
   margin-bottom: 1.1rem;
   outline: none;
   transition: border-color .2s;
   -webkit-appearance: none;
+  appearance: none;
+}
+
+.correio-container .fselect-trigger {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F5F5F5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.95rem center;
+  background-size: 1.1rem;
+  padding-right: 2.5rem;
+  cursor: pointer;
+  text-align: left;
 }
 
 .correio-container .finput:focus,
 .correio-container .ftextarea:focus,
-.correio-container .fselect:focus {
+.correio-container .fselect:focus,
+.correio-container .fselect-trigger:focus,
+.correio-container .fselect-trigger.active {
   border-color: #D92B8A;
 }
 
@@ -190,6 +204,81 @@ html:has(.correio-container) {
 .correio-container .fselect option {
   background: #051A30;
   color: #F5F5F5;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Custom Select Dropdown Container & Options */
+.correio-container .custom-select-container {
+  position: relative;
+  width: 100%;
+}
+
+.correio-container .custom-select-options {
+  position: absolute;
+  top: calc(100% - 1.1rem + 4px);
+  left: 0;
+  width: 100%;
+  background: #051a30;
+  border: 1.5px solid rgba(217, 43, 138, .45);
+  border-radius: 10px;
+  z-index: 150;
+  max-height: 240px;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.correio-container .custom-select-option {
+  padding: .8rem .95rem;
+  font-size: 0.95rem;
+  color: rgba(245, 245, 245, .8);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  font-family: 'Inter', sans-serif;
+  border-bottom: 1px solid rgba(245, 245, 245, .05);
+  text-align: left;
+}
+
+.correio-container .custom-select-option:last-child {
+  border-bottom: none;
+}
+
+.correio-container .custom-select-option:hover {
+  background: rgba(217, 43, 138, .15);
+  color: #F5F5F5;
+}
+
+.correio-container .custom-select-option.selected {
+  background: rgba(217, 43, 138, .3);
+  color: #fff;
+  font-weight: 600;
+}
+
+.correio-container .custom-select-option.placeholder {
+  color: rgba(245, 245, 245, .4);
+}
+
+/* Custom Select Scrollbar */
+.correio-container .custom-select-options::-webkit-scrollbar {
+  width: 6px;
+}
+.correio-container .custom-select-options::-webkit-scrollbar-track {
+  background: rgba(245, 245, 245, .02);
+}
+.correio-container .custom-select-options::-webkit-scrollbar-thumb {
+  background: rgba(217, 43, 138, .4);
+  border-radius: 3px;
+}
+.correio-container .custom-select-options::-webkit-scrollbar-thumb:hover {
+  background: #D92B8A;
+}
+
+@media (max-width: 480px) {
+  .correio-container .custom-select-option {
+    padding: .9rem 1rem;
+    font-size: 1.05rem; /* Larger and easy to touch on mobile screens */
+  }
 }
 
 .correio-container .ftextarea {
@@ -568,4 +657,81 @@ html:has(.correio-container) {
   color: rgba(245, 245, 245, .4);
   text-align: center;
   margin-top: .2rem;
+}
+
+/* Responsive improvements for mobile screens */
+@media (max-width: 600px) {
+  .correio-container .app {
+    padding: 1.5rem .75rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .correio-container .row2 {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .correio-container .form-card {
+    padding: 1.4rem 1.1rem;
+    border-radius: 16px;
+  }
+
+  .correio-container .wrapped-card {
+    padding: 1.6rem 1.2rem;
+    border-radius: 18px;
+  }
+
+  .correio-container .card-to-txt {
+    font-size: 1.6rem;
+  }
+
+  .correio-container .card-msg {
+    font-size: 1.22rem;
+    margin-bottom: .7rem;
+  }
+
+  .correio-container .card-qual {
+    font-size: .65rem;
+    padding: .3rem .8rem;
+  }
+
+  .correio-container .card-qual-desc {
+    font-size: .74rem;
+  }
+
+  .correio-container .deco {
+    font-size: 2.8rem;
+  }
+
+  .correio-container .card-emojis {
+    font-size: 1.5rem;
+    margin-bottom: .5rem;
+  }
+
+  .correio-container .btn-row {
+    flex-direction: column;
+    gap: .6rem;
+  }
+
+  .correio-container .btn-li,
+  .correio-container .btn-dl,
+  .correio-container .btn-cp {
+    width: 100%;
+    min-width: 0;
+    padding: .85rem;
+    text-align: center;
+  }
+
+  .correio-container .toast {
+    width: 90%;
+    white-space: normal;
+    text-align: center;
+    bottom: 1.2rem;
+    font-size: .72rem;
+    padding: .8rem 1.2rem;
+    line-height: 1.4;
+  }
 }

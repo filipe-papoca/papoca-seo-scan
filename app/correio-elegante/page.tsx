@@ -3,16 +3,53 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './styles.css';
 
-const PODERES: Record<string, string> = {
-  '🎯 Mira Certeira': 'Quem tem Mira Certeira nunca deixa prazo escapar. É aquela pessoa que você sabe que pode contar — quando ela diz que entrega, entrega. A bala sempre acerta o alvo.',
-  '🌟 Estrela do Forró': 'Tem gente que entra numa sala e muda o clima inteiro. A Estrela do Forró é assim: traz energia, anima a galera e transforma até a reunião mais pesada num baile.',
-  '🧠 Sábio do Sertão': 'O Sábio do Sertão tem resposta pra tudo — e quando não tem, vai atrás até achar. É a enciclopédia viva do time, a referência que todo mundo consulta nas horas difíceis.',
-  '🤝 Compadre de Ouro': 'Parceiro de verdade. O Compadre de Ouro está junto nas trincheiras, divide o peso sem reclamar e nunca abandona o time quando a coisa aperta. Ouro puro.',
-  '🌵 Raiz da Equipe': 'A Raiz da Equipe sustenta tudo debaixo da terra, sem precisar de aplausos. Mesmo quando o vento vem forte, o time fica de pé por causa dela. É a base que ninguém vê mas todo mundo sente.',
-  '🎆 Fogueira Criativa': 'Onde a Fogueira Criativa chega, surgem ideias que ninguém tinha pensado. É aquela faísca que acende a imaginação do grupo inteiro e ilumina caminhos novos no escuro.',
-  '🐓 Galo do Amanhecer': 'O Galo do Amanhecer chega antes dos outros e sai depois. É dedicação sem placa, comprometimento sem precisar de palco. Quando o dia amanhece, ele já está no batente.',
-  '☁️ Chuva Boa': 'A Chuva Boa chega na hora certa e resolve o que precisava ser resolvido. Sem alarde, sem tempestade — só aquela garoa certeira que faz tudo voltar a crescer.',
-};
+const SUPERPODERES = [
+  {
+    key: '🎯 Mira Certeira',
+    label: '🎯 Mira Certeira — entrega sempre no prazo',
+    description: 'Quem tem Mira Certeira nunca deixa prazo escapar. É aquela pessoa que você sabe que pode contar — quando ela diz que entrega, entrega. A bala sempre acerta o alvo.',
+  },
+  {
+    key: '🌟 Estrela do Forró',
+    label: '🌟 Estrela do Forró — anima qualquer reunião',
+    description: 'Tem gente que entra numa sala e muda o clima inteiro. A Estrela do Forró é assim: traz energia, anima a galera e transforma até a reunião mais pesada num baile.',
+  },
+  {
+    key: '🧠 Sábio do Sertão',
+    label: '🧠 Sábio do Sertão — resolve qualquer pepino',
+    description: 'O Sábio do Sertão tem resposta pra tudo — e quando não tem, vai atrás até achar. É a enciclopédia viva do time, a referência que todo mundo consulta nas horas difíceis.',
+  },
+  {
+    key: '🤝 Compadre de Ouro',
+    label: '🤝 Compadre de Ouro — parceiro que todo mundo queria',
+    description: 'Parceiro de verdade. O Compadre de Ouro está junto nas trincheiras, divide o peso sem reclamar e nunca abandona o time quando a coisa aperta. Ouro puro.',
+  },
+  {
+    key: '🌵 Raiz da Equipe',
+    label: '🌵 Raiz da Equipe — sustenta o time nas pedras',
+    description: 'A Raiz da Equipe sustenta tudo debaixo da terra, sem precisar de aplausos. Mesmo quando o vento vem forte, o time fica de pé por causa dela. É a base que ninguém vê mas todo mundo sente.',
+  },
+  {
+    key: '🎆 Fogueira Criativa',
+    label: '🎆 Fogueira Criativa — ideias que iluminam',
+    description: 'Onde a Fogueira Criativa chega, surgem ideias que ninguém tinha pensado. É aquela faísca que acende a imaginação do grupo inteiro e ilumina caminhos novos no escuro.',
+  },
+  {
+    key: '🐓 Galo do Amanhecer',
+    label: '🐓 Galo do Amanhecer — primeiro a chegar, último a desistir',
+    description: 'O Galo do Amanhecer chega antes dos outros e sai depois. É dedicação sem placa, comprometimento sem precisar de palco. Quando o dia amanhece, ele já está no batente.',
+  },
+  {
+    key: '☁️ Chuva Boa',
+    label: '☁️ Chuva Boa — chega e já resolve tudo',
+    description: 'A Chuva Boa chega na hora certa e resolve o que precisava ser resolvido. Sem alarde, sem tempestade — só aquela garoa certeira que faz tudo voltar a crescer.',
+  },
+];
+
+const PODERES: Record<string, string> = SUPERPODERES.reduce((acc, p) => {
+  acc[p.key] = p.description;
+  return acc;
+}, {} as Record<string, string>);
 
 interface StarData {
   id: number;
@@ -37,6 +74,8 @@ export default function CorreioElegante() {
   const [email, setEmail] = useState('');
   const [qual, setQual] = useState('');
   const [msg, setMsg] = useState('');
+  const [showSelectMenu, setShowSelectMenu] = useState(false);
+  const selectRef = useRef<HTMLDivElement>(null);
 
   const [stars, setStars] = useState<StarData[]>([]);
   const [polygons, setPolygons] = useState<BandPolygon[]>([]);
@@ -67,7 +106,8 @@ export default function CorreioElegante() {
     const generatedPolygons: BandPolygon[] = [];
     let bX = 0;
     let polyId = 0;
-    while (bX < 1250) {
+    const maxWidth = typeof window !== 'undefined' ? Math.max(2000, window.innerWidth + 200) : 2000;
+    while (bX < maxWidth) {
       const c = bCores[Math.floor(Math.random() * bCores.length)];
       generatedPolygons.push({
         id: polyId++,
@@ -77,6 +117,21 @@ export default function CorreioElegante() {
       bX += 22;
     }
     setPolygons(generatedPolygons);
+  }, []);
+
+  // Close dropdown on click outside
+  useEffect(() => {
+    function handleClickOutside(event: Event) {
+      if (selectRef.current && !selectRef.current.contains(event.target as Node)) {
+        setShowSelectMenu(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
   }, []);
 
   // Toast auto-hide
@@ -206,6 +261,7 @@ export default function CorreioElegante() {
     setEmail('');
     setMsg('');
     setQual('');
+    setShowSelectMenu(false);
     setDlStatus('⬇️ Clique em "Salvar imagem" para baixar o card');
     setScreen('form');
   };
@@ -230,8 +286,8 @@ export default function CorreioElegante() {
       </div>
 
       <div className="bands">
-        <svg viewBox="0 0 1200 52" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="0" y1="12" x2="1200" y2="12" stroke="rgba(245,245,245,.25)" strokeWidth="1.2" />
+        <svg width="100%" height="52" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="12" x2="100%" y2="12" stroke="rgba(245,245,245,.25)" strokeWidth="1.2" />
           {polygons.map((p) => (
             <polygon key={p.id} points={p.points} fill={p.fill} opacity="0.88" />
           ))}
@@ -285,22 +341,42 @@ export default function CorreioElegante() {
                 </div>
               </div>
               <label className="flabel">Superpoder desta pessoa</label>
-              <select
-                className="fselect"
-                id="inp-qual"
-                value={qual}
-                onChange={(e) => setQual(e.target.value)}
-              >
-                <option value="">Escolha um superpoder...</option>
-                <option value="🎯 Mira Certeira">🎯 Mira Certeira — entrega sempre no prazo</option>
-                <option value="🌟 Estrela do Forró">🌟 Estrela do Forró — anima qualquer reunião</option>
-                <option value="🧠 Sábio do Sertão">🧠 Sábio do Sertão — resolve qualquer pepino</option>
-                <option value="🤝 Compadre de Ouro">🤝 Compadre de Ouro — parceiro que todo mundo queria</option>
-                <option value="🌵 Raiz da Equipe">🌵 Raiz da Equipe — sustenta o time nas pedras</option>
-                <option value="🎆 Fogueira Criativa">🎆 Fogueira Criativa — ideias que iluminam</option>
-                <option value="🐓 Galo do Amanhecer">🐓 Galo do Amanhecer — primeiro a chegar, último a desistir</option>
-                <option value="☁️ Chuva Boa">☁️ Chuva Boa — chega e já resolve tudo</option>
-              </select>
+              <div className="custom-select-container" ref={selectRef}>
+                <button
+                  type="button"
+                  className={`fselect-trigger ${showSelectMenu ? 'active' : ''}`}
+                  id="inp-qual-trigger"
+                  onClick={() => setShowSelectMenu(!showSelectMenu)}
+                >
+                  {SUPERPODERES.find((opt) => opt.key === qual)?.label || "Escolha um superpoder..."}
+                </button>
+                {showSelectMenu && (
+                  <div className="custom-select-options">
+                    <div
+                      className="custom-select-option placeholder"
+                      onClick={() => {
+                        setQual("");
+                        setShowSelectMenu(false);
+                      }}
+                    >
+                      Escolha um superpoder...
+                    </div>
+                    {SUPERPODERES.map((opt) => (
+                      <div
+                        key={opt.key}
+                        className={`custom-select-option ${qual === opt.key ? 'selected' : ''}`}
+                        onClick={() => {
+                          setQual(opt.key);
+                          setShowSelectMenu(false);
+                        }}
+                      >
+                        {opt.label}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <input type="hidden" id="inp-qual" value={qual} />
               <label className="flabel">O elogio (máx. 180 caracteres)</label>
               <textarea
                 className="ftextarea"
