@@ -6,9 +6,11 @@ export function Footer() {
         <p>
           © {new Date().getFullYear()}{" "}
           <a href="https://agenciapapoca.com.br">Agência Papoca</a> ·
-          Diagnóstico técnico — não substitui análise estatística completa.
+          Diagnóstico técnico não substitui análise estatística completa.
         </p>
-        <p className="mono">scan.agenciapapoca.com.br</p>
+        <p className="mono">
+          app.agenciapapoca.com.br
+        </p>
       </div>
     </footer>
   );

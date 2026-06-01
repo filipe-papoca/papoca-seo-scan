@@ -5,7 +5,7 @@
 // - User-Agent identificável (não somos crawler oculto)
 // - Captura de tempo de resposta
 
-const USER_AGENT = "PapocaScanBot/1.0 (+https://scan.agenciapapoca.com.br/about)";
+const USER_AGENT = "PapocaScanBot/1.0 (+https://app.agenciapapoca.com.br/about)";
 const DEFAULT_TIMEOUT_MS = 10_000;
 const MAX_BYTES = 5 * 1024 * 1024; // 5MB — sites maiores que isso já têm outro problema
 
