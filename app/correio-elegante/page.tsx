@@ -82,6 +82,7 @@ export default function CorreioElegante() {
   const [toast, setToast] = useState<{ show: boolean; message: string }>({ show: false, message: '' });
   const [dlStatus, setDlStatus] = useState('⬇️ Clique em "Salvar imagem" para baixar o card');
   const [hideEmailForDownload, setHideEmailForDownload] = useState(false);
+  const [sendingEmail, setSendingEmail] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -148,7 +149,7 @@ export default function CorreioElegante() {
     setToast({ show: true, message });
   };
 
-  const enviarCarta = (e: React.MouseEvent) => {
+  const enviarCarta = async (e: React.MouseEvent) => {
     e.preventDefault();
     if (!para.trim()) {
       showToast('Escreve o nome de quem vai receber! 💌');
@@ -162,6 +163,40 @@ export default function CorreioElegante() {
       showToast('Não esquece da mensagem! 📝');
       return;
     }
+
+    if (email.trim()) {
+      setSendingEmail(true);
+      showToast('Enviando e-mail... ✉️');
+      try {
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            to: email.trim(),
+            de: de.trim(),
+            para: para.trim(),
+            qual: qual,
+            msg: msg.trim(),
+          }),
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+          showToast('Correio Elegante enviado para o e-mail! 🚀');
+        } else {
+          console.error('Email API error:', data.error);
+          showToast('E-mail não enviado, mas o card está pronto! ⚠️');
+        }
+      } catch (err) {
+        console.error('Email sending failed:', err);
+        showToast('E-mail não enviado, mas o card está pronto! ⚠️');
+      } finally {
+        setSendingEmail(false);
+      }
+    }
+
     setScreen('envelope');
   };
 
@@ -389,8 +424,8 @@ export default function CorreioElegante() {
               <div className={`char-c ${msg.length > 150 ? 'warn' : ''}`} id="char-c">
                 {msg.length} / 180
               </div>
-              <button className="btn-main" onClick={enviarCarta}>
-                ✉️ Enviar cartinha
+              <button className="btn-main" onClick={enviarCarta} disabled={sendingEmail}>
+                {sendingEmail ? 'Enviando... ⏳' : '✉️ Enviar cartinha'}
               </button>
             </div>
           </div>
