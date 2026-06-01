@@ -1,21 +1,10 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { PODERES as PODERES_DESC } from '@/app/correio-elegante/data/constants';
 
 // Inicializa o Resend com a chave configurada
 const resendApiKey = process.env.RESEND_CORREIO_ELEGANTE || process.env.RESEND_API_KEY;
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
-
-// Mapa de descrições dos superpoderes para uso no e-mail
-const PODERES_DESC: Record<string, string> = {
-  '🎯 Mira Certeira': 'Quem tem Mira Certeira nunca deixa prazo escapar. É aquela pessoa que você sabe que pode contar — quando ela diz que entrega, entrega.',
-  '🌟 Estrela do Forró': 'Tem gente que entra numa sala e muda o clima inteiro. A Estrela do Forró é assim: traz energia, anima a galera e transforma até a reunião mais pesada num baile.',
-  '🧠 Sábio do Sertão': 'O Sábio do Sertão tem resposta pra tudo — e quando não tem, vai atrás até achar. É a enciclopédia viva do time, a referência que todo mundo consulta nas horas difíceis.',
-  '🤝 Compadre de Ouro': 'Parceiro de verdade. O Compadre de Ouro está junto nas trincheiras, divide o peso sem reclamar e nunca abandona o time quando a coisa aperta.',
-  '🌵 Raiz da Equipe': 'A Raiz da Equipe sustenta tudo debaixo da terra, sem precisar de aplausos. Mesmo quando o vento vem forte, o time fica de pé por causa dela.',
-  '🎆 Fogueira Criativa': 'Onde a Fogueira Criativa chega, surgem ideias que ninguém tinha pensado. É aquela faísca que acende a imaginação do grupo inteiro e ilumina caminhos novos no escuro.',
-  '🐓 Galo do Amanhecer': 'O Galo do Amanhecer chega antes dos outros e sai depois. É dedicação sem placa, comprometimento sem precisar de palco. Quando o dia amanhece, ele já está no batente.',
-  '☁️ Chuva Boa': 'A Chuva Boa chega na hora certa e resolve o que precisava ser resolvido. Sem alarde, sem tempestade — só aquela garoa certeira que faz tudo voltar a crescer.',
-};
 
 export async function POST(request: Request) {
   try {
@@ -215,15 +204,23 @@ export async function POST(request: Request) {
 
     // Dispara o e-mail usando o Resend
     const fromEmail = process.env.RESEND_FROM_EMAIL || 'Correio Elegante Papoca <onboarding@resend.dev>';
-    
-    const data = await resend.emails.send({
+
+    const response = await resend.emails.send({
       from: fromEmail,
       to: [to],
       subject: `💌 Correio Elegante de ${remetente}!`,
       html: htmlContent,
     });
 
-    return NextResponse.json({ success: true, id: data.id });
+    if (response.error) {
+      console.error('Resend error:', response.error);
+      return NextResponse.json(
+        { error: response.error.message || 'Erro ao enviar e-mail pelo Resend.' },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ success: true, id: response.data?.id });
   } catch (error) {
     console.error('Error sending email via Resend:', error);
     return NextResponse.json(
