@@ -48,3 +48,5 @@ export const PODERES: Record<string, string> = SUPERPODERES.reduce((acc, p) => {
 
 export const CONFETTI_CORES = ['#D92B8A', '#F5F5F5', '#FFD700', '#FF6B35', '#9B59B6', '#4CAF50'];
 
+export const BANNER_CORES = ['#D92B8A', '#F5F5F5', '#FFD700', '#FF6B35', '#4CAF50', '#9B59B6', '#051A30'];
+

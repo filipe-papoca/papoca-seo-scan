@@ -2,23 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import './styles.css';
-import { SUPERPODERES, PODERES, CONFETTI_CORES } from './data/constants';
-
-interface StarData {
-  id: number;
-  width: number;
-  height: number;
-  top: number;
-  left: number;
-  d: string;
-  delay: string;
-}
-
-interface BandPolygon {
-  id: number;
-  points: string;
-  fill: string;
-}
+import { SUPERPODERES, PODERES, CONFETTI_CORES, BANNER_CORES } from './data/constants';
+import { StarData, BandPolygon } from './data/types';
 
 export default function CorreioElegante() {
   const [screen, setScreen] = useState<'form' | 'envelope' | 'card'>('form');
@@ -56,13 +41,12 @@ export default function CorreioElegante() {
     }
     setStars(generatedStars);
 
-    const bCores = ['#D92B8A', '#F5F5F5', '#FFD700', '#FF6B35', '#4CAF50', '#9B59B6', '#051A30'];
     const generatedPolygons: BandPolygon[] = [];
     let bX = 0;
     let polyId = 0;
     const maxWidth = typeof window !== 'undefined' ? Math.max(2000, window.innerWidth + 200) : 2000;
     while (bX < maxWidth) {
-      const c = bCores[Math.floor(Math.random() * bCores.length)];
+      const c = BANNER_CORES[Math.floor(Math.random() * BANNER_CORES.length)];
       generatedPolygons.push({
         id: polyId++,
         points: `${bX},4 ${bX + 18},4 ${bX + 13},28 ${bX + 5},28`,
