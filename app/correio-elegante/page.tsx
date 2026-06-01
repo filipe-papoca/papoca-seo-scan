@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import './styles.css';
-import { SUPERPODERES, PODERES } from './data/constants';
+import { SUPERPODERES, PODERES, CONFETTI_CORES } from './data/constants';
 
 interface StarData {
   id: number;
@@ -159,7 +159,6 @@ export default function CorreioElegante() {
   };
 
   const lancarConfetti = () => {
-    const cores = ['#D92B8A', '#F5F5F5', '#FFD700', '#FF6B35', '#9B59B6', '#4CAF50'];
     if (!containerRef.current) return;
     for (let i = 0; i < 55; i++) {
       setTimeout(() => {
@@ -167,7 +166,7 @@ export default function CorreioElegante() {
         el.className = 'confetti-p';
         const dur = (Math.random() * 2 + 1.5).toFixed(1);
         const sz = Math.floor(Math.random() * 8 + 4);
-        el.style.cssText = `left:${Math.random() * 100}%;top:-10px;background:${cores[Math.floor(Math.random() * cores.length)]};--dur:${dur}s;animation-delay:${(Math.random() * 0.8).toFixed(2)}s;width:${sz}px;height:${sz}px;border-radius:${Math.random() > 0.5 ? '50%' : '2px'}`;
+        el.style.cssText = `left:${Math.random() * 100}%;top:-10px;background:${CONFETTI_CORES[Math.floor(Math.random() * CONFETTI_CORES.length)]};--dur:${dur}s;animation-delay:${(Math.random() * 0.8).toFixed(2)}s;width:${sz}px;height:${sz}px;border-radius:${Math.random() > 0.5 ? '50%' : '2px'}`;
         containerRef.current?.appendChild(el);
         setTimeout(() => el.remove(), (parseFloat(dur) + 1) * 1000);
       }, i * 25);

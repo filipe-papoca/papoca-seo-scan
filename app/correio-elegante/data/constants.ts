@@ -45,3 +45,6 @@ export const PODERES: Record<string, string> = SUPERPODERES.reduce((acc, p) => {
   acc[p.key] = p.description;
   return acc;
 }, {} as Record<string, string>);
+
+export const CONFETTI_CORES = ['#D92B8A', '#F5F5F5', '#FFD700', '#FF6B35', '#9B59B6', '#4CAF50'];
+
