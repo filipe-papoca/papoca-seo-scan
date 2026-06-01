@@ -2,7 +2,7 @@
 
 Ferramenta pública de diagnóstico técnico para verificar se um site está preparado para ser encontrado, lido e citado por modelos de IA (ChatGPT, Gemini, Perplexity, Claude).
 
-**Subdomínio alvo:** `scan.agenciapapoca.com.br`
+**Subdomínio alvo:** `app.agenciapapoca.com.br`
 **Stack:** Next.js 14 + TypeScript + CSS global (sem Tailwind)
 **Identidade visual:** Design System Papoca aplicado
 
@@ -39,7 +39,7 @@ Em desenvolvimento, sem essas variáveis, o rate limit fica desativado (loga avi
 1. Push para GitHub
 2. Importa no Vercel
 3. Configura as duas envs do Upstash (free tier resolve)
-4. Aponta DNS de `scan.agenciapapoca.com.br` para o Vercel
+4. Aponta DNS de `app.agenciapapoca.com.br` para o Vercel
 
 ## Estrutura
 
