@@ -137,7 +137,7 @@ function ScoreBlock({ result }: { result: ScanResult }) {
               <span className="value">{result.summary.fail}</span>
             </div>
             <div className="summary-card dark">
-              <span className="label">Duração</span>
+              <span className="label">Tempo de carregamento</span>
               <span className="value">
                 {(result.durationMs / 1000).toFixed(1)}s
               </span>
@@ -260,16 +260,12 @@ function CTABlock() {
         <div className="cta-grid">
           <div>
             <span className="eyebrow">Próximo passo</span>
-            <h3>
-              Esse scan é o começo.{" "}
-              <span className="dark">O Diagnóstico GEO</span> é onde você vê
-              tudo.
-            </h3>
+            <h2>
+              Agora você sabe o que te atrapalha. <span className="dark">O Diagnóstico de GEO</span> mostra como você está em relação aos seus concorrentes e o que fazer.
+            </h2>
             <p>
-              Análise estatística de presença real nas principais IAs, queries
-              do seu nicho, benchmark contra concorrentes diretos e plano de
-              ação concreto. Metodologia proprietária da Papoca, com 11 anos de
-              experiência em SEO.
+              Análise completa e estatística de presença real nas principais IAs, queries do seu nicho, benchmark contra concorrentes diretos e plano de ação concreto.
+              Metodologia proprietária da Papoca, com 11 anos de experiência em SEO.
             </p>
           </div>
           <div className="cta-right">
@@ -279,7 +275,7 @@ function CTABlock() {
               rel="noopener"
               className="cta-btn"
             >
-              Falar com a Papoca →
+              Solicitar Diagnóstico GEO completo
             </a>
           </div>
         </div>

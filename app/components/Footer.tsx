@@ -8,9 +8,6 @@ export function Footer() {
           <a href="https://agenciapapoca.com.br">Agência Papoca</a> ·
           Diagnóstico técnico não substitui análise estatística completa.
         </p>
-        <p className="mono">
-          app.agenciapapoca.com.br
-        </p>
       </div>
     </footer>
   );

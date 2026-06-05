@@ -12,29 +12,28 @@ interface HeroProps {
 export function Hero({ url, setUrl, loading, error, onSubmit }: HeroProps) {
   return (
     <section className="hero">
-      <div className="hero-inner">
+      <div className="hero-inner wrap">
         <div className="hero-grid">
           <div className="hero-copy">
-            <span className="eyebrow">Diagnóstico de Visibilidade GEO</span>
+            <span className="eyebrow">Diagnóstico técnico gratuito de Visibilidade GEO</span>
             <h1>
-              Seu site está pronto para as{" "}
-              <span className="accent">inteligências</span> artificiais?
+              Descubra se seu site está pronto para aparecer no{" "}
+              <span className="accent">ChatGPT, Gemini e Perplexity</span>
             </h1>
             <p className="sub">
-              Análise técnica gratuita de quão preparado seu site está para ser
-              encontrado, lido e citado por ChatGPT, Claude, Gemini e Perplexity.
-              Resultado em segundos, com diagnóstico específico e acionável.
+              Análise técnica gratuita que mostra, em menos de 60 segundos, se sua marca é lida e recomendada pelas IAs e quais ações você deve priorizar.
             </p>
-          </div>
-          <div className="hero-meta">
-            <div className="meta-item">
-              <span className="meta-num">9</span> verificações
-            </div>
-            <div className="meta-item">
-              <span className="meta-num">4</span> categorias
-            </div>
-            <div className="meta-item">
-              <span className="meta-num">0–100</span> score
+
+            <div className="hero-meta">
+              <div className="meta-item">
+                <span className="meta-num">9</span> verificações técnicas que as IAs usam para confiar (ou ignorar) uma marca
+              </div>
+              <div className="meta-item">
+                <span className="meta-num">4</span> categorias de LLM analisadas
+              </div>
+              <div className="meta-item">
+                <span className="meta-num">0–100</span> Score com diagnóstico por categoria e prioridade de ação
+              </div>
             </div>
           </div>
         </div>
@@ -58,7 +57,7 @@ export function Hero({ url, setUrl, loading, error, onSubmit }: HeroProps) {
               className="btn btn-primary btn-lg"
               disabled={loading || !url}
             >
-              {loading ? "Escaneando…" : "Iniciar diagnóstico"}
+              {loading ? "Escaneando…" : "Iniciar diagnóstico gratuito"}
             </button>
           </div>
           {error && <p className="scan-error">⚠ {error}</p>}

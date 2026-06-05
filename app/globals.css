@@ -187,11 +187,15 @@ ol {
 /* ═════════════ NAVBAR ═════════════ */
 .nav {
   background: var(--ink);
-  padding: 14px var(--pad-x);
+  padding: 14px 0;
+}
+
+.nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  width: 100%;
 }
 
 .nav .logo {
@@ -245,7 +249,7 @@ ol {
 .hero {
   background: var(--ink);
   color: var(--off-white);
-  padding: var(--pad-y) var(--pad-x);
+  padding: var(--pad-y) 0;
   position: relative;
   overflow: hidden;
 }
@@ -278,15 +282,16 @@ ol {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  max-width: 800px;
 }
 
 .hero h1 {
-  font-size: clamp(36px, 7.5vw, 80px);
+  font-size: clamp(32px, 5.5vw, 55px);
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -0.03em;
   color: var(--off-white);
-  max-width: 14ch;
+  max-width: 24ch;
 }
 
 .hero h1 .accent {
@@ -299,22 +304,23 @@ ol {
   font-size: clamp(15px, 1.6vw, 17px);
   font-weight: 300;
   line-height: 1.5;
-  max-width: 600px;
+  max-width: 680px;
 }
 
 .hero-meta {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
 }
 
 .hero-meta .meta-item {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
-  color: rgba(249, 249, 249, 0.55);
+  align-items: flex-start;
+  gap: 12px;
+  color: rgba(249, 249, 249, 0.75);
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 .hero-meta .meta-num {
@@ -322,18 +328,14 @@ ol {
   font-size: 16px;
   font-weight: 700;
   color: var(--magenta);
+  flex-shrink: 0;
+  line-height: 1.4;
 }
 
 @media (min-width: 1024px) {
   .hero-grid {
-    grid-template-columns: 1.6fr 1fr;
+    grid-template-columns: 1fr;
     gap: 48px;
-  }
-
-  .hero-meta {
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 8px;
   }
 }
 
@@ -999,8 +1001,8 @@ ol {
   opacity: 1;
 }
 
-.cta-section h3 {
-  font-size: clamp(28px, 5vw, 60px);
+.cta-section h2 {
+  font-size: clamp(24px, 4vw, 42px);
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -1008,7 +1010,7 @@ ol {
   margin: 12px 0 var(--sp-4);
 }
 
-.cta-section h3 .dark {
+.cta-section h2 .dark {
   color: var(--ink);
 }
 

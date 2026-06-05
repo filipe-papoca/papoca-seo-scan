@@ -2,23 +2,23 @@
 const ITEMS = [
   {
     num: "01 / 04",
-    title: "Descoberta",
-    desc: "robots.txt, sitemap.xml e regras explícitas para bots de IA como GPTBot, ClaudeBot e PerplexityBot.",
+    title: "Acesso",
+    desc: "Se os bots das IAs conseguem entrar, ler e indexar seu site ou estão sendo bloqueados sem você saber.",
   },
   {
     num: "02 / 04",
-    title: "Sinais para IA",
+    title: "Sinais de confiança",
     desc: "Presença de llms.txt, HTTPS, canonical tags e demais sinais que crawlers de IA priorizam.",
   },
   {
     num: "03 / 04",
-    title: "Estrutura",
-    desc: "Schema.org / JSON-LD, meta tags, Open Graph e hierarquia HTML semântica.",
+    title: "Clareza de contexto",
+    desc: "Se a IA consegue entender do que seu site trata, quem você é e por que deveria recomendar sua marca.",
   },
   {
     num: "04 / 04",
     title: "Performance",
-    desc: "Tempo de resposta — crawlers desistem ou rebaixam sites lentos.",
+    desc: "Sites lentos são ignorados pelos crawlers de IA antes mesmo de serem lidos. Isso conta no seu score.",
   },
 ];
 
@@ -26,8 +26,8 @@ export function Methodology() {
   return (
     <section className="methodology">
       <div className="wrap">
-        <span className="eyebrow">Metodologia</span>
-        <h2>O que verificamos em quatro dimensões.</h2>
+        <span className="eyebrow">Faça o diagnóstico e descubra</span>
+        <h2>Por que as IAs ignoram seu site em 4 pontos importantes</h2>
         <div className="method-grid">
           {ITEMS.map((it) => (
             <div key={it.num} className="method-card">
