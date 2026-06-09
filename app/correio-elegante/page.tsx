@@ -416,7 +416,7 @@ export default function CorreioElegante() {
                 <div className="deco tr">🌵</div>
                 <div className="deco bl">⭐</div>
                 <div className="deco br">⭐</div>
-                <div className="card-badge">📮 Correio Elegante · Papoca 2025</div>
+                <div className="card-badge">📮 Correio Elegante · Papoca {new Date().getFullYear()}</div>
                 <div className="card-from-txt" id="c-de">
                   De: {de.trim() || 'Alguém especial'}
                 </div>
