@@ -1,6 +1,6 @@
 # Papoca Scan — Diagnóstico de Visibilidade GEO
 
-Ferramenta pública de diagnóstico técnico para verificar se um site está preparado para ser encontrado, lido e citado por modelos de IA (ChatGPT, Gemini, Perplexity, Claude).
+Ferramenta pública de diagnóstico técnico para verificar se um site está preparado para ser encontrado, lido e citado por modelos de IA (ChatGPT, Gemini, Claude, Claude).
 
 **Subdomínio alvo:** `app.agenciapapoca.com.br`
 **Stack:** Next.js 14 + TypeScript + CSS global (sem Tailwind)

@@ -18,7 +18,7 @@ export function Hero({ url, setUrl, loading, error, onSubmit }: HeroProps) {
             <span className="eyebrow">Diagnóstico técnico gratuito de Visibilidade GEO</span>
             <h1>
               Descubra se seu site está pronto para aparecer no{" "}
-              <span className="accent">ChatGPT, Gemini e Perplexity</span>
+              <span className="accent">ChatGPT, Gemini e Claude</span>
             </h1>
             <p className="sub">
               Análise técnica gratuita que mostra, em menos de 60 segundos, se sua marca é lida e recomendada pelas IAs e quais ações você deve priorizar.
