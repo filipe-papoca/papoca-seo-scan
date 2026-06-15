@@ -205,7 +205,7 @@ export default function CorreioElegante() {
     const desc = PODERES[qual] ? `\n\n"${PODERES[qual]}"` : '';
     const txt = `💌 Recebi um Correio Elegante!\n\n"${msg.trim()}"\n\n🌟 Superpoder reconhecido: ${qual}${desc}\n\nDe: ${rem} 💖\n\nFesta Junina da Papoca! 🎪🌵\n\n#FestJunina #Papoca #CorreioElegante`;
     window.open(
-      `https://www.linkedin.com/sharing/share-offsite/?url=https://papoca.agency&summary=${encodeURIComponent(txt)}`,
+      `https://www.linkedin.com/sharing/share-offsite/?url=https://app.agenciapapoca.com.br/correio-elegante&summary=${encodeURIComponent(txt)}`,
       '_blank'
     );
     showToast('Abrindo LinkedIn... 🔗');

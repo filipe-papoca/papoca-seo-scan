@@ -189,12 +189,12 @@ export async function POST(request: Request) {
                   ${poderDescricao ? `<div class="power-desc">${poderDescricao}</div>` : ''}
                 </div>
 
-                <a href="https://papoca.agency" target="_blank" class="btn-cta">Visitar a Papoca</a>
+                <a href="https://app.agenciapapoca.com.br/correio-elegante" target="_blank" class="btn-cta">Visitar a Papoca</a>
               </div>
               
               <div class="footer">
                 Enviado automaticamente pelo sistema de Correio Elegante da Festa Junina da Papoca.<br>
-                Quer enviar uma cartinha também? <a href="https://papoca.agency" target="_blank">Clique aqui</a>.
+                Quer enviar uma cartinha também? <a href="https://app.agenciapapoca.com.br/correio-elegante" target="_blank">Clique aqui</a>.
               </div>
             </div>
           </div>
