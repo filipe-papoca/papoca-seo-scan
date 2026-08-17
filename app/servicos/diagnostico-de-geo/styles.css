@@ -859,11 +859,16 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 .pp-s--prova .pp-clients{margin:64px 0 0;overflow:hidden}   /* Figma: gap 64 */
 .pp-marquee--clientes{gap:56px;animation-duration:40s}
 .pp-s--prova .pp-clients:hover .pp-marquee{animation-play-state:paused}
-/* cada logo numa <li>; altura fixa e largura pelo aspecto de cada marca */
+/* cada logo numa <li> com caixa de tamanho fixo (140x40), logo centralizado e
+   escalado por `object-fit:contain`. Antes a altura era fixa e a largura livre
+   por aspecto de cada marca — como as marcas têm proporções muito diferentes
+   (de 1:1 até quase 8:1), isso deixava logos com pesos visuais bem desiguais
+   (ex: Direcional a 240px de largura contra Itaú a 30px). A caixa fixa
+   equilibra o peso visual de cada logo na faixa. */
 .pp-marquee--clientes .pp-marquee__row{display:flex;align-items:center;gap:56px;list-style:none;margin:0;padding:0}
-.pp-s--prova .pp-clients li{flex:0 0 auto;display:flex;align-items:center}
-.pp-s--prova .pp-clients picture{display:block}
-.pp-s--prova .pp-clients img{height:30px;width:auto;max-width:none;flex:0 0 auto}
+.pp-s--prova .pp-clients li{flex:0 0 140px;width:140px;height:40px;display:flex;align-items:center;justify-content:center}
+.pp-s--prova .pp-clients picture{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+.pp-s--prova .pp-clients img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
 
 /* carrossel */
 .pp-carousel{margin:64px 0 0;position:relative}   /* Figma: gap 64 */
@@ -1240,7 +1245,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
   .pp-s--prova{padding:64px 0 80px}
   .pp-s--prova .pp-sub{font-size:14.5px;line-height:1.6}
   .pp-s--prova .pp-clients{margin-top:52px}
-  .pp-s--prova .pp-clients img{height:26px}
+  .pp-s--prova .pp-clients li{width:118px;height:34px;flex:0 0 118px}
   .pp-marquee--clientes .pp-marquee__row{gap:44px}
   .pp-marquee--clientes{gap:44px}
   /* card mais largo: a 74% o texto quebrava em 7 linhas curtas.
