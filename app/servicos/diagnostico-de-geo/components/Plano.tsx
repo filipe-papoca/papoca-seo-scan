@@ -5,13 +5,14 @@ export function Plano() {
   {/* No mobile o design usa o tatu deitado. Asset já rotacionado 90°, para não
        depender de transform (que mantém a caixa original no layout).
        A ordem das <source> importa: a primeira que casar é a usada.
-       ATENÇÃO: o 960px daqui TEM de ser igual ao @media (max-width:960px) do
-       papoca-geo.css que deita o tatu e o joga para o fluxo. São dois lugares
-       para o mesmo breakpoint; mudar um sem o outro estica a arte. */}
+       ATENÇÃO: o 641px daqui TEM de ser igual ao breakpoint em styles.css que
+       deita o tatu e o joga para o fluxo (v3: mantém o tatu na direita até
+       641px, antes era 960px). São dois lugares para o mesmo breakpoint;
+       mudar um sem o outro estica a arte. */}
   <picture className="pp-tatu" aria-hidden="true">
-    <source media="(prefers-reduced-motion: reduce) and (max-width: 960px)" srcSet="/servicos/diagnostico-de-geo/assets/tatu-mob-still.webp" type="image/webp" width="824" height="498"/>
+    <source media="(prefers-reduced-motion: reduce) and (max-width: 641px)" srcSet="/servicos/diagnostico-de-geo/assets/tatu-mob-still.webp" type="image/webp" width="824" height="498"/>
     <source media="(prefers-reduced-motion: reduce)" srcSet="/servicos/diagnostico-de-geo/assets/tatu.svg" type="image/svg+xml" width="498" height="824"/>
-    <source media="(max-width: 960px)" srcSet="/servicos/diagnostico-de-geo/assets/tatu-mob-anim.webp" type="image/webp" width="824" height="498"/>
+    <source media="(max-width: 641px)" srcSet="/servicos/diagnostico-de-geo/assets/tatu-mob-anim.webp" type="image/webp" width="824" height="498"/>
     <img src="/servicos/diagnostico-de-geo/assets/tatu-anim.webp" alt="" width="498" height="824" loading="lazy" decoding="async"/>
   </picture>
   <div className="pp-wrap">

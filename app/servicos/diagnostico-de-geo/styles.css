@@ -194,7 +194,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 /* CTA do header: 44px de altura, padding 14/24, borda branca, sem radius */
 .pp-s--nav .pp-btn{
   display:flex;align-items:center;height:44px;padding:14px 24px;
-  border:1px solid var(--pp-branco);border-radius:0;
+  border:0;border-radius:0;   /* v3: sem borda branca */
   background:var(--pp-rosa);color:var(--pp-branco);
   font-size:16px;font-weight:700;line-height:1;
 }
@@ -229,7 +229,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 .pp-nowrap{white-space:nowrap}
 @media (max-width:520px){.pp-nowrap{white-space:normal}}
 /* Dev Mode: 24px Light, lh 130%, #F9F9F9 e SEM letter-spacing negativo. */
-.pp-s--hero .pp-lead{color:var(--pp-branco);font-size:16px;line-height:1.4;letter-spacing:-.02em;max-width:1042px}   /* teste: 16px / lh 140% / ls -2% */
+.pp-s--hero .pp-lead{color:var(--pp-branco);font-size:24px;line-height:1.3;letter-spacing:-.02em;max-width:1042px}   /* v3: testamos 16px/140%/-2% e voltamos pro 24px/130%/-2% */
 
 /* CTA do hero: mesmo componente do header (padding 14/24, 16px Bold), mas com
    borda de 2px na própria cor de fundo, o que engorda o botão em 4px de cada
@@ -240,7 +240,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 .pp-s--hero .pp-btn{
   display:inline-flex;justify-content:center;align-items:center;gap:10px;
   border:2px solid var(--pp-rosa);padding:0 24px;min-height:60px;   /* 60px de altura */
-  font-size:16px;font-weight:700;line-height:1.3;letter-spacing:-.03em;   /* -0.48px em 16px */
+  font-size:24px;font-weight:700;line-height:1.3;letter-spacing:-.03em;   /* v3: 24px */
 }
 .pp-s--hero .pp-btn{margin-top:80px}   /* Figma: gap 80 */
 
@@ -471,7 +471,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 .pp-layer{
   max-width:none;margin:120px auto 0;position:relative;   /* Figma: gap entre camadas */
   padding:20px var(--lane,0px) 8px 0;
-  border-top:1.5px solid var(--pp-azul);
+  border-top:2px solid var(--pp-azul);   /* v3: 2px; cor por camada nos overrides abaixo */
 }
 .pp-layer--1{margin-top:26px}
 
@@ -497,23 +497,27 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 .pp-layer__head{display:grid;grid-template-columns:5fr 7fr;gap:var(--gut);align-items:start;max-width:var(--c8)}   /* título 5/12, descrição 7/12 */
 .pp-layer__title{display:flex;align-items:center;gap:14px}
 .pp-layer__n{
-  flex:0 0 34px;width:34px;height:34px;border-radius:50%;
-  display:grid;place-items:center;color:#fff;font-size:15px;font-weight:800;
+  flex:0 0 56px;width:56px;height:56px;border-radius:50%;   /* v3: 56x56 */
+  display:grid;place-items:center;color:#fff;font-size:24px;font-weight:800;
 }
 .pp-layer__title h3{font-size:var(--fs-h3);font-weight:700;line-height:1;letter-spacing:0;margin:0}   /* Figma: 32px lh 1.00 */
 .pp-layer__desc{font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo);color:#3A3A3A;margin:0;padding-top:6px}
 
+.pp-layer--1{border-top-color:var(--pp-rosa)}   /* v3: linha na cor do tópico */
 .pp-layer--1 .pp-layer__n{background:var(--pp-rosa)}
 .pp-layer--1 .pp-layer__title h3{color:var(--pp-rosa)}
+.pp-layer--2{border-top-color:var(--pp-azul)}
 .pp-layer--2 .pp-layer__n{background:var(--pp-azul)}
 .pp-layer--2 .pp-layer__title h3{color:var(--pp-azul)}
+.pp-layer--3{border-top-color:var(--pp-roxo)}
 .pp-layer--3 .pp-layer__n{background:var(--pp-roxo)}
 .pp-layer--3 .pp-layer__title h3{color:var(--pp-roxo)}
+.pp-layer--4{border-top-color:var(--pp-crimson)}
 .pp-layer--4 .pp-layer__n{background:var(--pp-crimson)}
 .pp-layer--4 .pp-layer__title h3{color:var(--pp-crimson)}
 
 /* donuts de share of voice */
-.pp-donuts{display:grid;grid-template-columns:repeat(5,1fr);gap:24px 64px;margin:72px 0 0;max-width:var(--c8)}
+.pp-donuts{display:grid;grid-template-columns:repeat(5,1fr);gap:24px 64px;margin:48px 0 0;max-width:var(--c8)}   /* v3: gap padronizado 48 */
 .pp-donut{
   text-align:center;
   /* `stretch` com escada de fallback: navegador que não conhece a palavra
@@ -531,8 +535,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 
 /* resumo com pizza: pizza | número+rótulo | texto, tudo na mesma linha */
 /* Duas colunas: o grupo pizza+número é uma unidade, o parágrafo é a outra. */
-.pp-summary{display:grid;grid-template-columns:5fr 7fr;gap:0 var(--gut);align-items:center;margin-top:72px;max-width:var(--c8)}
-.pp-summary__grupo{display:grid;grid-template-columns:auto minmax(180px,auto);gap:0 26px;align-items:center}
+.pp-summary{display:grid;grid-template-columns:auto 510px;gap:0 24px;align-items:center;margin-top:72px;max-width:var(--c8)}   /* v3: gap 24, texto explicativo fixo em 510 */
+.pp-summary__grupo{display:grid;grid-template-columns:auto 253px;gap:0 48px;align-items:center}   /* v3: gap 48, número+texto fixo em 253 */
 .pp-summary__pie{flex:0 0 auto}
 /* 100px de largura, altura pelo aspecto do viewBox, com teto na célula da
    grade para não estourar em tela estreita. */
@@ -560,7 +564,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
    Os tamanhos de fonte estão em unidades do viewBox (940 de largura), logo
    escalam junto com o SVG. Os valores por breakpoint compensam essa escala
    para o texto renderizado ficar sempre legível. */
-.pp-chart--barras{margin-top:44px;overflow:visible}
+.pp-chart--barras{margin-top:48px;overflow:visible}   /* v3: gap padronizado 48 */
 /* O tamanho RENDERIZADO é fsViewBox × (larguraDoContainer / 940), ou seja
    inversamente proporcional à largura. Por isso os degraus abaixo: eles mantêm
    o texto entre 7 e 10px reais em qualquer tela. Sem eles, ou fica com 4px no
@@ -597,7 +601,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
      146px mortos acima e 146px abaixo do gráfico, e era isso que criava um vão
      de 168px até a legenda apesar dos 22px declarados nela. */
   aspect-ratio:1.41;
-  margin:72px auto 0;
+  margin:48px auto 0;   /* v3: gap padronizado 48 */
 }
 /* height/top em % da altura: 54% da largura = 54 x 1,41 = 76,14% da altura. */
 .pp-radar__svg{position:absolute;left:23%;top:11.93%;width:54%;height:76.14%;overflow:visible}
@@ -639,7 +643,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 .pp-legend i.line{width:34px;height:4px;border-radius:2px}
 
 /* sentimento */
-.pp-sent{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:46px 0 0;max-width:var(--c8)}
+.pp-sent{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:48px 0 0;max-width:var(--c8)}   /* v3: gap padronizado 48 */
 .pp-sent__it{
   text-align:center;
   /* mesmo critério do .pp-donut: `stretch` com escada de fallback */
@@ -671,7 +675,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
   margin-left:calc((100% - min(1578px, 100vw - 34px)) / 2);
   color:#fff;   /* globals.css do app tem h1..h5{color:var(--fg)}; sem isso herda escuro */
 }
-.pp-s--cta .pp-btn{margin-top:48px}   /* gap 48 entre H2 e CTA, dentro do wrap */
+.pp-s--cta .pp-btn{margin-top:48px;font-size:24px}   /* gap 48 entre H2 e CTA, dentro do wrap; v3: fonte 24px */
 
 /* =========================================================================
    7. PLANO DE AÇÃO
@@ -887,11 +891,13 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 .pp-quote__who img{width:48px;height:48px;border-radius:50%;flex:0 0 48px;object-fit:cover}
 .pp-quote__who strong{display:block;font-size:16px;font-weight:700;line-height:1.4;letter-spacing:.02em;color:var(--pp-preto)}   /* lh 22.4 | ls +0.32px */
 .pp-quote__who span{display:block;font-size:16px;font-weight:300;line-height:1.4;letter-spacing:-.02em;color:var(--pp-rosa)}   /* lh 22.4 | ls -0.32px */
-.pp-dots{display:flex;gap:10px;justify-content:center;margin-top:32px}   /* Figma: gap 32 antes dos pontos */
+.pp-dots{display:flex;gap:8px;justify-content:center;margin-top:32px}   /* Figma: gap 32 antes dos pontos */
+/* v3: modelo de linha em vez de bolinha — evita problemas de contraste */
 .pp-dots button{
-  width:8px;height:8px;   /* Figma: 8px */
-  padding:0;border:0;border-radius:50%;
+  width:24px;height:3px;
+  padding:0;border:0;border-radius:2px;
   background:var(--pp-cinza-claro);
+  transition:background-color .2s ease;
 }
 .pp-dots button[aria-current="true"]{background:var(--pp-rosa)}
 
@@ -902,9 +908,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 /* Figma: o bloco tem padding 48 (sem borda nem fundo) e gap interno 56 */
 /* --Branco do Dev Mode = #F9F9F9 = nosso --pp-bg. */
 .pp-anos{
-  display:flex;flex-direction:column;align-items:flex-start;gap:56px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:0;   /* v3: gap fixo trocado por margins abaixo, título/subtítulo != subtítulo/grid */
   max-width:1312px;padding:48px;margin:0;align-self:stretch;   /* respiro vem do padding da faixa */
-  border-radius:4px;border:1px solid rgba(25,25,25,.15);
+  border-radius:0;border:1px solid rgba(25,25,25,.15);   /* v3: bordas quadradas */
   background:var(--pp-bg);
   box-shadow:0 30px 47.2px -8px rgba(25,25,25,.11);
 }
@@ -913,13 +919,15 @@ a:focus-visible,button:focus-visible,input:focus-visible{
    senão a grade de 3 colunas colapsa para o min-content. */
 .pp-anos__sub,.pp-anos__grid{width:100%}
 .pp-anos .pp-h2{max-width:1216px;color:var(--pp-preto)}   /* 48px / 700 / lh 57.6 / ls -1.44px */
-.pp-anos__sub{margin:0;   /* espaçamento vem do gap 56 do .pp-anos */
+.pp-anos .pp-h2+.pp-anos__sub{margin-top:24px}   /* v3: 24px entre título e subtítulo */
+.pp-anos__sub+.pp-anos__grid{margin-top:56px}   /* mantém o gap original entre subtítulo e os cards */
+.pp-anos__sub{margin:0;
   font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo);max-width:1216px}
 .pp-anos__sub b{font-weight:700}
 .pp-anos__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin:0}   /* 3 x 373 + gap 48 = 1216 */
-.pp-anos__it{border:1px solid var(--pp-borda);border-radius:var(--pp-r);padding:32px;display:flex;flex-direction:column;gap:24px}   /* Figma: padding 32, gap 24 */
+.pp-anos__it{border:1px solid var(--pp-borda);border-radius:0;padding:32px;display:flex;flex-direction:column;gap:24px}   /* v3: bordas quadradas */
 .pp-anos__ic{
-  width:38px;height:38px;border-radius:6px;color:#fff;
+  width:38px;height:38px;border-radius:0;color:#fff;   /* v3: bordas quadradas */
   background:var(--pp-rosa);
   box-shadow:0 0 13px -2px rgba(217,43,138,.79);
   display:grid;place-items:center;margin-bottom:0;flex:0 0 38px;
@@ -1004,7 +1012,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 }
 .pp-form input::placeholder{color:#B0B0B0}
 .pp-form input:focus{outline:2px solid var(--pp-rosa);outline-offset:-2px;border-color:var(--pp-rosa)}
-.pp-form__note{margin:16px 0 0;font-size:var(--fs-corpo);font-weight:500;letter-spacing:.02em;line-height:1.2;text-align:center}
+.pp-form__note{margin:16px 0 0;font-size:var(--fs-corpo);font-weight:500;letter-spacing:.02em;line-height:1.2;text-align:left}   /* v3: alinhado à esquerda, como o resto do formulário */
 
 /* =========================================================================
    11. FOOTER
@@ -1062,7 +1070,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
   /* zerar as DUAS variáveis: --lane alimentava o recuo antigo e --tatu-w
      alimenta a largura e o margin-left do wrap. Aqui o tatu deixa de ficar à
      direita e passa a vir abaixo do conteúdo, então nenhuma faixa é reservada. */
-  .pp-s--plano{--lane:0px;--tatu-w:0px;display:flex;flex-direction:column;overflow:hidden}
+  .pp-s--plano{--lane:0px;--tatu-w:0px;display:flex;flex-direction:column;overflow:visible}   /* v3: visible, senão o tatu deitado corta na borda da seção */
   /* width:100% é obrigatório aqui: o wrap tem margin:0 auto, e num container
      flex em coluna a margem auto no eixo transversal cancela o stretch, fazendo
      o wrap encolher para a largura de conteúdo em vez de preencher a seção. */
@@ -1082,6 +1090,27 @@ a:focus-visible,button:focus-visible,input:focus-visible{
      layout mesmo com a lupa escondida. */
   .pp-s--cam{--lane:0px;--lupa-h:0px}
 }
+
+/* v3: mantém o tatu no posicionamento de desktop (à direita) até 641px, em
+   vez de 960px. O bloco @media(max-width:960px) acima já deita o tatu no
+   fluxo a partir de 960px; aqui, entre 642 e 960px, desfazemos isso e
+   restauramos o comportamento de desktop. Abaixo de 641px o tatu deitado
+   do bloco acima volta a valer normalmente. Ver breakpoint irmão em
+   components/Plano.tsx (as <source> do <picture>). */
+@media (max-width:960px) and (min-width:642px){
+  .pp-s--plano{
+    --tatu-w:min(30vw,400px);
+    --lane:max(0px, calc(656px + var(--tatu-w) + 32px - 50vw));
+    display:block;overflow:hidden;
+  }
+  .pp-s--plano .pp-wrap{width:auto}
+  .pp-tatu img{
+    position:absolute;right:0;bottom:0;
+    height:auto;width:auto;max-height:86%;max-width:var(--tatu-w);
+    margin:0;opacity:1;
+  }
+}
+
 /* =========================================================================
    MOBILE  (<=640px)
    O design mobile do Figma NÃO é o desktop reduzido: usa tipografia grande e
@@ -1224,14 +1253,14 @@ a:focus-visible,button:focus-visible,input:focus-visible{
   .pp-quote__who img{width:44px;height:44px;flex:0 0 44px}   /* menor que os 48 do desktop */
   .pp-quote__who strong{font-size:16px}
   .pp-quote__who span{font-size:16px}
-  .pp-dots{margin-top:22px;gap:10px}
-  .pp-dots button{width:10px;height:10px}
+  .pp-dots{margin-top:22px;gap:6px}
+  .pp-dots button{width:18px;height:3px}
   .pp-anos{padding:28px 24px}   /* com borda, o padding 0 encostava o texto nela */
   .pp-anos .pp-h2{font-size:32px;line-height:1.2}
   .pp-anos__sub{font-size:14.5px}   /* sem margin-top: soma ao gap 56 do flex */
   .pp-anos__grid{gap:26px}   /* sem margin-top: soma ao gap 56 do flex */
   .pp-anos__it{padding:30px 28px 34px}
-  .pp-anos__ic{width:58px;height:58px;border-radius:8px;margin-bottom:34px}
+  .pp-anos__ic{width:58px;height:58px;border-radius:0;margin-bottom:34px}
   .pp-anos__ic svg{width:28px;height:28px}
   .pp-anos__it h3{font-size:26px;line-height:1.22;margin-bottom:20px}
   .pp-anos__it p{font-size:14.5px;line-height:1.62}
