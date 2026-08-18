@@ -2561,6 +2561,66 @@ input:focus-visible {
   text-align: left
 }
 
+/* feedback de erro e sucesso */
+.pp-form__error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFF0F0;
+  border: 1px solid #FFCDCD;
+  color: #D32F2F;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 12px 14px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.pp-form__error svg {
+  flex: 0 0 18px;
+  color: #D32F2F;
+}
+
+.pp-form--success {
+  text-align: center;
+  align-items: center;
+  padding: 48px 32px;
+}
+
+.pp-form__success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #E8F8EE;
+  color: #2E7D32;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 20px;
+}
+
+.pp-form__success-title {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--pp-preto);
+  margin: 0 0 12px;
+}
+
+.pp-form__success-desc {
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.5;
+  color: #5D5D5D;
+  margin: 0;
+  max-width: 480px;
+}
+
+.pp-btn:disabled,
+.pp-form input:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
 /* v3: alinhado à esquerda, como o resto do formulário */
 
 /* =========================================================================
