@@ -130,8 +130,17 @@ export function Camadas() {
       <div className="pp-attr">
         <div className="pp-attr__t">
           <span className="pp-attr__ic">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M7.5 12.4l3 3 6-6.6"/>
+            <svg width="56" height="56" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Atributos positivos e negativos">
+              {/* Fundo azul */}
+              <circle cx="50" cy="50" r="47" fill="var(--pp-azul)" />
+              {/* Metade inferior direita branca */}
+              <path d="M85.355 14.645 A50 50 0 0 1 14.645 85.355 Z" fill="#FFFFFF" />
+              {/* Cruz branca na metade superior esquerda */}
+              <path d="M25 25 L41 41 M41 25 L25 41" stroke="#FFFFFF" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+              {/* Check azul na metade inferior direita */}
+              <path d="M49 61.5 L61 73.5 L78 45" stroke="var(--pp-azul)" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
+              {/* Contorno circular azul externo completo */}
+              <circle cx="50" cy="50" r="47" fill="none" stroke="var(--pp-azul)" strokeWidth="6" />
             </svg>
           </span>
           <h4>Atributos do <br/>diagnóstico</h4>

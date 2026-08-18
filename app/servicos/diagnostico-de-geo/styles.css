@@ -5,147 +5,332 @@
    ========================================================================= */
 
 /* ---------- tokens ---------- */
-:root{
-  --pp-preto:#191919;
-  --pp-rosa:#D92B8A;
-  --pp-azul:#051A30;
-  --pp-branco:#F5F5F5;
-  --pp-bg:#F9F9F9;
+:root {
+  --pp-preto: #191919;
+  --pp-rosa: #D92B8A;
+  --pp-azul: #051A30;
+  --pp-branco: #F5F5F5;
+  --pp-bg: #F9F9F9;
 
   /* acentos derivados do design (um por camada) */
-  --pp-roxo:#301744;
-  --pp-crimson:#B2143D;
-  --pp-amarelo:#F7C800;
-  --pp-cinza:#5D5D5D;
-  --pp-cinza-claro:#D9D9D9;
-  --pp-borda:#E4E4E4;
+  --pp-roxo: #301744;
+  --pp-crimson: #B2143D;
+  --pp-amarelo: #F7C800;
+  --pp-cinza: #5D5D5D;
+  --pp-cinza-claro: #D9D9D9;
+  --pp-borda: #E4E4E4;
 
-  --pp-font:"Inter","Helvetica Neue",Arial,sans-serif;
+  --pp-font: "Inter", "Helvetica Neue", Arial, sans-serif;
 
   /* ---- escala tipográfica (Dev Mode, frame Produto - v7.1) ----
      O corpo é Light 300 em 16px, não Regular em 14. Isso muda a página inteira.
      Os máximos são os valores do Figma em 1728; os mínimos vêm do mobile. */
-  --fs-h1:clamp(32px, 3.7037vw, 64px);      /* Bold  700 | lh 1.10 | ls -4%  */
-  --fs-h1-form:clamp(34px, 4.2vw, 72px); /* Bold  700 | lh 1.10 | ls  0   */
-  --fs-h2:clamp(32px, 2.8vw, 48px);      /* Bold  700 | lh 1.20 | ls -3%  */
-  --fs-h3:clamp(21px, 1.9vw, 32px);      /* Bold  700 | lh 1.20 | ls -3%  */
-  --fs-stat:clamp(56px, 4.6296vw, 80px);    /* Black 900 | lh 1.00 | ls  0   */
-  --fs-sub:clamp(16px, 1.4vw, 24px);     /* lh 1.30                       */
-  --fs-corpo:clamp(14px, .95vw, 16px);   /* Light 300 | lh 1.40 | ls -2%  */
-  --fs-eyebrow:12px;                     /* Bold  700 | lh 1.30 | ls  0   */
-  --fs-micro:12px;                       /* Regular 400 | lh 1.30         */
+  --fs-h1: clamp(32px, 3.7037vw, 64px);
+  /* Bold  700 | lh 1.10 | ls -4%  */
+  --fs-h1-form: clamp(34px, 4.2vw, 72px);
+  /* Bold  700 | lh 1.10 | ls  0   */
+  --fs-h2: clamp(32px, 2.8vw, 48px);
+  /* Bold  700 | lh 1.20 | ls -3%  */
+  --fs-h3: clamp(21px, 1.9vw, 32px);
+  /* Bold  700 | lh 1.20 | ls -3%  */
+  --fs-stat: clamp(56px, 4.6296vw, 80px);
+  /* Black 900 | lh 1.00 | ls  0   */
+  --fs-sub: clamp(16px, 1.4vw, 24px);
+  /* lh 1.30                       */
+  --fs-corpo: clamp(14px, .95vw, 16px);
+  /* Light 300 | lh 1.40 | ls -2%  */
+  --fs-eyebrow: 12px;
+  /* Bold  700 | lh 1.30 | ls  0   */
+  --fs-micro: 12px;
+  /* Regular 400 | lh 1.30         */
 
-  --ls-h1:-.04em;
-  --ls-h2:-.03em;
-  --ls-corpo:-.02em;
+  --ls-h1: -.04em;
+  --ls-h2: -.03em;
+  --ls-corpo: -.02em;
 
-  /* 1312px de conteudo + 17px de padding = 1346, medido nas divisorias
-     do Figma: 208..1519 no desktop (1728) e 17..358 no mobile (376) */
-  --pp-max:1346px;
-  --pp-r:8px;
+  /* Container com 1312px de largura máxima total, incluindo os paddings laterais */
+  --pp-max: 1312px;
+  --pp-r: 8px;
 
   /* ---- grade de 12 colunas ----
      Fecha exata em 1312: 12 x 80px de coluna + 11 x 32px de gutter.
      Use --cN para largura de N colunas em vez de números soltos. */
-  --col:80px;
-  --gut:32px;
-  --c1:80px;
-  --c2:192px;
-  --c3:304px;
-  --c4:416px;
-  --c5:528px;
-  --c6:640px;
-  --c7:752px;
-  --c8:864px;
-  --c9:976px;
-  --c10:1088px;
-  --c11:1200px;
-  --c12:1312px;
+  --col: 80px;
+  --gut: 32px;
+  --c1: 80px;
+  --c2: 192px;
+  --c3: 304px;
+  --c4: 416px;
+  --c5: 528px;
+  --c6: 640px;
+  --c7: 752px;
+  --c8: 864px;
+  --c9: 976px;
+  --c10: 1088px;
+  --c11: 1200px;
+  --c12: 1312px;
 }
 
 /* ---------- reset mínimo ---------- */
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 24px)}
-body{
-  margin:0;background:var(--pp-bg);color:var(--pp-preto);
-  font-family:var(--pp-font);font-size:16px;line-height:1.55;
-  -webkit-font-smoothing:antialiased;
+*,
+*::before,
+*::after {
+  box-sizing: border-box
 }
-img,svg{display:block;max-width:100%}
-button{font-family:inherit;cursor:pointer}
-a{color:inherit}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 24px);
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  background: var(--pp-bg);
+  color: var(--pp-preto);
+  font-family: var(--pp-font);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer
+}
+
+a {
+  color: inherit
+}
+
 /* O navegador aplica `font-weight:bolder` em <b> e <strong>, e `bolder` sobre
    um pai de 300 resolve para 400, não para 700 (tabela relativa da spec CSS).
    Como quase todo texto corrido aqui é Light 300, 8 trechos marcados como
    negrito estavam renderizando em Regular. Valor absoluto resolve. */
-b,strong{font-weight:700}
+b,
+strong {
+  font-weight: 700
+}
 
-.pp-wrap{width:100%;max-width:var(--pp-max);margin:0 auto;padding:0 17px}
-.pp-center{text-align:center}
-.pp-rosa{color:var(--pp-rosa)}
-.pp-preto{color:var(--pp-preto)}
-.pp-reg{font-weight:400}   /* trecho em Regular dentro de um bloco Bold */
-.pp-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.pp-wrap {
+  width: 100%;
+  max-width: var(--pp-max);
+  margin: 0 auto;
+  padding: 0 17px
+}
+
+.pp-center {
+  text-align: center
+}
+
+.pp-rosa {
+  color: var(--pp-rosa)
+}
+
+.pp-preto {
+  color: var(--pp-preto)
+}
+
+.pp-reg {
+  font-weight: 400
+}
+
+/* trecho em Regular dentro de um bloco Bold */
+.pp-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0)
+}
 
 /* skip link: invisível até receber foco pelo teclado */
-.pp-skip{
-  position:absolute;left:-9999px;top:0;z-index:100;
-  background:var(--pp-rosa);color:#fff;padding:12px 20px;
-  font-size:14px;font-weight:600;text-decoration:none;border-radius:0 0 var(--pp-r) 0;
+.pp-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--pp-rosa);
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 var(--pp-r) 0;
 }
-.pp-skip:focus{left:0}
+
+.pp-skip:focus {
+  left: 0
+}
 
 /* foco visível em tudo que é navegável por teclado */
-a:focus-visible,button:focus-visible,input:focus-visible{
-  outline:3px solid var(--pp-rosa);outline-offset:2px;
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--pp-rosa);
+  outline-offset: 2px;
 }
-.pp-s--hero a:focus-visible,.pp-s--num a:focus-visible,.pp-s--cta a:focus-visible{
-  outline-color:#fff;
+
+.pp-s--hero a:focus-visible,
+.pp-s--num a:focus-visible,
+.pp-s--cta a:focus-visible {
+  outline-color: #fff;
 }
 
 /* ---------- tipografia ---------- */
 /* 12px Bold, lh 1.30, letter-spacing ZERO. O Figma usa textCase UPPER, não
    tracking: eu tinha .16em de espaçamento que não existe no design. */
-.pp-eyebrow{
-  font-size:var(--fs-eyebrow);font-weight:700;line-height:1.3;
-  letter-spacing:0;text-transform:uppercase;margin:0 0 80px;   /* Dev Mode: gap 80 */
+.pp-eyebrow {
+  font-size: var(--fs-eyebrow);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  margin: 0 0 80px;
+  /* Dev Mode: gap 80 */
 }
-.pp-h1{font-size:var(--fs-h1);line-height:1.1;font-weight:700;letter-spacing:var(--ls-h1);margin:0;text-wrap:balance}
-.pp-h2{font-size:var(--fs-h2);line-height:1.2;font-weight:700;letter-spacing:var(--ls-h2);margin:0;text-wrap:balance}
-.pp-h3{font-size:var(--fs-h3);line-height:1.2;font-weight:700;letter-spacing:var(--ls-h2);margin:0}
-.pp-lead{font-size:var(--fs-sub);line-height:1.3;font-weight:300;letter-spacing:var(--ls-corpo);margin:80px auto 0;max-width:var(--c9)}   /* Figma: gap 80 */
-.pp-small{font-size:13px;line-height:1.5}
-.pp-micro{font-size:var(--fs-micro);font-weight:400;line-height:1.3;color:var(--pp-cinza);margin-bottom:0}
+
+.pp-h1 {
+  font-size: var(--fs-h1);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: var(--ls-h1);
+  margin: 0;
+  text-wrap: balance
+}
+
+.pp-h2 {
+  font-size: var(--fs-h2);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: var(--ls-h2);
+  margin: 0;
+  text-wrap: balance
+}
+
+.pp-h3 {
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: var(--ls-h2);
+  margin: 0
+}
+
+.pp-lead {
+  font-size: var(--fs-sub);
+  line-height: 1.3;
+  font-weight: 300;
+  letter-spacing: var(--ls-corpo);
+  margin: 80px auto 0;
+  max-width: var(--c9)
+}
+
+/* Figma: gap 80 */
+.pp-small {
+  font-size: 13px;
+  line-height: 1.5
+}
+
+.pp-micro {
+  font-size: var(--fs-micro);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--pp-cinza);
+  margin-bottom: 0
+}
 
 /* ---------- botões ---------- */
-.pp-btn{
-  display:inline-block;border:0;border-radius:0;   /* CTAs sem arredondamento */
-  padding:15px 30px;font-size:15px;font-weight:700;text-decoration:none;
-  transition:transform .15s ease,filter .15s ease;
+.pp-btn {
+  display: inline-block;
+  border: 0;
+  border-radius: 0;
+  /* CTAs sem arredondamento */
+  padding: 15px 30px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform .15s ease, filter .15s ease;
 }
-.pp-btn:hover{transform:translateY(-1px);filter:brightness(1.07)}
-.pp-btn--rosa{background:var(--pp-rosa);color:#fff}
-.pp-btn--preto{background:var(--pp-preto);color:#fff}
-.pp-btn--full{display:block;width:100%;text-align:center;border-radius:0}
+
+.pp-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.07)
+}
+
+.pp-btn--rosa {
+  background: var(--pp-rosa);
+  color: #fff
+}
+
+.pp-btn--preto {
+  background: var(--pp-preto);
+  color: #fff
+}
+
+.pp-btn--full {
+  display: block;
+  width: 100%;
+  text-align: center;
+  border-radius: 0
+}
 
 /* ---------- logo (recriado em CSS — substituir pelo SVG oficial) ---------- */
-.pp-logo{display:flex;align-items:center;gap:2px;height:36px;text-decoration:none;flex:0 0 auto}
-.pp-logo i{display:block;width:18px;height:36px;background:currentColor}
-.pp-logo span{
-  font-size:13.5px;line-height:12px;font-weight:500;letter-spacing:-.02em;
-  color:currentColor;
+.pp-logo {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 36px;
+  text-decoration: none;
+  flex: 0 0 auto
+}
+
+.pp-logo i {
+  display: block;
+  width: 18px;
+  height: 36px;
+  background: currentColor
+}
+
+.pp-logo span {
+  font-size: 13.5px;
+  line-height: 12px;
+  font-weight: 500;
+  letter-spacing: -.02em;
+  color: currentColor;
 }
 
 /* =========================================================================
    1. NAV
    ========================================================================= */
 /* nav e rodapé têm container mais largo que o corpo no design: 1578 contra 1312 */
-.pp-s--foot .pp-wrap{max-width:1612px}   /* 1578 de conteúdo */
+.pp-s--foot .pp-wrap {
+  max-width: 1612px
+}
+
+/* 1578 de conteúdo */
 /* No topo o menu ocupa a largura cheia; ao rolar encolhe para o container de
    1312 (1346 com o padding). A transição acompanha a do fundo do header. */
-.pp-s--nav .pp-wrap{max-width:1612px;transition:max-width .32s cubic-bezier(.4,0,.2,1)}
-.pp-s--nav.is-rolado .pp-wrap{max-width:var(--pp-max)}
-:root{--nav-h:76px}   /* 44 do pill + 16+16 de padding */
+.pp-s--nav .pp-wrap {
+  max-width: 1612px;
+  transition: max-width .32s cubic-bezier(.4, 0, .2, 1)
+}
+
+.pp-s--nav.is-rolado .pp-wrap {
+  max-width: var(--pp-max)
+}
+
+:root {
+  --nav-h: 76px
+}
+
+/* 44 do pill + 16+16 de padding */
 
 /* Header: 76px de altura (44 de conteúdo + 16 de padding), lateral 75px.
    Fica fixo no topo; o pill do menu só ganha fundo depois do scroll. */
@@ -154,82 +339,173 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 /* Fixo, não sticky: o header flutua SOBRE o hero escuro em vez de reservar
    76px acima dele. Como sai do fluxo, o hero compensa a altura no padding-top
    (var --nav-h) para o H1 não subir. */
-.pp-s--nav{
-  background:transparent;color:#fff;
-  position:fixed;top:0;left:0;right:0;z-index:20;
-  transition:background-color .25s ease;
+.pp-s--nav {
+  background: transparent;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  transition: background-color .25s ease;
 }
-.pp-s--nav.is-rolado{background:rgba(25,25,25,.95)}
-.pp-s--nav .pp-nav{
-  display:flex;align-items:center;justify-content:space-between;
-  height:44px;padding:16px 0;box-sizing:content-box;
+
+.pp-s--nav.is-rolado {
+  background: rgba(25, 25, 25, .95)
 }
-.pp-s--nav .pp-logo{color:#fff}
+
+.pp-s--nav .pp-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 16px 0;
+  box-sizing: content-box;
+}
+
+.pp-s--nav .pp-logo {
+  color: #fff
+}
 
 /* pill: radius 4, padding 4, gap 4. Fundo só no estado rolado. */
-.pp-s--nav .pp-menu{
-  display:flex;align-items:center;gap:4px;list-style:none;margin:0;padding:4px;
-  border-radius:4px;background:transparent;
+.pp-s--nav .pp-menu {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  border-radius: 4px;
+  background: transparent;
 }
 
 /* item: 36px de altura, padding 8/18, 14px Regular, radius 4 em todos os
    estados (repouso, hover e corrente) para o realce do hover ter a mesma
    forma do contorno do item selecionado. */
-.pp-s--nav .pp-menu a{
-  display:flex;align-items:center;height:36px;padding:8px 18px;
-  border:1px solid transparent;border-radius:4px;
-  font-size:14px;font-weight:400;line-height:20px;
-  text-decoration:none;color:var(--pp-branco);
-  transition:border-color .15s ease,background .15s ease;
+.pp-s--nav .pp-menu a {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  padding: 8px 18px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  text-decoration: none;
+  color: var(--pp-branco);
+  transition: border-color .15s ease, background .15s ease;
 }
-.pp-s--nav .pp-menu a:hover{background:rgba(255,255,255,.08)}
+
+.pp-s--nav .pp-menu a:hover {
+  background: rgba(255, 255, 255, .08)
+}
 
 /* item corrente: contorno de 1px e radius 4, sem preenchimento.
    Classe e não aria-current: "Serviços" aponta para uma âncora na home. */
-.pp-s--nav .pp-menu a.is-ativo{
-  border:1px solid var(--pp-branco);
-  background:none;font-weight:400;
+.pp-s--nav .pp-menu a.is-ativo {
+  border: 1px solid var(--pp-branco);
+  background: none;
+  font-weight: 400;
 }
 
 /* CTA do header: 44px de altura, padding 14/24, borda branca, sem radius */
-.pp-s--nav .pp-btn{
-  display:flex;align-items:center;height:44px;padding:14px 24px;
-  border:0;border-radius:0;   /* v3: sem borda branca */
-  background:var(--pp-rosa);color:var(--pp-branco);
-  font-size:16px;font-weight:700;line-height:1;
+.pp-s--nav .pp-btn {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 14px 24px;
+  border: 0;
+  border-radius: 0;
+  /* v3: sem borda branca */
+  background: var(--pp-rosa);
+  color: var(--pp-branco);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
 }
 
-.pp-s--nav .pp-burger{display:none;background:none;border:0;padding:8px;color:#fff}
-.pp-s--nav .pp-burger svg{width:26px;height:26px}
+.pp-s--nav .pp-burger {
+  display: none;
+  background: none;
+  border: 0;
+  padding: 8px;
+  color: #fff
+}
+
+.pp-s--nav .pp-burger svg {
+  width: 26px;
+  height: 26px
+}
 
 /* =========================================================================
    2. HERO
    ========================================================================= */
-.pp-s--hero{
-  background:var(--pp-preto);color:#fff;position:relative;overflow:hidden;
+.pp-s--hero {
+  background: var(--pp-preto);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
   /* Figma: pt 160 / pb 80. Os 160 são medidos da borda do hero, que no Figma
      fica ABAIXO do header; com o header fixo, somam-se os 76px dele. */
-  padding:calc(80px + var(--nav-h)) 0 80px;   /* 80 de padding + a altura do header fixo */
+  padding: calc(80px + var(--nav-h)) 0 80px;
+  /* 80 de padding + a altura do header fixo */
 }
+
 /* brilho cônico rosa, aproximação do gradiente angular do Figma.
    Máscara vertical para o brilho não lavar o topo da seção. */
-.pp-s--hero::before{
-  content:"";position:absolute;inset:0 -10% -70%;
-  background:conic-gradient(from 90deg at 62% 112%,
-    #191919 0deg,#191919 24deg,var(--pp-rosa) 135deg,#191919 273deg,#191919 360deg);
-  opacity:.42;filter:blur(18px);pointer-events:none;
-  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.45) 42%,#000 100%);
-  mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.45) 42%,#000 100%);
+.pp-s--hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 -10% -70%;
+  background: conic-gradient(from 90deg at 62% 112%,
+      #191919 0deg, #191919 24deg, var(--pp-rosa) 135deg, #191919 273deg, #191919 360deg);
+  opacity: .42;
+  filter: blur(18px);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, .45) 42%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, .45) 42%, #000 100%);
 }
-.pp-s--hero .pp-wrap{position:relative;z-index:1}
-.pp-s--hero .pp-h1{max-width:var(--c12);margin:0 auto;text-wrap:pretty}   /* Figma: w 1312 */
+
+.pp-s--hero .pp-wrap {
+  position: relative;
+  z-index: 1
+}
+
+.pp-s--hero .pp-h1 {
+  max-width: var(--c12);
+  margin: 0 auto;
+  text-wrap: pretty
+}
+
+/* Figma: w 1312 */
 /* Dev Mode: os 4 blocos do hero são #F9F9F9, não #fff puro. */
-.pp-s--hero .pp-eyebrow,.pp-s--hero .pp-h1{color:var(--pp-branco)}
+.pp-s--hero .pp-eyebrow,
+.pp-s--hero .pp-h1 {
+  color: var(--pp-branco)
+}
+
 /* mantém "sua marca" na mesma linha, como no design */
-.pp-nowrap{white-space:nowrap}
-@media (max-width:520px){.pp-nowrap{white-space:normal}}
+.pp-nowrap {
+  white-space: nowrap
+}
+
+@media (max-width:520px) {
+  .pp-nowrap {
+    white-space: normal
+  }
+}
+
 /* Dev Mode: 24px Light, lh 130%, #F9F9F9 e SEM letter-spacing negativo. */
-.pp-s--hero .pp-lead{color:var(--pp-branco);font-size:24px;line-height:1.3;letter-spacing:-.02em;max-width:1042px}   /* v3: testamos 16px/140%/-2% e voltamos pro 24px/130%/-2% */
+.pp-s--hero .pp-lead {
+  color: var(--pp-branco);
+  font-size: 24px;
+  line-height: 1.3;
+  letter-spacing: -.02em;
+  max-width: 1042px
+}
+
+/* v3: testamos 16px/140%/-2% e voltamos pro 24px/130%/-2% */
 
 /* CTA do hero: mesmo componente do header (padding 14/24, 16px Bold), mas com
    borda de 2px na própria cor de fundo, o que engorda o botão em 4px de cada
@@ -237,183 +513,415 @@ a:focus-visible,button:focus-visible,input:focus-visible{
    `inline-flex` e não `flex`: no Dev Mode o `display:flex` só descreve o
    auto-layout interno; em CSS, `flex` viraria bloco e o botão esticaria a
    largura toda, perdendo a centralização que vem do `text-align:center`. */
-.pp-s--hero .pp-btn{
-  display:inline-flex;justify-content:center;align-items:center;gap:10px;
-  border:2px solid var(--pp-rosa);padding:0 24px;min-height:60px;   /* 60px de altura */
-  font-size:24px;font-weight:700;line-height:1.3;letter-spacing:-.03em;   /* v3: 24px */
+.pp-s--hero .pp-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid var(--pp-rosa);
+  padding: 0 24px;
+  min-height: 60px;
+  /* 60px de altura */
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.03em;
+  /* v3: 24px */
 }
-.pp-s--hero .pp-btn{margin-top:80px}   /* Figma: gap 80 */
+
+.pp-s--hero .pp-btn {
+  margin-top: 80px
+}
+
+/* Figma: gap 80 */
 
 /* =========================================================================
    3. COMPARATIVO
    ========================================================================= */
-.pp-s--comp{background:var(--pp-bg);padding:75px 0 120px}   /* Figma */
-/* Figma: 24px, lh 1.30, largura 1578 — este bloco escapa do container de 1312 */
-.pp-s--comp .pp-sub{
-  margin:48px auto 0;font-size:var(--fs-sub);line-height:1.3;font-weight:300;
-  width:min(1578px, calc(100vw - 34px));
-  margin-left:calc((100% - min(1578px, 100vw - 34px)) / 2);max-width:none;
+.pp-s--comp {
+  background: var(--pp-bg);
+  padding: 75px 0 120px
 }
+
+/* Figma */
+/* Figma: 24px, lh 1.30, largura 1578 — este bloco escapa do container de 1312 */
+.pp-s--comp .pp-sub {
+  margin: 48px auto 0;
+  font-size: var(--fs-sub);
+  line-height: 1.3;
+  font-weight: 300;
+  width: min(1578px, calc(100vw - 34px));
+  margin-left: calc((100% - min(1578px, 100vw - 34px)) / 2);
+  max-width: none;
+}
+
 /* Medido no Figma em 1728: cada cartão tem 512px, com 25px de gap,
    total 340..1387 = 1048. Cartões independentes, borda completa nos dois. */
-.pp-s--comp .pp-cards{
-  display:grid;grid-template-columns:1fr 1fr;gap:var(--gut);
-  max-width:var(--c10);margin:48px auto 0;text-align:left;   /* 2 x 5 col, gap 48 do Figma */
+.pp-s--comp .pp-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gut);
+  max-width: var(--c10);
+  margin: 48px auto 0;
+  text-align: left;
+  /* 2 x 5 col, gap 48 do Figma */
 }
-.pp-card{
-  --ico:34px;   /* recuo da divisória acompanha o ícone */
+
+.pp-card {
+  --ico: 34px;
+  /* recuo da divisória acompanha o ícone */
   /* Medido no export: cartão SEM preenchimento (interior = #F9F9F9, igual ao
      fundo da seção), borda de 1px e SEM border-radius. */
-  background:none;border-radius:0;
-  padding:30px 22px 8px;display:flex;flex-direction:column;
-  gap:24px;   /* Dev Mode: 24 entre título, <hr> e lista */
+  background: none;
+  border-radius: 0;
+  padding: 30px 22px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  /* Dev Mode: 24 entre título, <hr> e lista */
 }
-.pp-card--generico{border:1px solid #5D5D5D}
-.pp-card--papoca{border:1px solid var(--pp-rosa)}
+
+.pp-card--generico {
+  border: 1px solid #5D5D5D
+}
+
+.pp-card--papoca {
+  border: 1px solid var(--pp-rosa)
+}
 
 /* título centralizado; a linha abaixo é mais clara que as divisórias das linhas */
-.pp-card__t{
-  font-size:var(--fs-h3);font-weight:700;line-height:1;letter-spacing:0;
-  text-align:center;margin:0;padding:0;
+.pp-card__t {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
-.pp-card--generico .pp-card__t{color:#5D5D5D}
-.pp-card--papoca .pp-card__t{color:var(--pp-rosa)}
+
+.pp-card--generico .pp-card__t {
+  color: #5D5D5D
+}
+
+.pp-card--papoca .pp-card__t {
+  color: var(--pp-rosa)
+}
 
 /* Divisória do topo do cartão: <hr> de verdade, não border-bottom do título.
    Como elemento, ela entra no gap de 24 dos dois lados; como borda, o
    espaçamento acima e abaixo dela ficava preso ao padding do <h3>. */
-.pp-card__hr{border:0;border-top:1px solid;margin:0;height:0}
-.pp-card--generico .pp-card__hr{color:#ABABAB}
-.pp-card--papoca .pp-card__hr{color:#E992C1}
-
-.pp-card ul{list-style:none;margin:0;padding:0;flex:1;display:flex;flex-direction:column}
-.pp-card li{
-  position:relative;display:flex;gap:18px;align-items:center;flex:1;
-  min-height:95px;   /* passo medido entre as divisórias no Figma */
-  padding:0;font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo);
+.pp-card__hr {
+  border: 0;
+  border-top: 1px solid;
+  margin: 0;
+  height: 0
 }
+
+.pp-card--generico .pp-card__hr {
+  color: #ABABAB
+}
+
+.pp-card--papoca .pp-card__hr {
+  color: #E992C1
+}
+
+.pp-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column
+}
+
+.pp-card li {
+  position: relative;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex: 1;
+  min-height: 95px;
+  /* passo medido entre as divisórias no Figma */
+  padding: 0;
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--ls-corpo);
+}
+
 /* A divisória é um ::after, não borda do <li> nem do <span>.
    Assim ela começa na coluna do texto sem interferir no fluxo: pôr
    display:flex no <span> transformava o <b> interno em item flex e
    quebrava o texto em duas colunas. */
-.pp-card li::after{
-  content:"";position:absolute;left:calc(var(--ico) + 18px);right:0;bottom:0;height:1px;
+.pp-card li::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--ico) + 18px);
+  right: 0;
+  bottom: 0;
+  height: 1px;
 }
-.pp-card li:last-child::after{display:none}
-.pp-card--generico li{color:#5D5D5D}
-.pp-card--generico li::after{background:#5D5D5D}
-.pp-card--papoca li{color:var(--pp-preto)}
-.pp-card--papoca li::after{background:var(--pp-rosa)}
-.pp-card li svg{flex:0 0 var(--ico);width:var(--ico);height:var(--ico)}
-.pp-card--generico li svg{color:#5D5D5D}
-.pp-card--papoca li svg{color:var(--pp-rosa)}
-.pp-s--comp .pp-kicker{
-  margin:48px auto 0;   /* Dev Mode: gap 48 */font-size:var(--fs-sub);line-height:1.3;font-weight:300;
-  width:min(1578px, calc(100vw - 34px));
-  margin-left:calc((100% - min(1578px, 100vw - 34px)) / 2);max-width:none;
-  font-weight:700;color:var(--pp-preto);   /* Dev Mode: 24px Bold, lh 130% */
+
+.pp-card li:last-child::after {
+  display: none
 }
+
+.pp-card--generico li {
+  color: #5D5D5D
+}
+
+.pp-card--generico li::after {
+  background: #5D5D5D
+}
+
+.pp-card--papoca li {
+  color: var(--pp-preto)
+}
+
+.pp-card--papoca li::after {
+  background: var(--pp-rosa)
+}
+
+.pp-card li svg {
+  flex: 0 0 var(--ico);
+  width: var(--ico);
+  height: var(--ico)
+}
+
+.pp-card--generico li svg {
+  color: #5D5D5D
+}
+
+.pp-card--papoca li svg {
+  color: var(--pp-rosa)
+}
+
+.pp-s--comp .pp-kicker {
+  margin: 48px auto 0;
+  /* Dev Mode: gap 48 */
+  font-size: var(--fs-sub);
+  line-height: 1.3;
+  font-weight: 300;
+  width: min(1578px, calc(100vw - 34px));
+  margin-left: calc((100% - min(1578px, 100vw - 34px)) / 2);
+  max-width: none;
+  font-weight: 700;
+  color: var(--pp-preto);
+  /* Dev Mode: 24px Bold, lh 130% */
+}
+
 /* CTA da seção: bem maior que o do hero. `inline-flex` e não `flex` pelo
    mesmo motivo do hero: `flex` esticaria o botão na largura do container. */
-.pp-s--comp .pp-btn{
-  margin-top:48px;   /* Dev Mode: gap 48 */
-  display:inline-flex;justify-content:center;align-items:center;gap:10px;
-  padding:18px 32px;color:var(--pp-branco);
-  font-size:24px;font-weight:700;line-height:1;letter-spacing:-.04em;   /* -0.96px em 24px */
+.pp-s--comp .pp-btn {
+  margin-top: 48px;
+  /* Dev Mode: gap 48 */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 32px;
+  color: var(--pp-branco);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.04em;
+  /* -0.96px em 24px */
 }
 
 /* =========================================================================
    4. NÚMEROS (faixa rosa)
    ========================================================================= */
-.pp-s--num{background:var(--pp-rosa);color:#fff;padding:120px 0;overflow:hidden}   /* Figma */
+.pp-s--num {
+  background: var(--pp-rosa);
+  color: #fff;
+  padding: 120px 0;
+  overflow: hidden
+}
+
+/* Figma */
 /* fonte um pouco menor e caixa mais larga: a 2ª linha inteira cabe sem quebrar,
    como no Figma. text-wrap normal para o <br> do HTML mandar na quebra. */
 /* Dev Mode: 48px / 700 / lh 120% / ls -1.44px / #F9F9F9, igual aos outros H2.
    text-wrap normal para o <br> do HTML mandar na quebra. */
-.pp-s--num .pp-h2{
-  max-width:var(--c12);margin:0 auto;
-  color:var(--pp-branco);text-wrap:normal;
+.pp-s--num .pp-h2 {
+  max-width: var(--c12);
+  margin: 0 auto;
+  color: var(--pp-branco);
+  text-wrap: normal;
 }
-.pp-s--num .pp-stats{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:32px;
-  max-width:var(--c12);margin:64px auto 0;   /* Figma: 3 x 416 (4 col) + gap 32 = 1312 */
+
+.pp-s--num .pp-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: var(--c12);
+  margin: 64px auto 0;
+  /* Figma: 3 x 416 (4 col) + gap 32 = 1312 */
 }
+
 /* 78px fixo. O clamp(78px,4.4vw,58px) do Dev Mode tem min > max, então sempre
    resolve para 78px de qualquer forma; escrito direto para não confundir. */
-.pp-stat b{display:block;font-size:var(--fs-stat);font-weight:900;line-height:1;letter-spacing:0;color:var(--pp-branco)}   /* Dev Mode: 80px Black, lh 100% */
+.pp-stat b {
+  display: block;
+  font-size: var(--fs-stat);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--pp-branco)
+}
+
+/* Dev Mode: 80px Black, lh 100% */
 /* sufixos "+" e "x" em preto */
-.pp-stat b i{font-style:normal;color:var(--pp-preto)}
-.pp-stat{padding:32px 16px}   /* Figma: card 416x189, padding 32/16 */
-.pp-stat span{display:block;margin-top:16px;font-size:var(--fs-sub);font-weight:400;line-height:1.2;color:#FFE3F1}
+.pp-stat b i {
+  font-style: normal;
+  color: var(--pp-preto)
+}
+
+.pp-stat {
+  padding: 32px 16px
+}
+
+/* Figma: card 416x189, padding 32/16 */
+.pp-stat span {
+  display: block;
+  margin-top: 16px;
+  font-size: var(--fs-sub);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #FFE3F1
+}
 
 /* Dev Mode: 64px / 700 / lh 120% (76.8px) / ls -1.92px / #F9F9F9.
    `leading-trim: both` e `text-edge: cap` aparecem no Dev Mode mas não têm
    suporte em navegador nenhum hoje; não há equivalente em CSS. */
-.pp-s--num .pp-models{
-  margin-top:64px;   /* Figma: gap 64 */
-  font-size:var(--fs-h1);font-weight:700;line-height:1.2;letter-spacing:var(--ls-h2);
-  color:var(--pp-branco);
+.pp-s--num .pp-models {
+  margin-top: 64px;
+  /* Figma: gap 64 */
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: var(--ls-h2);
+  color: var(--pp-branco);
 }
+
 /* etiqueta inclinada. O deslocamento de -32px é DELA, não do <p>: assim só a
    etiqueta sobe e o título "8 modelos de IA" mantém a posição no fluxo. */
-.pp-s--num .pp-models mark{
-  background:var(--pp-preto);color:#fff;
-  padding:3px 14px 5px;display:inline-block;
-  font-size:.625em;   /* 40px sobre 64px */
-  transform:rotate(-2.5deg);
+.pp-s--num .pp-models mark {
+  background: var(--pp-preto);
+  color: #fff;
+  padding: 3px 14px 5px;
+  display: inline-block;
+  font-size: .625em;
+  /* 40px sobre 64px */
+  transform: rotate(-2.5deg);
   /* top em `em`, não em px: o `em` resolve contra o font-size do PRÓPRIO <mark>,
      que é .625em do <p>, que por sua vez vem de uma clamp fluida. Assim o
      deslocamento acompanha a escala do texto em qualquer largura.
      -.8em = -32px quando o <p> está em 64px, o valor do Dev Mode.
      Com px fixo, o recuo virava uma fração cada vez maior da linha conforme a
      fonte encolhia, até a etiqueta cobrir "8 modelos de IA". */
-  position:relative;top:-.8em;
+  position: relative;
+  top: -.8em;
 }
 
 /* ---------- faixa de logos: marquee contínuo ---------- */
-.pp-s--num .pp-logobar{
+.pp-s--num .pp-logobar {
   /* Figma: 1562 de largura, padding 16/24, logos de 52px, gap 56 */
-  width:min(1562px, calc(100vw - 34px));max-width:none;
-  margin:64px 0 0 calc((100% - min(1562px, 100vw - 34px)) / 2);
-  background:var(--pp-branco);
-  transform:rotate(1.25deg);
-  border-bottom:3px solid var(--pp-preto);
-  border-right:3px solid var(--pp-preto);
-  padding:16px 0;overflow:hidden;
+  width: min(1562px, calc(100vw - 34px));
+  max-width: none;
+  margin: 64px 0 0 calc((100% - min(1562px, 100vw - 34px)) / 2);
+  background: var(--pp-branco);
+  transform: rotate(1.25deg);
+  border-bottom: 3px solid var(--pp-preto);
+  border-right: 3px solid var(--pp-preto);
+  padding: 16px 0;
+  overflow: hidden;
 }
+
 /* 3 cópias da lista: garante conteúdo suficiente para a faixa nunca ficar vazia
    no instante da virada, independente da largura da tela. */
-.pp-marquee{display:flex;width:max-content;animation:pp-marquee 34s linear infinite}
-.pp-s--num .pp-logobar:hover .pp-marquee{animation-play-state:paused}
-.pp-marquee__row{
-  display:flex;align-items:center;gap:56px;   /* Figma */
-  list-style:none;margin:0;padding:0 28px;
+.pp-marquee {
+  display: flex;
+  width: max-content;
+  animation: pp-marquee 34s linear infinite
 }
-.pp-marquee__row li{flex:0 0 auto;display:flex;align-items:center}
-.pp-marquee__row img{height:52px;width:auto}   /* Figma */
+
+.pp-s--num .pp-logobar:hover .pp-marquee {
+  animation-play-state: paused
+}
+
+.pp-marquee__row {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  /* Figma */
+  list-style: none;
+  margin: 0;
+  padding: 0 28px;
+}
+
+.pp-marquee__row li {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center
+}
+
+.pp-marquee__row img {
+  height: 52px;
+  width: auto
+}
+
+/* Figma */
 /* -33.3333% = exatamente uma das três listas, então o loop não tem costura */
-@keyframes pp-marquee{from{transform:translateX(0)}to{transform:translateX(-33.3333%)}}
+@keyframes pp-marquee {
+  from {
+    transform: translateX(0)
+  }
+
+  to {
+    transform: translateX(-33.3333%)
+  }
+}
 
 /* =========================================================================
    5. CAMADAS
    ========================================================================= */
-.pp-s--cam{
-  background:var(--pp-bg);padding:120px 0;position:relative;
-  --lupa-w:min(30vw,430px);
-  --lupa-h:calc(var(--lupa-w) * 0.7145);   /* 438/613 do asset */
+.pp-s--cam {
+  background: var(--pp-bg);
+  padding: 120px 0;
+  position: relative;
+  --lupa-w: min(30vw, 430px);
+  --lupa-h: calc(var(--lupa-w) * 0.7145);
+  /* 438/613 do asset */
   /* Faixa direita reservada para a lupa, como no Figma: lá o parágrafo da
      camada termina em 1120 de 1728 e a lupa começa em 1170. O conteúdo das
      camadas recua exatamente o quanto a lupa invade além do vão natural,
      então ela viaja a seção toda sem nunca cruzar texto. */
-  --lane:max(0px, calc(var(--lupa-w) - (50vw - 656px) + 28px));  /* +28px de folga */
+  --lane: max(0px, calc(var(--lupa-w) - (50vw - 656px) + 28px));
+  /* +28px de folga */
 }
+
 /* o conteúdo fica sempre acima da lupa, para o texto não perder legibilidade */
-.pp-s--cam .pp-wrap{position:relative;z-index:1}
+.pp-s--cam .pp-wrap {
+  position: relative;
+  z-index: 1
+}
+
 /* O bloco de cabeçalho é uma coluna com gap: os 48px entre H2, subtítulo e
    linha do case vêm do `gap`, não de margin-top em cada filho.
    `.pp-wrap.pp-center` isola o cabeçalho dos outros .pp-wrap das camadas. */
-.pp-s--cam .pp-wrap.pp-center{display:flex;flex-direction:column;gap:48px}
-.pp-s--cam .pp-h2{max-width:none;margin:0;color:var(--pp-preto)}
+.pp-s--cam .pp-wrap.pp-center {
+  display: flex;
+  flex-direction: column;
+  gap: 48px
+}
+
+.pp-s--cam .pp-h2 {
+  max-width: none;
+  margin: 0;
+  color: var(--pp-preto)
+}
 
 /* ---------- lupa sticky (só na camada 1) ----------
    Vive dentro de .pp-layer--1, então o sticky para sozinho no fim da camada.
@@ -422,45 +930,83 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 /* Sticky ao longo de toda a seção de camadas, como no protótipo:
    entra em "Com esse volume de dados" e para no fim de "Conteúdos
    influenciadores". height:0 para não ocupar espaço no fluxo. */
-.pp-lupa{
-  position:sticky;top:26vh;
-  margin-right:calc(50% - 50vw);   /* borda até o limite da viewport */
+.pp-lupa {
+  position: sticky;
+  top: 26vh;
+  margin-right: calc(50% - 50vw);
+  /* borda até o limite da viewport */
   /* Altura REAL da imagem: o sticky limita a caixa, não o conteúdo que
      transborda dela. Com height:0 a imagem vazava 307px para baixo e entrava
      na faixa rosa. A compensação do fluxo vai no irmão seguinte, nunca aqui:
      margem negativa no próprio elemento sticky anula o clamp. */
-  height:var(--lupa-h);
-  z-index:2;                     /* sobreposta aos gráficos */
-  display:flex;justify-content:flex-end;
-  align-items:flex-start;        /* sem isto o stretch zera a altura da imagem */
-  pointer-events:none;
+  height: var(--lupa-h);
+  z-index: 2;
+  /* sobreposta aos gráficos */
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  /* sem isto o stretch zera a altura da imagem */
+  pointer-events: none;
   /* esmaecimento quando cruza texto, controlado pelo script */
-  opacity:1;
-  transition:opacity .25s ease;
+  opacity: 1;
+  transition: opacity .25s ease;
 }
-.pp-lupa[data-sobre-texto="true"]{opacity:.14}
+
+.pp-lupa[data-sobre-texto="true"] {
+  opacity: 1;
+}
+
 /* devolve ao fluxo o espaço que a caixa da lupa ocupa */
-.pp-lupa + .pp-wrap{margin-top:calc(var(--lupa-h) * -1)}
-.pp-lupa picture{display:block;line-height:0}
-.pp-lupa img{
-  width:var(--lupa-w);height:auto;
-  animation:pp-lupa-scan 6.5s ease-in-out infinite;
-  will-change:transform;
+.pp-lupa+.pp-wrap {
+  margin-top: calc(var(--lupa-h) * -1)
 }
+
+.pp-lupa picture {
+  display: block;
+  line-height: 0
+}
+
+.pp-lupa img {
+  width: var(--lupa-w);
+  height: auto;
+  animation: pp-lupa-scan 6.5s ease-in-out infinite;
+  will-change: transform;
+}
+
 /* deslocamento só para baixo e para a esquerda: subir invadiria o texto acima */
-@keyframes pp-lupa-scan{
-  0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
-  50%    {transform:translate3d(-14px,10px,0) rotate(-3deg)}
+@keyframes pp-lupa-scan {
+
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg)
+  }
+
+  50% {
+    transform: translate3d(-14px, 10px, 0) rotate(-3deg)
+  }
 }
-.pp-s--cam .pp-sub{
-  margin:0;font-size:var(--fs-sub);line-height:1.3;font-weight:300;
+
+.pp-s--cam .pp-sub {
+  margin: 0;
+  font-size: var(--fs-sub);
+  line-height: 1.3;
+  font-weight: 300;
 }
+
 /* Dev Mode: 16px / 300 / lh 140% / ls -0.32px / #191919. "Apple" em 700. */
-.pp-s--cam .pp-case{
-  margin:0;font-size:16px;font-weight:300;line-height:1.4;   /* Dev Mode: 16px fixo */
-  letter-spacing:var(--ls-corpo);color:var(--pp-preto);
+.pp-s--cam .pp-case {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+  /* Dev Mode: 16px fixo */
+  letter-spacing: var(--ls-corpo);
+  color: var(--pp-preto);
 }
-.pp-s--cam .pp-case b{font-weight:700}
+
+.pp-s--cam .pp-case b {
+  font-weight: 700
+}
 
 /* O recuo da faixa da lupa vive no padding da própria camada. Assim vale para
    todos os filhos de uma vez, inclusive os que têm `margin` inline (o radar),
@@ -468,18 +1014,30 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 /* A divisória fica em .pp-layer, não em .pp-layer__head. Assim ela ocupa o
    container inteiro (208..1519 no Figma) enquanto o recuo da lupa (--lane)
    encurta apenas o conteúdo: border-top ignora padding. */
-.pp-layer{
-  max-width:none;margin:120px auto 0;position:relative;   /* Figma: gap entre camadas */
-  padding:20px var(--lane,0px) 8px 0;
-  border-top:2px solid var(--pp-azul);   /* v3: 2px; cor por camada nos overrides abaixo */
+.pp-layer {
+  max-width: none;
+  margin: 120px auto 0;
+  position: relative;
+  /* Figma: gap entre camadas */
+  padding: 20px var(--lane, 0px) 8px 0;
+  border-top: 2px solid var(--pp-azul);
+  /* v3: 2px; cor por camada nos overrides abaixo */
 }
-.pp-layer--1{margin-top:26px}
+
+.pp-layer--1 {
+  margin-top: 48px
+}
+
+/* v3: 48px entre o cabeçalho e o primeiro bloco */
 
 /* Bloco que contém a lupa sticky. Começa depois do cabeçalho da camada,
    e é ele que limita até onde a lupa pode subir. */
 /* Mesma largura de .pp-donuts: as duas amarradas em --c8 (8 colunas, 864px),
    então mudar o container muda as duas juntas. */
-.pp-layer__body{position:relative;max-width:var(--c8)}
+.pp-layer__body {
+  position: relative;
+  max-width: var(--c8)
+}
 
 /* A lupa (z-index 2) passa por cima dos gráficos, mas nunca do texto. */
 .pp-layer__head,
@@ -491,207 +1049,613 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 .pp-donut__lb,
 .pp-sent__lb,
 .pp-attr,
-.pp-legend{position:relative;z-index:3}
-/* Mesma largura de .pp-layer__body: as duas amarradas em --c8. Vale para os
-   4 cabeçalhos de camada, não só o da camada 1. */
-.pp-layer__head{display:grid;grid-template-columns:5fr 7fr;gap:var(--gut);align-items:start;max-width:var(--c8)}   /* título 5/12, descrição 7/12 */
-.pp-layer__title{display:flex;align-items:center;gap:14px}
-.pp-layer__n{
-  flex:0 0 56px;width:56px;height:56px;border-radius:50%;   /* v3: 56x56 */
-  display:grid;place-items:center;color:#fff;font-size:24px;font-weight:800;
+.pp-legend {
+  position: relative;
+  z-index: 3
 }
-.pp-layer__title h3{font-size:var(--fs-h3);font-weight:700;line-height:1;letter-spacing:0;margin:0}   /* Figma: 32px lh 1.00 */
-.pp-layer__desc{font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo);color:#3A3A3A;margin:0;padding-top:6px}
 
-.pp-layer--1{border-top-color:var(--pp-rosa)}   /* v3: linha na cor do tópico */
-.pp-layer--1 .pp-layer__n{background:var(--pp-rosa)}
-.pp-layer--1 .pp-layer__title h3{color:var(--pp-rosa)}
-.pp-layer--2{border-top-color:var(--pp-azul)}
-.pp-layer--2 .pp-layer__n{background:var(--pp-azul)}
-.pp-layer--2 .pp-layer__title h3{color:var(--pp-azul)}
-.pp-layer--3{border-top-color:var(--pp-roxo)}
-.pp-layer--3 .pp-layer__n{background:var(--pp-roxo)}
-.pp-layer--3 .pp-layer__title h3{color:var(--pp-roxo)}
-.pp-layer--4{border-top-color:var(--pp-crimson)}
-.pp-layer--4 .pp-layer__n{background:var(--pp-crimson)}
-.pp-layer--4 .pp-layer__title h3{color:var(--pp-crimson)}
+/* Mesma largura de .pp-layer__body: as duas amarradas em --c8. Vale para os
+   4 cabeçalhos de camada, alinhados com o grid do .pp-summary (auto 510px com gap 24). */
+.pp-layer__head {
+  display: grid;
+  grid-template-columns: auto 510px;
+  gap: 0 24px;
+  align-items: center;
+  max-width: var(--c8)
+}
+
+.pp-layer__title {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 377px
+}
+
+.pp-layer__n {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  /* v3: 56x56 */
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.pp-layer__title h3 {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  margin: 0
+}
+
+/* Figma: 32px lh 1.00 */
+.pp-layer__desc {
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--ls-corpo);
+  color: #3A3A3A;
+  margin: 0;
+  max-width: 510px
+}
+
+.pp-layer--1 {
+  border-top-color: var(--pp-rosa)
+}
+
+/* v3: linha na cor do tópico */
+.pp-layer--1 .pp-layer__n {
+  background: var(--pp-rosa)
+}
+
+.pp-layer--1 .pp-layer__title h3 {
+  color: var(--pp-rosa)
+}
+
+.pp-layer--2 {
+  border-top-color: var(--pp-azul)
+}
+
+.pp-layer--2 .pp-layer__n {
+  background: var(--pp-azul)
+}
+
+.pp-layer--2 .pp-layer__title h3 {
+  color: var(--pp-azul)
+}
+
+.pp-layer--3 {
+  border-top-color: var(--pp-roxo)
+}
+
+.pp-layer--3 .pp-layer__n {
+  background: var(--pp-roxo)
+}
+
+.pp-layer--3 .pp-layer__title h3 {
+  color: var(--pp-roxo)
+}
+
+.pp-layer--4 {
+  border-top-color: var(--pp-crimson)
+}
+
+.pp-layer--4 .pp-layer__n {
+  background: var(--pp-crimson)
+}
+
+.pp-layer--4 .pp-layer__title h3 {
+  color: var(--pp-crimson)
+}
 
 /* donuts de share of voice */
-.pp-donuts{display:grid;grid-template-columns:repeat(5,1fr);gap:24px 64px;margin:48px 0 0;max-width:var(--c8)}   /* v3: gap padronizado 48 */
-.pp-donut{
-  text-align:center;
+.pp-donuts {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px 64px;
+  margin: 48px 0 0;
+  max-width: var(--c8)
+}
+
+/* v3: gap padronizado 48 */
+.pp-donut {
+  text-align: center;
   /* `stretch` com escada de fallback: navegador que não conhece a palavra
      descarta a declaração e fica na anterior. */
-  width:100%;
-  width:-webkit-fill-available;
-  width:stretch;
+  width: 100%;
+  width: -webkit-fill-available;
+  width: stretch;
 }
-.pp-donut__lb{font-size:var(--fs-corpo);font-weight:700;line-height:1.4;letter-spacing:.02em;min-height:40px;margin-bottom:10px}   /* Figma: 16px Bold ls +2% */
+
+.pp-donut__lb {
+  font-size: var(--fs-corpo);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .02em;
+  min-height: 40px;
+  margin-bottom: 10px
+}
+
+/* Figma: 16px Bold ls +2% */
 /* tamanhos medidos no Figma em 1728: donut 100px, sentimento 108px, pizza 82px.
    O viewBox escala junto, então o traço e o percentual acompanham. */
 /* Sem `width`: a largura sai do min-width de 100px, com teto na célula. */
-.pp-donut svg{margin:0 auto;max-width:100%;height:auto;min-width:100px}
-.pp-donut text{font-size:16px;font-weight:700;letter-spacing:-.05em;fill:var(--pp-rosa)}   /* Figma: 24px Bold ls -5% no donut de 100px */
+.pp-donut svg {
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  min-width: 100px
+}
+
+.pp-donut text {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -.05em;
+  fill: var(--pp-rosa)
+}
+
+/* Figma: 24px Bold ls -5% no donut de 100px */
 
 /* resumo com pizza: pizza | número+rótulo | texto, tudo na mesma linha */
 /* Duas colunas: o grupo pizza+número é uma unidade, o parágrafo é a outra. */
-.pp-summary{display:grid;grid-template-columns:auto 510px;gap:0 24px;align-items:center;margin-top:72px;max-width:var(--c8)}   /* v3: gap 24, texto explicativo fixo em 510 */
-.pp-summary__grupo{display:grid;grid-template-columns:auto 253px;gap:0 48px;align-items:center}   /* v3: gap 48, número+texto fixo em 253 */
-.pp-summary__pie{flex:0 0 auto}
-/* 100px de largura, altura pelo aspecto do viewBox, com teto na célula da
-   grade para não estourar em tela estreita. */
-.pp-summary__pie svg{width:100px;height:auto;max-width:100%}
-.pp-summary__big{font-size:var(--fs-h1);font-weight:900;line-height:1.2;letter-spacing:-.06em;margin:0}   /* Figma: 64px Black ls -6% */
-.pp-summary__lb{font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo);color:#3A3A3A;margin:6px 0 0}
-.pp-summary__txt{font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo);color:#3A3A3A;margin:0;max-width:510px}   /* Figma: w 510 */
-.pp-summary--grid{grid-template-columns:auto 1fr auto;gap:0 22px}
+.pp-summary {
+  display: grid;
+  grid-template-columns: auto 510px;
+  gap: 0 24px;
+  align-items: center;
+  margin-top: 72px;
+  max-width: var(--c8)
+}
+
+/* v3: gap 24, texto explicativo fixo em 510 */
+.pp-summary__grupo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 377px
+}
+
+/* v3: gap 24 entre gráfico e número, total 377px */
+.pp-summary__pie {
+  flex: 0 0 100px;
+  width: 100px;
+  min-width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pp-summary__pie svg {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  display: block
+}
+
+.pp-summary__val {
+  flex: 0 0 253px;
+  width: 253px
+}
+
+.pp-summary__big {
+  font-size: var(--fs-h1);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -.06em;
+  margin: 0
+}
+
+/* Figma: 64px Black ls -6% */
+.pp-summary__lb {
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--ls-corpo);
+  color: #3A3A3A;
+  margin: 6px 0 0
+}
+
+.pp-summary__txt {
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--ls-corpo);
+  color: #3A3A3A;
+  margin: 0;
+  max-width: 510px
+}
+
+/* Figma: w 510 */
+.pp-summary--grid {
+  grid-template-columns: auto 1fr auto;
+  gap: 0 22px
+}
 
 /* bloco de atributos (ícone + texto) */
-/* Mesmo critério de .pp-layer__head: 5/12 para o título, 7/12 para o texto. */
-.pp-attr{display:grid;grid-template-columns:5fr 7fr;gap:var(--gut);align-items:start;margin-top:52px}
-.pp-attr__t{display:flex;align-items:center;gap:14px}
-.pp-attr__ic{
-  flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:var(--pp-azul);
-  display:grid;place-items:center;color:#fff;
+/* Padronizado com .pp-summary e .pp-layer__head: lado esquerdo 377px e texto explicativo em 510px com gap 24 */
+.pp-attr {
+  display: grid;
+  grid-template-columns: auto 510px;
+  gap: 0 24px;
+  align-items: center;
+  margin-top: 52px;
+  max-width: var(--c8)
 }
-.pp-attr__t h4{font-size:var(--fs-h3);font-weight:800;line-height:1.2;letter-spacing:var(--ls-h2);margin:0;color:var(--pp-azul)}   /* Figma: 32px Extra Bold */
-.pp-attr p{font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo);color:#3A3A3A;margin:0}
+
+.pp-attr__t {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: 377px
+}
+
+.pp-attr__ic {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pp-attr__ic svg {
+  width: 100%;
+  height: 100%;
+  display: block
+}
+
+.pp-attr__t h4 {
+  font-size: var(--fs-h3);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: var(--ls-h2);
+  margin: 0;
+  color: var(--pp-azul)
+}
+
+/* Figma: 32px Extra Bold */
+.pp-attr p {
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--ls-corpo);
+  color: #3A3A3A;
+  margin: 0;
+  max-width: 510px
+}
 
 /* gráficos */
-.pp-chart{margin:40px 0 0;max-width:640px;overflow-x:auto}
-.pp-chart--wide{max-width:100%}
+.pp-chart {
+  margin: 40px 0 0;
+  max-width: 640px;
+  overflow-x: auto
+}
+
+.pp-chart--wide {
+  max-width: 100%
+}
+
 /* Gráfico de barras: sem min-width, então nunca cria rolagem.
    Os tamanhos de fonte estão em unidades do viewBox (940 de largura), logo
    escalam junto com o SVG. Os valores por breakpoint compensam essa escala
    para o texto renderizado ficar sempre legível. */
-.pp-chart--barras{margin-top:48px;overflow:visible}   /* v3: gap padronizado 48 */
+.pp-chart--barras {
+  margin-top: 48px;
+  overflow: visible
+}
+
+/* v3: gap padronizado 48 */
 /* O tamanho RENDERIZADO é fsViewBox × (larguraDoContainer / 940), ou seja
    inversamente proporcional à largura. Por isso os degraus abaixo: eles mantêm
    o texto entre 7 e 10px reais em qualquer tela. Sem eles, ou fica com 4px no
    celular, ou gigante no tablet. */
-.pp-chart.pp-chart--barras .ax{font-size:12px}
-.pp-chart.pp-chart--barras .xl{font-size:10px}
-@media (max-width:960px){
-  .pp-chart.pp-chart--barras .ax{font-size:13px}  .pp-chart.pp-chart--barras .xl{font-size:11px}
+.pp-chart.pp-chart--barras .ax {
+  font-size: 12px
 }
-@media (max-width:700px){
-  .pp-chart.pp-chart--barras .ax{font-size:17px}  .pp-chart.pp-chart--barras .xl{font-size:14px}
+
+.pp-chart.pp-chart--barras .xl {
+  font-size: 10px
 }
-@media (max-width:560px){
-  .pp-chart.pp-chart--barras .ax{font-size:21px}  .pp-chart.pp-chart--barras .xl{font-size:18px}
+
+@media (max-width:960px) {
+  .pp-chart.pp-chart--barras .ax {
+    font-size: 13px
+  }
+
+  .pp-chart.pp-chart--barras .xl {
+    font-size: 11px
+  }
 }
-@media (max-width:460px){
-  .pp-chart.pp-chart--barras .ax{font-size:25px}  .pp-chart.pp-chart--barras .xl{font-size:22px}
+
+@media (max-width:700px) {
+  .pp-chart.pp-chart--barras .ax {
+    font-size: 17px
+  }
+
+  .pp-chart.pp-chart--barras .xl {
+    font-size: 14px
+  }
 }
-@media (max-width:380px){
-  .pp-chart.pp-chart--barras .ax{font-size:29px}  .pp-chart.pp-chart--barras .xl{font-size:26px}
+
+@media (max-width:560px) {
+  .pp-chart.pp-chart--barras .ax {
+    font-size: 21px
+  }
+
+  .pp-chart.pp-chart--barras .xl {
+    font-size: 18px
+  }
 }
-.pp-chart svg{overflow:visible}
-.pp-chart .grid{stroke:var(--pp-cinza-claro);stroke-width:1;fill:none}
-.pp-chart .ax{font-size:11px;fill:#4A4A4A}
-.pp-chart .xl{font-size:10.5px;fill:#4A4A4A}
+
+@media (max-width:460px) {
+  .pp-chart.pp-chart--barras .ax {
+    font-size: 25px
+  }
+
+  .pp-chart.pp-chart--barras .xl {
+    font-size: 22px
+  }
+}
+
+@media (max-width:380px) {
+  .pp-chart.pp-chart--barras .ax {
+    font-size: 29px
+  }
+
+  .pp-chart.pp-chart--barras .xl {
+    font-size: 26px
+  }
+}
+
+.pp-chart svg {
+  overflow: visible
+}
+
+.pp-chart .grid {
+  stroke: var(--pp-cinza-claro);
+  stroke-width: 1;
+  fill: none
+}
+
+.pp-chart .ax {
+  font-size: 11px;
+  fill: #4A4A4A
+}
+
+.pp-chart .xl {
+  font-size: 10.5px;
+  fill: #4A4A4A
+}
 
 /* ---------- radar ----------
    Wrapper quadrado. O SVG só desenha a malha e os polígonos; os rótulos são
    HTML posicionado por trigonometria em % do wrapper, então quebram linha e
    escalam sozinhos. Zero rolagem horizontal em qualquer largura. */
-.pp-radar{
-  position:relative;width:100%;max-width:var(--c8);
+.pp-radar {
+  position: relative;
+  width: 100%;
+  max-width: var(--c8);
   /* Proporção do CONTEÚDO (806x572 medidos), não 1/1. A caixa quadrada deixava
      146px mortos acima e 146px abaixo do gráfico, e era isso que criava um vão
      de 168px até a legenda apesar dos 22px declarados nela. */
-  aspect-ratio:1.41;
-  margin:48px auto 0;   /* v3: gap padronizado 48 */
+  aspect-ratio: 1.41;
+  margin: 48px auto 0;
+  /* v3: gap padronizado 48 */
 }
+
 /* height/top em % da altura: 54% da largura = 54 x 1,41 = 76,14% da altura. */
-.pp-radar__svg{position:absolute;left:23%;top:11.93%;width:54%;height:76.14%;overflow:visible}
+.pp-radar__svg {
+  position: absolute;
+  left: 23%;
+  top: 11.93%;
+  width: 54%;
+  height: 76.14%;
+  overflow: visible
+}
+
 /* Teia: os 6 anéis e os 10 raios já existiam no SVG, mas sem `stroke` nenhum,
    então os raios não apareciam e os anéis viravam um borrão de preenchimentos
    empilhados. Cor #CFD2D7 do asset do Figma.
    `non-scaling-stroke` mantém o fio em 1px real em qualquer largura: sem ele,
    o traço escala com o viewBox e engrossa 1,2x no desktop e desaparece no mobile. */
 .pp-radar__svg .grid polygon,
-.pp-radar__svg .grid line{
-  stroke:#CFD2D7;stroke-width:1;vector-effect:non-scaling-stroke;
+.pp-radar__svg .grid line {
+  stroke: #CFD2D7;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
 }
-.pp-radar__lb{
+
+.pp-radar__lb {
   /* --k aproxima ou afasta os rótulos do centro sem tocar no --x/--y inline.
      Reduzir --k no mobile é o que abre largura nas bordas para os nomes longos
      caberem em 2 linhas em vez de 3. */
-  --k:.94;
+  --k: .94;
   /* --ky compensa a caixa não ser mais quadrada: `top:%` resolve contra a
      altura, que agora é 1/1,41 da largura, então o deslocamento vertical
      precisa do mesmo fator para o rótulo ficar sobre o eixo certo. */
-  --ky:calc(var(--k) * 1.41);
-  --px:calc(50% + (var(--x) - 50%) * var(--k));
-  --py:calc(50% + (var(--y) - 50%) * var(--ky));
-  position:absolute;left:var(--px);top:var(--py);
-  font-size:clamp(14px,1.35vw,16px);line-height:1.25;   /* x1,35, igual ao crescimento da caixa */
-  color:#3A3A3A;font-weight:500;
+  --ky: calc(var(--k) * 1.41);
+  --px: calc(50% + (var(--x) - 50%) * var(--k));
+  --py: calc(50% + (var(--y) - 50%) * var(--ky));
+  position: absolute;
+  left: var(--px);
+  top: var(--py);
+  font-size: clamp(14px, 1.35vw, 16px);
+  line-height: 1.25;
+  /* x1,35, igual ao crescimento da caixa */
+  color: #3A3A3A;
+  font-weight: 500;
   /* sem isto "Armazenamento" e "Operacional" estouram a caixa e criam
      rolagem horizontal na página. Quebra sem hífen, como no protótipo. */
-  overflow-wrap:break-word;
+  overflow-wrap: break-word;
 }
-.pp-radar__lb.is-c{transform:translate(-50%,-50%);text-align:center;max-width:38%}
-.pp-radar__lb.is-l{transform:translate(0,-50%);text-align:left;max-width:calc(99% - var(--px))}
-.pp-radar__lb.is-r{transform:translate(-100%,-50%);text-align:right;max-width:calc(var(--px) - 1%)}
 
-.pp-legend{display:flex;gap:34px;justify-content:center;margin-top:22px;flex-wrap:wrap;font-size:21px;font-weight:700;letter-spacing:.02em}   /* x1,30 sobre 16px */
-.pp-legend span{display:flex;align-items:center;gap:8px}
-.pp-legend i{width:14px;height:14px;border-radius:50%;display:block}
-.pp-legend i.bar{width:34px;height:14px;border-radius:2px}
-.pp-legend i.line{width:34px;height:4px;border-radius:2px}
+.pp-radar__lb.is-c {
+  transform: translate(-50%, -50%);
+  text-align: center;
+  max-width: 38%
+}
+
+.pp-radar__lb.is-l {
+  transform: translate(0, -50%);
+  text-align: left;
+  max-width: calc(99% - var(--px))
+}
+
+.pp-radar__lb.is-r {
+  transform: translate(-100%, -50%);
+  text-align: right;
+  max-width: calc(var(--px) - 1%)
+}
+
+.pp-legend {
+  display: flex;
+  gap: 34px;
+  justify-content: center;
+  margin-top: 22px;
+  flex-wrap: wrap;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: .02em
+}
+
+/* x1,30 sobre 16px */
+.pp-legend span {
+  display: flex;
+  align-items: center;
+  gap: 8px
+}
+
+.pp-legend i {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: block
+}
+
+.pp-legend i.bar {
+  width: 34px;
+  height: 14px;
+  border-radius: 2px
+}
+
+.pp-legend i.line {
+  width: 34px;
+  height: 4px;
+  border-radius: 2px
+}
 
 /* sentimento */
-.pp-sent{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:48px 0 0;max-width:var(--c8)}   /* v3: gap padronizado 48 */
-.pp-sent__it{
-  text-align:center;
-  /* mesmo critério do .pp-donut: `stretch` com escada de fallback */
-  width:100%;
-  width:-webkit-fill-available;
-  width:stretch;
+.pp-sent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 48px 0 0;
+  max-width: var(--c8)
 }
-.pp-sent__lb{display:flex;align-items:center;justify-content:center;gap:7px;font-size:11.5px;font-weight:700;margin-bottom:10px}
-.pp-sent__lb svg{width:17px;height:17px;flex:0 0 17px}
+
+/* v3: gap padronizado 48 */
+.pp-sent__it {
+  text-align: center;
+  /* mesmo critério do .pp-donut: `stretch` com escada de fallback */
+  width: 100%;
+  width: -webkit-fill-available;
+  width: stretch;
+}
+
+.pp-sent__lb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 11.5px;
+  font-weight: 700;
+  margin-bottom: 10px
+}
+
+.pp-sent__lb svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px
+}
+
 /* mesmo critério do .pp-donut svg: largura pelo min-width, teto na célula */
-.pp-sent__it svg[role=img]{margin:0 auto;max-width:100%;height:auto;min-width:100px}
-.pp-sent svg text{font-size:15px;font-weight:800;fill:var(--pp-preto)}
+.pp-sent__it svg[role=img] {
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+  min-width: 100px
+}
+
+.pp-sent svg text {
+  font-size: 15px;
+  font-weight: 800;
+  fill: var(--pp-preto)
+}
 
 /* =========================================================================
    6. CTA rosa
    ========================================================================= */
-.pp-s--cta{
-  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:48px;
-  padding:120px 75px;align-self:stretch;margin-top:0;
-  background:var(--pp-rosa);color:#fff;
+.pp-s--cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  padding: 120px 75px;
+  align-self: stretch;
+  margin-top: 0;
+  background: var(--pp-rosa);
+  color: #fff;
 }
+
 /* `align-items:center` encolhe o filho para a largura de conteúdo; o wrap está
    em "fill" no Figma, então precisa de width:100%. */
-.pp-s--cta .pp-wrap{width:100%}
+.pp-s--cta .pp-wrap {
+  width: 100%
+}
+
 /* Figma: o H2 mede 1578 e cabe em uma linha só; a 1312 ele quebrava em duas,
    o que inflava a seção em 58px */
-.pp-s--cta .pp-h2{
-  width:min(1578px, calc(100vw - 34px));max-width:none;
-  margin-left:calc((100% - min(1578px, 100vw - 34px)) / 2);
-  color:#fff;   /* globals.css do app tem h1..h5{color:var(--fg)}; sem isso herda escuro */
+.pp-s--cta .pp-h2 {
+  width: min(1578px, calc(100vw - 34px));
+  max-width: none;
+  margin-left: calc((100% - min(1578px, 100vw - 34px)) / 2);
+  color: #fff;
+  /* globals.css do app tem h1..h5{color:var(--fg)}; sem isso herda escuro */
 }
-.pp-s--cta .pp-btn{margin-top:48px;font-size:24px}   /* gap 48 entre H2 e CTA, dentro do wrap; v3: fonte 24px */
+
+.pp-s--cta .pp-btn {
+  margin-top: 48px;
+  font-size: 24px
+}
+
+/* gap 48 entre H2 e CTA, dentro do wrap; v3: fonte 24px */
 
 /* =========================================================================
    7. PLANO DE AÇÃO
    ========================================================================= */
-.pp-s--plano{
-  background:var(--pp-bg);position:relative;overflow:hidden;   /* Figma */
+.pp-s--plano {
+  background: var(--pp-bg);
+  position: relative;
+  overflow: hidden;
+  /* Figma */
   /* A faixa do tatu é padding da seção, não conta no margin do wrap. O wrap
      passa a centralizar sozinho na área livre, em toda largura. */
-  padding:120px var(--tatu-w) 120px 0;
-  --tatu-w:min(30vw,400px);
+  padding: 120px var(--tatu-w) 120px 0;
+  --tatu-w: min(30vw, 400px);
   /* Faixa reservada para o tatu, mesmo princípio da lupa.
      O design foi desenhado em 1728px, onde a folga é de só 6px; abaixo disso
      o texto invadia a ilustração. A conta recua o conteúdo o quanto o tatu
      avança além do vão natural, com 32px de respiro. */
-  --lane:max(0px, calc(656px + var(--tatu-w) + 32px - 50vw));
+  --lane: max(0px, calc(656px + var(--tatu-w) + 32px - 50vw));
 }
+
 /* Figma: 932px. `margin-left` alinha a caixa onde o container de 1346 começaria,
    em vez de centralizá-la na tela. O `min()` impede que ela invada a faixa do
    tatu quando a viewport encolhe. */
@@ -701,34 +1665,88 @@ a:focus-visible,button:focus-visible,input:focus-visible{
    centralizando 932 na área livre de 1328, (1328 - 932) / 2 = 198.
    O `- 34px` garante 17px de respiro de cada lado, igual às outras seções,
    quando a área livre fica menor que 932. */
-.pp-s--plano .pp-wrap{
-  position:relative;z-index:1;
-  max-width:min(932px, calc(100% - 34px));
-  margin:0 auto;
-  padding:0 14px;
+.pp-s--plano .pp-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: min(932px, calc(100% - 34px));
+  margin: 0 auto;
+  padding: 0 14px;
 }
-.pp-s--plano .pp-eyebrow{color:var(--pp-preto);margin-bottom:24px}   /* gap 24 */
 
-.pp-s--plano .pp-sub{margin:24px 0 0;   /* gap 24 */font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo)}
-.pp-s--plano .pp-sub2{margin:24px 0 0;   /* gap 24 */font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo)}
-.pp-s--plano .pp-acc{margin:48px 0 0}   /* Figma: gap 48 */
-.pp-s--plano .pp-final{margin:48px 0 0;   /* Figma: gap 48 */
-  font-size:var(--fs-sub);font-weight:300;line-height:1.3;letter-spacing:-.04em}   /* Figma: 24px ls -4% */
-.pp-s--plano .pp-final b{color:var(--pp-rosa);font-weight:700}
+.pp-s--plano .pp-eyebrow {
+  color: var(--pp-preto);
+  margin-bottom: 24px
+}
+
+/* gap 24 */
+
+.pp-s--plano .pp-sub {
+  margin: 24px 0 0;
+  /* gap 24 */
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--ls-corpo)
+}
+
+.pp-s--plano .pp-sub2 {
+  margin: 24px 0 0;
+  /* gap 24 */
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--ls-corpo)
+}
+
+.pp-s--plano .pp-acc {
+  margin: 48px 0 0
+}
+
+/* Figma: gap 48 */
+.pp-s--plano .pp-final {
+  margin: 48px 0 0;
+  /* Figma: gap 48 */
+  font-size: var(--fs-sub);
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: -.04em
+}
+
+/* Figma: 24px ls -4% */
+.pp-s--plano .pp-final b {
+  color: var(--pp-rosa);
+  font-weight: 700
+}
+
 /* Medido no Figma: 314x60, texto de 248px. 22px de fonte dá 246px, com 33px
    de padding lateral e 18px vertical fecha em 312x60. */
-.pp-s--plano .pp-btn{margin-top:48px;padding:18px 33px;font-size:22px;line-height:1.1}
+.pp-s--plano .pp-btn {
+  margin-top: 48px;
+  padding: 18px 33px;
+  font-size: 22px;
+  line-height: 1.1
+}
+
 /* .pp-tatu é um <picture>: display:contents faz o <img> virar o filho
    posicionado direto da seção, mantendo a altura amarrada à seção. */
-.pp-tatu{display:contents}
-.pp-tatu img{
+.pp-tatu {
+  display: contents
+}
+
+.pp-tatu img {
   /* `right:0` já encosta na borda da viewport: em elemento absoluto o offset é
      medido pela caixa de PADDING do containing block, então o padding-right da
      seção não desloca o tatu. O negativo que eu tinha posto aqui jogava ele
      400px para fora da tela. */
-  position:absolute;right:0;bottom:0;
-  height:auto;width:auto;max-height:86%;max-width:var(--tatu-w);
-  z-index:0;pointer-events:none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: auto;
+  width: auto;
+  max-height: 86%;
+  max-width: var(--tatu-w);
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* Bloco de conteúdo do plano: a caixa é a MESMA do FAQ (wrap de 1000px
@@ -738,42 +1756,110 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 /* Figma: a coluna de conteúdo do plano tem 904px e encosta na borda esquerda
    do container. É isso que faz o eixo de centralização cair em 660 e não em
    864: o resto da largura é do tatu. */
-.pp-s--plano .pp-sub,.pp-s--plano .pp-sub2{margin-left:0;margin-right:0;max-width:none}
-.pp-s--plano .pp-final{text-align:center}
-.pp-plano-cta{text-align:center;margin-top:48px}
-.pp-s--plano .pp-btn{display:inline-flex;justify-content:center;align-items:center;margin-top:0}
+.pp-s--plano .pp-sub,
+.pp-s--plano .pp-sub2 {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none
+}
+
+.pp-s--plano .pp-final {
+  text-align: center
+}
+
+.pp-plano-cta {
+  text-align: center;
+  margin-top: 48px
+}
+
+.pp-s--plano .pp-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0
+}
 
 /* accordion */
-.pp-acc__it{background:none;border:1px solid var(--pp-preto);border-radius:0;margin-bottom:24px;overflow:hidden}   /* sem fundo, sem radius, gap 24 */
+.pp-acc__it {
+  background: none;
+  border: 1px solid var(--pp-preto);
+  border-radius: 0;
+  margin-bottom: 24px;
+  overflow: hidden
+}
+
+/* sem fundo, sem radius, gap 24 */
 /* Sem min-height: os 80px vinham da linha FECHADA e sobreviviam com o painel
    aberto, inflando a caixa. A altura sai do padding + linha do texto. */
-.pp-acc__bt{
-  width:100%;background:none;border:0;text-align:left;
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-  padding:16px;font-size:20px;font-weight:700;line-height:1.4;letter-spacing:.02em;color:var(--pp-preto);
+.pp-acc__bt {
+  width: 100%;
+  background: none;
+  border: 0;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .02em;
+  color: var(--pp-preto);
 }
-.pp-acc__bt svg{flex:0 0 20px;width:20px;height:20px}
+
+.pp-acc__bt svg {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px
+}
+
 /* aberto = menos: só o traço vertical some, como no Figma */
-.pp-acc__bt .pp-ic-v{transition:opacity .18s ease}
-.pp-acc__it[data-open="true"] .pp-acc__bt .pp-ic-v{opacity:0}
+.pp-acc__bt .pp-ic-v {
+  transition: opacity .18s ease
+}
+
+.pp-acc__it[data-open="true"] .pp-acc__bt .pp-ic-v {
+  opacity: 0
+}
+
 /* Abrir/fechar animado com `grid-template-rows: 0fr -> 1fr`. Vantagens sobre
    `display:none` e sobre `max-height`: a altura real do conteúdo é respeitada
    sem número mágico, e o texto continua RENDERIZADO no DOM, o que é melhor
    para os crawlers de LLM do que estar em display:none.
    O `min-height:0` no filho é obrigatório: sem ele a linha não encolhe abaixo
    do min-content e a animação não sai do lugar. */
-.pp-acc__pn{
-  display:grid;grid-template-rows:0fr;overflow:hidden;
-  padding:0 16px;opacity:0;
-  transition:grid-template-rows .4s cubic-bezier(.4,0,.2,1),
-             padding-bottom .4s cubic-bezier(.4,0,.2,1),
-             opacity .26s ease;
-  font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo);color:#3A3A3A;
+.pp-acc__pn {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  padding: 0 16px;
+  opacity: 0;
+  transition: grid-template-rows .4s cubic-bezier(.4, 0, .2, 1),
+    padding-bottom .4s cubic-bezier(.4, 0, .2, 1),
+    opacity .26s ease;
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--ls-corpo);
+  color: #3A3A3A;
 }
-.pp-acc__pn>*{min-height:0;margin:0}
-.pp-acc__it[data-open="true"] .pp-acc__pn{grid-template-rows:1fr;padding-bottom:24px;opacity:1}
+
+.pp-acc__pn>* {
+  min-height: 0;
+  margin: 0
+}
+
+.pp-acc__it[data-open="true"] .pp-acc__pn {
+  grid-template-rows: 1fr;
+  padding-bottom: 24px;
+  opacity: 1
+}
+
 /* o ícone gira junto, no mesmo tempo */
-.pp-acc__bt .pp-ic-v{transition:opacity .26s ease,transform .4s cubic-bezier(.4,0,.2,1)}
+.pp-acc__bt .pp-ic-v {
+  transition: opacity .26s ease, transform .4s cubic-bezier(.4, 0, .2, 1)
+}
 
 /* =========================================================================
    8. ILUMINE (escura)
@@ -781,130 +1867,341 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 /* A seção começa escura com a lâmpada apagada e "acende" conforme o scroll:
    fundo vira branco, texto inverte e a lâmpada animada aparece em cross-fade.
    As cores vivem em variáveis, então a virada é uma linha só. */
-.pp-s--ilum{
-  --ilum-bg:var(--pp-preto);
-  --ilum-txt:#fff;
-  --ilum-txt2:#B9B9B9;
-  background:var(--ilum-bg);color:var(--ilum-txt);
-  padding:120px 0;
-  transition:background-color .6s ease, color .6s ease;
+.pp-s--ilum {
+  --ilum-bg: var(--pp-preto);
+  --ilum-txt: #fff;
+  --ilum-txt2: #B9B9B9;
+  background: var(--ilum-bg);
+  color: var(--ilum-txt);
+  padding: 120px 0;
+  transition: background-color .6s ease, color .6s ease;
 }
-.pp-s--ilum.is-acesa{
-  --ilum-bg:#fff;
-  --ilum-txt:var(--pp-preto);
-  --ilum-txt2:#3A3A3A;
+
+.pp-s--ilum.is-acesa {
+  --ilum-bg: #fff;
+  --ilum-txt: var(--pp-preto);
+  --ilum-txt2: #3A3A3A;
 }
-.pp-s--ilum .pp-h2{
-  max-width:var(--c11);margin:0 auto;
-  color:var(--ilum-txt);transition:color .6s ease;   /* idem: globals.css do app sobrescreve h2 */
+
+.pp-s--ilum .pp-h2 {
+  max-width: var(--c11);
+  margin: 0 auto;
+  color: var(--ilum-txt);
+  transition: color .6s ease;
+  /* idem: globals.css do app sobrescreve h2 */
 }
-.pp-s--ilum .pp-sub{
-  margin:24px auto 0;max-width:var(--c12);   /* Figma: gap 24 */font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo);
-  color:var(--ilum-txt2);transition:color .6s ease;
+
+.pp-s--ilum .pp-sub {
+  margin: 24px auto 0;
+  max-width: var(--c12);
+  /* Figma: gap 24 */
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--ls-corpo);
+  color: var(--ilum-txt2);
+  transition: color .6s ease;
 }
-.pp-s--ilum .pp-cols{
-  display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;
-  margin:48px auto 0;   /* Figma: grid 2x644, gap 24 */
+
+.pp-s--ilum .pp-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: center;
+  margin: 48px auto 0;
+  /* Figma: grid 2x644, gap 24 */
 }
+
 /* Só a coluna de TEXTO recebe esse padding. Aplicado a todos os filhos, ele
    caía também no wrapper da lâmpada e, combinado com aspect-ratio e
    border-box, inflava a caixa para 378px, criando overflow em telas estreitas. */
-.pp-s--ilum .pp-cols>div:not(.pp-lampada){padding:102px 134px}
-.pp-s--ilum .pp-item{margin-bottom:96px}   /* Figma: gap 96 na coluna de texto */
-.pp-s--ilum .pp-item:last-child{margin-bottom:0}
-.pp-s--ilum .pp-item h3{
-  font-size:var(--fs-h3);font-weight:700;line-height:1.2;letter-spacing:var(--ls-h2);margin:0 0 24px;   /* Figma: gap 24 */
-  color:var(--ilum-txt);transition:color .6s ease;
+.pp-s--ilum .pp-cols>div:not(.pp-lampada) {
+  padding: 102px 134px
 }
-.pp-s--ilum .pp-item p{
-  font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo);margin:0;
-  color:var(--ilum-txt2);transition:color .6s ease;
+
+.pp-s--ilum .pp-item {
+  margin-bottom: 96px
+}
+
+/* Figma: gap 96 na coluna de texto */
+.pp-s--ilum .pp-item:last-child {
+  margin-bottom: 0
+}
+
+.pp-s--ilum .pp-item h3 {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: var(--ls-h2);
+  margin: 0 0 24px;
+  /* Figma: gap 24 */
+  color: var(--ilum-txt);
+  transition: color .6s ease;
+}
+
+.pp-s--ilum .pp-item p {
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--ls-corpo);
+  margin: 0;
+  color: var(--ilum-txt2);
+  transition: color .6s ease;
 }
 
 /* ---------- lâmpada: duas artes empilhadas com cross-fade ---------- */
-.pp-lampada{position:relative;width:min(100%,440px);margin:0 auto;aspect-ratio:440/681}   /* Figma: 440x681 */
-.pp-lampada img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
-  transition:opacity .6s ease;
+.pp-lampada {
+  position: relative;
+  width: min(100%, 440px);
+  margin: 0 auto;
+  aspect-ratio: 440/681
 }
-.pp-lampada__off{opacity:1}
-.pp-lampada__on{opacity:0}
-.is-acesa .pp-lampada__off{opacity:0}
-.is-acesa .pp-lampada__on{opacity:1}
+
+/* Figma: 440x681 */
+.pp-lampada img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity .6s ease;
+}
+
+.pp-lampada__off {
+  opacity: 1
+}
+
+.pp-lampada__on {
+  opacity: 0
+}
+
+.is-acesa .pp-lampada__off {
+  opacity: 0
+}
+
+.is-acesa .pp-lampada__on {
+  opacity: 1
+}
 
 /* =========================================================================
    9. PROVA SOCIAL + FAQ
    ========================================================================= */
-.pp-s--prova{background:var(--pp-bg);padding:120px 0}
+.pp-s--prova {
+  background: var(--pp-bg);
+  padding: 120px 0
+}
+
 /* O gradiente vive aqui, não na seção: assim ele cobre só a prova social e não
    escorre para o "11 anos" nem para o FAQ. Padding compensa o da seção para o
    bloco colorido começar e terminar junto do conteúdo. */
-.pp-prova{padding:0}
+.pp-prova {
+  padding: 0
+}
+
 /* Gradiente atrás do card "11 anos": faixa de largura total, para o degradê
    aparecer em volta do card (que tem fundo opaco e sombra própria). */
-.pp-anos-faixa{
+.pp-anos-faixa {
   background:
-    radial-gradient(43.07% 48.84% at 123.35% 34.36%, rgba(255,85,0,.20) 30.28%, rgba(249,249,249,.20) 100%),
-    radial-gradient(49.73% 48.25% at -27.93% 59.54%, rgba(217,43,138,.30) 0%, rgba(249,249,249,.30) 100%),
+    radial-gradient(43.07% 48.84% at 123.35% 34.36%, rgba(255, 85, 0, .20) 30.28%, rgba(249, 249, 249, .20) 100%),
+    radial-gradient(49.73% 48.25% at -27.93% 59.54%, rgba(217, 43, 138, .30) 0%, rgba(249, 249, 249, .30) 100%),
     var(--pp-bg);
-  padding:120px 0;
+  padding: 120px 0;
 }
-.pp-anos-faixa + .pp-wrap{padding-top:0}
+
+.pp-anos-faixa+.pp-wrap {
+  padding-top: 0
+}
+
 /* sem padding-top: o respiro até o "11 anos" vem do margin-top dele. */
-.pp-s--prova .pp-wrap{max-width:var(--pp-max)}
-.pp-s--prova .pp-h2{text-align:left}
-.pp-s--prova .pp-sub{margin:16px 0 0;   /* Figma: gap 16 */
-  font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo);text-align:left}
+.pp-s--prova .pp-wrap {
+  max-width: var(--pp-max)
+}
+
+.pp-s--prova .pp-h2 {
+  text-align: left
+}
+
+.pp-s--prova .pp-sub {
+  margin: 16px 0 0;
+  /* Figma: gap 16 */
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--ls-corpo);
+  text-align: left
+}
+
 /* faixa de logos de clientes: marquee contínuo, mesma mecânica da faixa de LLMs */
-.pp-s--prova .pp-clients{margin:64px 0 0;overflow:hidden}   /* Figma: gap 64 */
-.pp-marquee--clientes{gap:56px;animation-duration:40s}
-.pp-s--prova .pp-clients:hover .pp-marquee{animation-play-state:paused}
+.pp-s--prova .pp-clients {
+  margin: 64px 0 0;
+  overflow: hidden
+}
+
+/* Figma: gap 64 */
+.pp-marquee--clientes {
+  gap: 56px;
+  animation-duration: 40s
+}
+
+.pp-s--prova .pp-clients:hover .pp-marquee {
+  animation-play-state: paused
+}
+
 /* cada logo numa <li> com caixa de tamanho fixo (140x40), logo centralizado e
    escalado por `object-fit:contain`. Antes a altura era fixa e a largura livre
    por aspecto de cada marca — como as marcas têm proporções muito diferentes
    (de 1:1 até quase 8:1), isso deixava logos com pesos visuais bem desiguais
    (ex: Direcional a 240px de largura contra Itaú a 30px). A caixa fixa
    equilibra o peso visual de cada logo na faixa. */
-.pp-marquee--clientes .pp-marquee__row{display:flex;align-items:center;gap:56px;list-style:none;margin:0;padding:0}
-.pp-s--prova .pp-clients li{flex:0 0 140px;width:140px;height:40px;display:flex;align-items:center;justify-content:center}
-.pp-s--prova .pp-clients picture{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
-.pp-s--prova .pp-clients img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.pp-marquee--clientes .pp-marquee__row {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  list-style: none;
+  margin: 0;
+  padding: 0
+}
+
+.pp-s--prova .pp-clients li {
+  flex: 0 0 140px;
+  width: 140px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.pp-s--prova .pp-clients picture {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%
+}
+
+.pp-s--prova .pp-clients img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain
+}
 
 /* carrossel */
-.pp-carousel{margin:64px 0 0;position:relative}   /* Figma: gap 64 */
-.pp-carousel__track{
-  display:flex;gap:24px;   /* Figma */overflow-x:auto;scroll-snap-type:x mandatory;
-  scroll-behavior:smooth;padding-bottom:6px;
-  scrollbar-width:none;
+.pp-carousel {
+  margin: 64px 0 0;
+  position: relative
 }
-.pp-carousel__track::-webkit-scrollbar{display:none}
+
+/* Figma: gap 64 */
+.pp-carousel__track {
+  display: flex;
+  gap: 24px;
+  /* Figma */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+}
+
+.pp-carousel__track::-webkit-scrollbar {
+  display: none
+}
+
 /* Medido pixel a pixel na referência (540x317): borda 1px #DEDEDE, interior
    igual ao fundo da seção (sem preenchimento branco), sem border-radius,
    padding 32, divisória #D7D7D7 a 24px do texto, avatar de 48px. */
-.pp-quote{
+.pp-quote {
   /* <figure> tem `margin:1em 40px` no estilo padrão do navegador. Sem zerar,
      os 40px de cada lado somavam ao gap do trilho e o vão real virava 104px. */
-  margin:0;
-  flex:0 0 540px;scroll-snap-align:start;
-  background:var(--pp-bg);border:1px solid #DEDEDE;border-radius:0;   /* #F9F9F9 */
-  padding:32px;display:flex;flex-direction:column;min-height:317px;
+  margin: 0;
+  flex: 0 0 540px;
+  scroll-snap-align: start;
+  background: var(--pp-bg);
+  border: 1px solid #DEDEDE;
+  border-radius: 0;
+  /* #F9F9F9 */
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  min-height: 317px;
 }
+
 /* linha de 34px: 24px de corpo com line-height 1.42 */
-.pp-quote p{font-size:24px;font-weight:300;line-height:1.4;letter-spacing:-.02em;color:var(--pp-preto);margin:0 0 24px;flex:1}   /* lh 33.6 | ls -0.48px */
-.pp-quote b{font-weight:700}
-.pp-quote__who{display:flex;align-items:center;gap:14px;border-top:1px solid #D7D7D7;padding-top:16px}
-.pp-quote__who img{width:48px;height:48px;border-radius:50%;flex:0 0 48px;object-fit:cover}
-.pp-quote__who strong{display:block;font-size:16px;font-weight:700;line-height:1.4;letter-spacing:.02em;color:var(--pp-preto)}   /* lh 22.4 | ls +0.32px */
-.pp-quote__who span{display:block;font-size:16px;font-weight:300;line-height:1.4;letter-spacing:-.02em;color:var(--pp-rosa)}   /* lh 22.4 | ls -0.32px */
-.pp-dots{display:flex;gap:8px;justify-content:center;margin-top:32px}   /* Figma: gap 32 antes dos pontos */
-/* v3: modelo de linha em vez de bolinha — evita problemas de contraste */
-.pp-dots button{
-  width:24px;height:3px;
-  padding:0;border:0;border-radius:2px;
-  background:var(--pp-cinza-claro);
-  transition:background-color .2s ease;
+.pp-quote p {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: -.02em;
+  color: var(--pp-preto);
+  margin: 0 0 24px;
+  flex: 1
 }
-.pp-dots button[aria-current="true"]{background:var(--pp-rosa)}
+
+/* lh 33.6 | ls -0.48px */
+.pp-quote b {
+  font-weight: 700
+}
+
+.pp-quote__who {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid #D7D7D7;
+  padding-top: 16px
+}
+
+.pp-quote__who img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  flex: 0 0 48px;
+  object-fit: cover
+}
+
+.pp-quote__who strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .02em;
+  color: var(--pp-preto)
+}
+
+/* lh 22.4 | ls +0.32px */
+.pp-quote__who span {
+  display: block;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: -.02em;
+  color: var(--pp-rosa)
+}
+
+/* lh 22.4 | ls -0.32px */
+.pp-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 32px
+}
+
+/* Figma: gap 32 antes dos pontos */
+/* v3: modelo de linha em vez de bolinha — evita problemas de contraste */
+.pp-dots button {
+  width: 24px;
+  height: 3px;
+  padding: 0;
+  border: 0;
+  border-radius: 2px;
+  background: var(--pp-cinza-claro);
+  transition: background-color .2s ease;
+}
+
+.pp-dots button[aria-current="true"] {
+  background: var(--pp-rosa)
+}
 
 /* card 11 anos */
 /* Medido no export: este bloco NÃO tem borda nem preenchimento; só os 3
@@ -912,160 +2209,585 @@ a:focus-visible,button:focus-visible,input:focus-visible{
    sub-card fecha em 4 colunas exatas (416px). */
 /* Figma: o bloco tem padding 48 (sem borda nem fundo) e gap interno 56 */
 /* --Branco do Dev Mode = #F9F9F9 = nosso --pp-bg. */
-.pp-anos{
-  display:flex;flex-direction:column;align-items:flex-start;gap:0;   /* v3: gap fixo trocado por margins abaixo, título/subtítulo != subtítulo/grid */
-  max-width:1312px;padding:48px;margin:0;align-self:stretch;   /* respiro vem do padding da faixa */
-  border-radius:0;border:1px solid rgba(25,25,25,.15);   /* v3: bordas quadradas */
-  background:var(--pp-bg);
-  box-shadow:0 30px 47.2px -8px rgba(25,25,25,.11);
+.pp-anos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  /* v3: gap fixo trocado por margins abaixo, título/subtítulo != subtítulo/grid */
+  max-width: 1312px;
+  padding: 48px;
+  margin: 0;
+  align-self: stretch;
+  /* respiro vem do padding da faixa */
+  border-radius: 0;
+  border: 1px solid rgba(25, 25, 25, .15);
+  /* v3: bordas quadradas */
+  background: var(--pp-bg);
+  box-shadow: 0 30px 47.2px -8px rgba(25, 25, 25, .11);
 }
+
 /* `align-items:flex-start` faz o filho encolher para a largura de conteúdo.
    No Figma esses dois estão em "fill", então precisam de width:100% aqui,
    senão a grade de 3 colunas colapsa para o min-content. */
-.pp-anos__sub,.pp-anos__grid{width:100%}
-.pp-anos .pp-h2{max-width:1216px;color:var(--pp-preto)}   /* 48px / 700 / lh 57.6 / ls -1.44px */
-.pp-anos .pp-h2+.pp-anos__sub{margin-top:24px}   /* v3: 24px entre título e subtítulo */
-.pp-anos__sub+.pp-anos__grid{margin-top:56px}   /* mantém o gap original entre subtítulo e os cards */
-.pp-anos__sub{margin:0;
-  font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo);max-width:1216px}
-.pp-anos__sub b{font-weight:700}
-.pp-anos__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin:0}   /* 3 x 373 + gap 48 = 1216 */
-.pp-anos__it{border:1px solid var(--pp-borda);border-radius:0;padding:32px;display:flex;flex-direction:column;gap:24px}   /* v3: bordas quadradas */
-.pp-anos__ic{
-  width:38px;height:38px;border-radius:0;color:#fff;   /* v3: bordas quadradas */
-  background:var(--pp-rosa);
-  box-shadow:0 0 13px -2px rgba(217,43,138,.79);
-  display:grid;place-items:center;margin-bottom:0;flex:0 0 38px;
+.pp-anos__sub,
+.pp-anos__grid {
+  width: 100%
 }
-.pp-anos__it h3{font-size:var(--fs-h3);font-weight:700;line-height:1.2;letter-spacing:var(--ls-h2);margin:0}   /* Figma: 32px, gap pelo flex */
-.pp-anos__it p{font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo);color:#3A3A3A;margin:0}
+
+.pp-anos .pp-h2 {
+  max-width: 1216px;
+  color: var(--pp-preto)
+}
+
+/* 48px / 700 / lh 57.6 / ls -1.44px */
+.pp-anos .pp-h2+.pp-anos__sub {
+  margin-top: 24px
+}
+
+/* v3: 24px entre título e subtítulo */
+.pp-anos__sub+.pp-anos__grid {
+  margin-top: 56px
+}
+
+/* mantém o gap original entre subtítulo e os cards */
+.pp-anos__sub {
+  margin: 0;
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--ls-corpo);
+  max-width: 1216px
+}
+
+.pp-anos__sub b {
+  font-weight: 700
+}
+
+.pp-anos__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  margin: 0
+}
+
+/* 3 x 373 + gap 48 = 1216 */
+.pp-anos__it {
+  border: 1px solid var(--pp-borda);
+  border-radius: 0;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px
+}
+
+/* v3: bordas quadradas */
+.pp-anos__ic {
+  width: 38px;
+  height: 38px;
+  border-radius: 0;
+  color: #fff;
+  /* v3: bordas quadradas */
+  background: var(--pp-rosa);
+  box-shadow: 0 0 13px -2px rgba(217, 43, 138, .79);
+  display: grid;
+  place-items: center;
+  margin-bottom: 0;
+  flex: 0 0 38px;
+}
+
+.pp-anos__it h3 {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: var(--ls-h2);
+  margin: 0
+}
+
+/* Figma: 32px, gap pelo flex */
+.pp-anos__it p {
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--ls-corpo);
+  color: #3A3A3A;
+  margin: 0
+}
 
 /* faq */
-.pp-faq{margin:120px 0 0}   /* Figma: seção própria */
-.pp-faq .pp-h2{color:var(--pp-rosa)}
-.pp-faq__sub{margin:24px 0 0;   /* Figma: gap 24 */
-  font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo)}
-.pp-faq__list{margin:48px 0 0}   /* Figma: gap 48. Sem borda no topo: a referência tem 6 linhas para 6 itens */
-.pp-faq__it{
-  display:flex;flex-direction:column;align-items:flex-start;gap:24px;
-  padding:24px 16px;align-self:stretch;
-  border-bottom:1px solid rgba(0,0,0,.15);
+.pp-faq {
+  margin: 120px 0 0
 }
+
+/* Figma: seção própria */
+.pp-faq .pp-h2 {
+  color: var(--pp-rosa)
+}
+
+.pp-faq__sub {
+  margin: 24px 0 0;
+  /* Figma: gap 24 */
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--ls-corpo)
+}
+
+.pp-faq__list {
+  margin: 48px 0 0
+}
+
+/* Figma: gap 48. Sem borda no topo: a referência tem 6 linhas para 6 itens */
+.pp-faq__it {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 24px 16px;
+  align-self: stretch;
+  border-bottom: 1px solid rgba(0, 0, 0, .15);
+}
+
 /* `align-items:flex-start` encolhe o filho para a largura de conteúdo; os dois
    estão em "fill" no Figma, então precisam de width:100%. */
-.pp-faq__q,.pp-faq__pn{width:100%}
+.pp-faq__q,
+.pp-faq__pn {
+  width: 100%
+}
+
 /* a pergunta é um h3 (hierarquia correta para FAQPage), sem estilo próprio */
-.pp-faq__q{margin:0;font-size:inherit;font-weight:inherit;line-height:inherit}
-.pp-faq__pn p{margin:0}
+.pp-faq__q {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit
+}
+
+.pp-faq__pn p {
+  margin: 0
+}
+
 /* Sem min-height: os 164px eram medidos da linha FECHADA, e mantinham a linha
    com 164px de altura mesmo aberta, criando 82px de vão entre a pergunta e a
    resposta. */
-.pp-faq__bt{
-  width:100%;background:none;border:0;text-align:left;
-  display:flex;align-items:center;justify-content:space-between;gap:20px;
-  padding:0;font-size:24px;font-weight:700;line-height:1.4;letter-spacing:.02em;color:var(--pp-preto);   /* lh 33.6 | ls +0.48px */
+.pp-faq__bt {
+  width: 100%;
+  background: none;
+  border: 0;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: .02em;
+  color: var(--pp-preto);
+  /* lh 33.6 | ls +0.48px */
 }
-.pp-faq__bt svg{flex:0 0 20px;width:20px;height:20px;color:var(--pp-rosa)}
+
+.pp-faq__bt svg {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  color: var(--pp-rosa)
+}
+
 /* aberto = menos: só o traço vertical desaparece. Antes o ícone girava 45° e
    virava um X, que não é o que o design mostra. */
-.pp-faq__bt .pp-ic-v{transition:opacity .18s ease}
-.pp-faq__it[data-open="true"] .pp-faq__bt .pp-ic-v{opacity:0}
+.pp-faq__bt .pp-ic-v {
+  transition: opacity .18s ease
+}
+
+.pp-faq__it[data-open="true"] .pp-faq__bt .pp-ic-v {
+  opacity: 0
+}
+
 /* Mesma técnica no FAQ. O gap de 24 do item sai do `gap` e vira padding-top
    animado do painel: com `display:grid` o painel deixa de ser removido do
    fluxo, então o gap do flex apareceria como 24px de vão mesmo fechado. */
-.pp-faq__it{gap:0}
-.pp-faq__pn{
-  display:grid;grid-template-rows:0fr;overflow:hidden;
-  padding-top:0;opacity:0;
-  transition:grid-template-rows .4s cubic-bezier(.4,0,.2,1),
-             padding-top .4s cubic-bezier(.4,0,.2,1),
-             opacity .26s ease;
-  font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo);color:#3A3A3A;
+.pp-faq__it {
+  gap: 0
 }
-.pp-faq__pn>*{min-height:0;margin:0}
-.pp-faq__it[data-open="true"] .pp-faq__pn{grid-template-rows:1fr;padding-top:24px;opacity:1}
-.pp-faq__bt .pp-ic-v{transition:opacity .26s ease}
+
+.pp-faq__pn {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  padding-top: 0;
+  opacity: 0;
+  transition: grid-template-rows .4s cubic-bezier(.4, 0, .2, 1),
+    padding-top .4s cubic-bezier(.4, 0, .2, 1),
+    opacity .26s ease;
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--ls-corpo);
+  color: #3A3A3A;
+}
+
+.pp-faq__pn>* {
+  min-height: 0;
+  margin: 0
+}
+
+.pp-faq__it[data-open="true"] .pp-faq__pn {
+  grid-template-rows: 1fr;
+  padding-top: 24px;
+  opacity: 1
+}
+
+.pp-faq__bt .pp-ic-v {
+  transition: opacity .26s ease
+}
 
 /* =========================================================================
    10. FORMULÁRIO
    ========================================================================= */
-.pp-s--form{
-  background:var(--pp-preto);color:#fff;padding:120px 0;position:relative;overflow:hidden;   /* Figma */
+.pp-s--form {
+  background: var(--pp-preto);
+  color: #fff;
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+  /* Figma */
 }
+
 /* Gradiente do Dev Mode sobre a foto, com `background-blend-mode: darken`.
    Saiu o `grayscale(1)` + `opacity:.5` que eu havia inventado: o escurecimento
    passa a vir do gradiente e do blend, como no Figma.
    `lightgray` é a cor de fundo enquanto a imagem não carrega. */
-.pp-s--form::before{
-  content:"";position:absolute;inset:0;
+.pp-s--form::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background:
-    linear-gradient(131deg, var(--pp-preto) 42.95%, rgba(25,25,25,.50) 80.23%),
+    linear-gradient(131deg, var(--pp-preto) 42.95%, rgba(25, 25, 25, .50) 80.23%),
     url("/servicos/diagnostico-de-geo/assets/form-bg.webp") lightgray 50% / cover no-repeat;
-  background-blend-mode:darken, normal;
+  background-blend-mode: darken, normal;
 }
-.pp-s--form .pp-wrap{position:relative;z-index:1;max-width:1000px}
-.pp-s--form .pp-cols{display:grid;grid-template-columns:1fr 1fr;gap:var(--gut);align-items:start}
-.pp-s--form .pp-h2{font-size:var(--fs-h1-form);line-height:1.1;letter-spacing:0;max-width:644px;color:#fff}   /* Figma: 72px ls 0, w 644; color explícito por causa do h1..h5{color:var(--fg)} do globals.css do app */
-.pp-s--form .pp-sub{margin:24px 0 0;font-size:var(--fs-corpo);font-weight:300;line-height:1.4;letter-spacing:var(--ls-corpo);color:#C9C9C9;max-width:644px}
-.pp-form{background:#fff;border-radius:var(--pp-r);padding:32px;color:var(--pp-preto);min-height:650px;display:flex;flex-direction:column;justify-content:center}   /* Figma: 650px */
-.pp-form label{display:block;font-size:var(--fs-corpo);font-weight:600;margin:0 0 8px}   /* Figma: 16px Semi Bold */
-.pp-form label i{color:var(--pp-rosa);font-style:normal}
-.pp-form .pp-field{margin-bottom:20px}
-.pp-form input{
-  width:100%;border:1px solid var(--pp-borda);border-radius:6px;
-  padding:13px 14px;font-family:inherit;font-size:var(--fs-corpo);font-weight:400;line-height:1.5;color:var(--pp-preto);
+
+.pp-s--form .pp-wrap {
+  position: relative;
+  z-index: 1
 }
-.pp-form input::placeholder{color:#B0B0B0}
-.pp-form input:focus{outline:2px solid var(--pp-rosa);outline-offset:-2px;border-color:var(--pp-rosa)}
-.pp-form__note{margin:16px 0 0;font-size:var(--fs-corpo);font-weight:500;letter-spacing:.02em;line-height:1.2;text-align:left}   /* v3: alinhado à esquerda, como o resto do formulário */
+
+.pp-s--form .pp-cols {
+  display: grid;
+  grid-template-columns: 1fr 644px;
+  gap: 24px;
+  align-items: start
+}
+
+.pp-s--form .pp-h2 {
+  font-size: var(--fs-h1-form);
+  line-height: 1.1;
+  letter-spacing: 0;
+  max-width: 644px;
+  color: #fff
+}
+
+/* Figma: 72px ls 0, w 644; color explícito por causa do h1..h5{color:var(--fg)} do globals.css do app */
+.pp-s--form .pp-sub {
+  margin: 24px 0 0;
+  font-size: var(--fs-corpo);
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: var(--ls-corpo);
+  color: #C9C9C9;
+  max-width: 644px
+}
+
+.pp-form {
+  background: #fff;
+  border: 0;
+  border-radius: 0;
+  padding: 24px;
+  color: var(--pp-preto);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 644px
+}
+
+.pp-form label {
+  display: block;
+  font-size: var(--fs-corpo);
+  font-weight: 600;
+  margin: 0 0 8px
+}
+
+/* Figma: 16px Semi Bold */
+.pp-form label i {
+  color: var(--pp-rosa);
+  font-style: normal
+}
+
+.pp-form .pp-field {
+  margin-bottom: 20px
+}
+
+.pp-form input {
+  width: 100%;
+  border: 1px solid var(--pp-borda);
+  border-radius: 6px;
+  padding: 13px 14px;
+  font-family: inherit;
+  font-size: var(--fs-corpo);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--pp-preto);
+}
+
+.pp-form input::placeholder {
+  color: #B0B0B0
+}
+
+.pp-form input:focus {
+  outline: 2px solid var(--pp-rosa);
+  outline-offset: -2px;
+  border-color: var(--pp-rosa)
+}
+
+.pp-form__note {
+  margin: 16px 0 0;
+  font-size: var(--fs-corpo);
+  font-weight: 500;
+  letter-spacing: .02em;
+  line-height: 1.2;
+  text-align: left
+}
+
+/* v3: alinhado à esquerda, como o resto do formulário */
 
 /* =========================================================================
    11. FOOTER
    ========================================================================= */
-.pp-s--foot{background:var(--pp-preto);color:#fff;padding:60px 0}   /* Figma: pt/pb 60 */
-.pp-s--foot .pp-logo{color:#fff;margin-bottom:15px}   /* Figma: gap 15 */
-.pp-s--foot p{font-size:var(--fs-corpo);font-weight:400;line-height:1.4;color:#B9B9B9;margin:0;max-width:1578px}   /* Figma: 16px Regular, w 1578 */
-.pp-s--foot .pp-bottom{
-  display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
-  margin-top:15px;padding:30px 10px 10px;border-top:1px solid #2C2C2C;
-  font-size:14px;font-weight:300;color:#9A9A9A;   /* Figma: gap 15, divisória, padding 30/10 */
+.pp-s--foot {
+  background: var(--pp-preto);
+  color: #fff;
+  padding: 60px 0
 }
-.pp-s--foot .pp-bottom a{display:flex;align-items:center;gap:7px;text-decoration:none}
-.pp-s--foot .pp-bottom a:hover{color:#fff}
+
+/* Figma: pt/pb 60 */
+.pp-s--foot .pp-logo {
+  color: #fff;
+  margin-bottom: 15px
+}
+
+/* Figma: gap 15 */
+.pp-s--foot p {
+  font-size: var(--fs-corpo);
+  font-weight: 400;
+  line-height: 1.4;
+  color: #B9B9B9;
+  margin: 0;
+  max-width: 1578px
+}
+
+/* Figma: 16px Regular, w 1578 */
+.pp-s--foot .pp-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  padding: 30px 10px 10px;
+  border-top: 1px solid #2C2C2C;
+  font-size: 14px;
+  font-weight: 300;
+  color: #9A9A9A;
+  /* Figma: gap 15, divisória, padding 30/10 */
+}
+
+.pp-s--foot .pp-bottom a {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  text-decoration: none
+}
+
+.pp-s--foot .pp-bottom a:hover {
+  color: #fff
+}
 
 /* =========================================================================
    RESPONSIVO
    ========================================================================= */
-@media (max-width:960px){
-  .pp-s--nav .pp-menu{display:none}
-  .pp-s--nav .pp-menu.is-open{
-    display:flex;flex-direction:column;align-items:stretch;gap:2px;
-    position:absolute;top:100%;left:16px;right:16px;border-radius:var(--pp-r);
-    padding:10px;background:#242424;z-index:30;
+@media (max-width:1180px) {
+  .pp-layer__head {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+    max-width: 100%
   }
-  .pp-s--nav .pp-burger{display:block}
-  .pp-s--nav .pp-nav>.pp-btn{display:none}
 
-  .pp-layer__head,.pp-attr,.pp-s--ilum .pp-cols,.pp-s--form .pp-cols{grid-template-columns:1fr;gap:22px}
-  .pp-anos__grid{grid-template-columns:1fr}
-  .pp-donuts{grid-template-columns:repeat(3,1fr);max-width:100%}
-  .pp-sent{grid-template-columns:repeat(2,1fr);max-width:100%}
-  /* Pizza + número formam um bloco CENTRALIZADO na 1ª linha; o parágrafo ocupa
-     a linha inteira embaixo, alinhado à esquerda. Colunas `auto auto` para as
-     duas terem largura de conteúdo, senão o `1fr` empurra o par para a esquerda. */
-  .pp-summary{grid-template-columns:1fr;justify-content:center;row-gap:20px}
-  .pp-summary__grupo{grid-template-columns:auto auto;justify-content:center}
-  .pp-summary__txt{grid-column:1/-1;max-width:100%;text-align:left}
+  .pp-layer__title {
+    width: 100%
+  }
+
+  .pp-layer__desc {
+    max-width: 100%
+  }
+
+  .pp-summary {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+    max-width: 100%
+  }
+
+  .pp-summary__grupo {
+    width: 100%
+  }
+
+  .pp-summary__txt {
+    max-width: 100%
+  }
+
+  .pp-attr {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+    max-width: 100%
+  }
+
+  .pp-attr__t {
+    width: 100%
+  }
+
+  .pp-attr p {
+    max-width: 100%
+  }
+}
+
+@media (max-width:960px) {
+  .pp-s--nav .pp-menu {
+    display: none
+  }
+
+  .pp-s--nav .pp-menu.is-open {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    position: absolute;
+    top: 100%;
+    left: 16px;
+    right: 16px;
+    border-radius: var(--pp-r);
+    padding: 10px;
+    background: #242424;
+    z-index: 30;
+  }
+
+  .pp-s--nav .pp-burger {
+    display: block
+  }
+
+  .pp-s--nav .pp-nav>.pp-btn {
+    display: none
+  }
+
+  .pp-layer__head,
+  .pp-attr,
+  .pp-s--ilum .pp-cols,
+  .pp-s--form .pp-cols {
+    grid-template-columns: 1fr;
+    gap: 22px
+  }
+
+  .pp-anos__grid {
+    grid-template-columns: 1fr
+  }
+
+  .pp-donuts {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 100%
+  }
+
+  .pp-sent {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%
+  }
+
+  /* Pizza + número formam um bloco alinhado; o parágrafo ocupa a linha inteira embaixo */
+  .pp-summary {
+    grid-template-columns: 1fr;
+    justify-content: flex-start;
+    row-gap: 20px
+  }
+
+  .pp-summary__grupo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: flex-start;
+    max-width: 100%
+  }
+
+  .pp-summary__pie {
+    flex: 0 0 100px;
+    width: 100px;
+    min-width: 100px;
+    height: 100px
+  }
+
+  .pp-summary__val {
+    flex: 1 1 auto;
+    width: auto
+  }
+
+  .pp-summary__txt {
+    grid-column: 1/-1;
+    max-width: 100%;
+    text-align: left
+  }
+
   /* radar: cabe inteiro, sem rolagem. Rótulos maiores e chart um pouco menor
      para abrir espaço para a quebra de linha dos nomes longos. */
-  .pp-radar{margin-top:72px}
-  .pp-radar__svg{left:28%;top:18.96%;width:44%;height:62.04%}   /* 44 x 1,41 */
-  .pp-radar__lb{--k:.82;font-size:11.5px;font-weight:600;color:var(--pp-preto)}
+  .pp-radar {
+    margin-top: 72px
+  }
+
+  .pp-radar__svg {
+    left: 28%;
+    top: 18.96%;
+    width: 44%;
+    height: 62.04%
+  }
+
+  /* 44 x 1,41 */
+  .pp-radar__lb {
+    --k: .82;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--pp-preto)
+  }
+
   /* legenda maior e mais legível no mobile */
-  .pp-legend{gap:18px 20px;font-size:13.5px;margin-top:28px}
-  .pp-legend i{width:14px;height:14px}
-  .pp-legend i.bar{width:30px;height:13px}
-  .pp-legend i.line{width:30px;height:4px}
+  .pp-legend {
+    gap: 18px 20px;
+    font-size: 13.5px;
+    margin-top: 28px
+  }
+
+  .pp-legend i {
+    width: 14px;
+    height: 14px
+  }
+
+  .pp-legend i.bar {
+    width: 30px;
+    height: 13px
+  }
+
+  .pp-legend i.line {
+    width: 30px;
+    height: 4px
+  }
+
   /* ATENÇÃO: este 960px é o par do `media="(max-width: 960px)"` nas <source>
      do <picture class="pp-tatu"> no index.html. Os dois têm de bater.
      Abaixo de 961px o tatu sai do posicionamento absoluto e entra no fluxo,
@@ -1075,25 +2797,52 @@ a:focus-visible,button:focus-visible,input:focus-visible{
   /* zerar as DUAS variáveis: --lane alimentava o recuo antigo e --tatu-w
      alimenta a largura e o margin-left do wrap. Aqui o tatu deixa de ficar à
      direita e passa a vir abaixo do conteúdo, então nenhuma faixa é reservada. */
-  .pp-s--plano{--lane:0px;--tatu-w:0px;display:flex;flex-direction:column;overflow:visible}   /* v3: visible, senão o tatu deitado corta na borda da seção */
+  .pp-s--plano {
+    --lane: 0px;
+    --tatu-w: 0px;
+    display: flex;
+    flex-direction: column;
+    overflow: visible
+  }
+
+  /* v3: visible, senão o tatu deitado corta na borda da seção */
   /* width:100% é obrigatório aqui: o wrap tem margin:0 auto, e num container
      flex em coluna a margem auto no eixo transversal cancela o stretch, fazendo
      o wrap encolher para a largura de conteúdo em vez de preencher a seção. */
-  .pp-s--plano .pp-wrap{order:1;width:100%}
-  .pp-tatu img{
-    order:2;position:static;
-    width:100%;height:auto;max-width:100%;max-height:none;
-    margin:52px 0 -14%;opacity:1;
+  .pp-s--plano .pp-wrap {
+    order: 1;
+    width: 100%
   }
+
+  .pp-tatu img {
+    order: 2;
+    position: static;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: none;
+    margin: 52px 0 -14%;
+    opacity: 1;
+  }
+
   /* a lâmpada fica DEPOIS dos três textos, como no design mobile */
-  .pp-s--ilum .pp-cols picture{order:1}
+  .pp-s--ilum .pp-cols picture {
+    order: 1
+  }
+
   /* lupa é só desktop; a faixa reservada TEM de ser zerada junto, senão a
      margem continua sendo aplicada e esmaga o conteúdo */
-  .pp-lupa{display:none}
+  .pp-lupa {
+    display: none
+  }
+
   /* zerar as DUAS variáveis: --lane alimenta o recuo lateral e --lupa-h a
      margem negativa de compensação. Deixar qualquer uma viva aqui quebra o
      layout mesmo com a lupa escondida. */
-  .pp-s--cam{--lane:0px;--lupa-h:0px}
+  .pp-s--cam {
+    --lane: 0px;
+    --lupa-h: 0px
+  }
 }
 
 /* v3: mantém o tatu no posicionamento de desktop (à direita) até 641px, em
@@ -1102,17 +2851,28 @@ a:focus-visible,button:focus-visible,input:focus-visible{
    restauramos o comportamento de desktop. Abaixo de 641px o tatu deitado
    do bloco acima volta a valer normalmente. Ver breakpoint irmão em
    components/Plano.tsx (as <source> do <picture>). */
-@media (max-width:960px) and (min-width:642px){
-  .pp-s--plano{
-    --tatu-w:min(30vw,400px);
-    --lane:max(0px, calc(656px + var(--tatu-w) + 32px - 50vw));
-    display:block;overflow:hidden;
+@media (max-width:960px) and (min-width:642px) {
+  .pp-s--plano {
+    --tatu-w: min(30vw, 400px);
+    --lane: max(0px, calc(656px + var(--tatu-w) + 32px - 50vw));
+    display: block;
+    overflow: hidden;
   }
-  .pp-s--plano .pp-wrap{width:auto}
-  .pp-tatu img{
-    position:absolute;right:0;bottom:0;
-    height:auto;width:auto;max-height:86%;max-width:var(--tatu-w);
-    margin:0;opacity:1;
+
+  .pp-s--plano .pp-wrap {
+    width: auto
+  }
+
+  .pp-tatu img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    width: auto;
+    max-height: 86%;
+    max-width: var(--tatu-w);
+    margin: 0;
+    opacity: 1;
   }
 }
 
@@ -1121,181 +2881,668 @@ a:focus-visible,button:focus-visible,input:focus-visible{
    O design mobile do Figma NÃO é o desktop reduzido: usa tipografia grande e
    espaçamento generoso. Valores abaixo medidos 1:1 no export de 376px.
    ========================================================================= */
-@media (max-width:640px){
+@media (max-width:640px) {
 
   /* ---- tipografia base ---- */
-  .pp-h1{font-size:32px;line-height:1.1}   /* Dev Mode mobile: 32px */
-  .pp-h2{font-size:32px;line-height:1.2}   /* Dev Mode mobile: 32px */
-  .pp-lead{font-size:16px;line-height:1.3;margin-top:34px}   /* Dev Mode mobile: 16px */
-  .pp-eyebrow{font-size:12px;margin-bottom:38px}
+  .pp-h1 {
+    font-size: 32px;
+    line-height: 1.1
+  }
+
+  /* Dev Mode mobile: 32px */
+  .pp-h2 {
+    font-size: 32px;
+    line-height: 1.2
+  }
+
+  /* Dev Mode mobile: 32px */
+  .pp-lead {
+    font-size: 16px;
+    line-height: 1.3;
+    margin-top: 34px
+  }
+
+  /* Dev Mode mobile: 16px */
+  .pp-eyebrow {
+    font-size: 12px;
+    margin-bottom: 38px
+  }
 
   /* botões voltam a ter largura automática: no design a largura vem do texto,
      e é isso que dá 200px em "Agendar diagnóstico" e 340px no CTA longo */
   /* Todos os CTAs em 16px no mobile. Os seletores por seção abaixo têm
      especificidade maior que .pp-btn, então cada um precisa ser zerado
      explicitamente, senão o valor de desktop sobrevive. */
-  .pp-btn{width:auto;padding:16px 30px;font-size:16px}
-  .pp-btn--full{width:100%}
+  .pp-btn {
+    width: auto;
+    padding: 16px 30px;
+    font-size: 16px
+  }
+
+  .pp-btn--full {
+    width: 100%
+  }
 
   /* ---- hero: respiro bem maior entre os blocos ---- */
-  .pp-s--hero{padding:calc(84px + var(--nav-h)) 0 112px}
-  .pp-s--hero .pp-btn{margin-top:64px}
-  .pp-logo{height:30px}
-  .pp-logo i{width:14px;height:30px}
-  .pp-logo span{font-size:11.5px;line-height:10px}
+  .pp-s--hero {
+    padding: calc(84px + var(--nav-h)) 0 112px
+  }
+
+  .pp-s--hero .pp-btn {
+    margin-top: 64px
+  }
+
+  .pp-logo {
+    height: 30px
+  }
+
+  .pp-logo i {
+    width: 14px;
+    height: 30px
+  }
+
+  .pp-logo span {
+    font-size: 11.5px;
+    line-height: 10px
+  }
 
   /* ---- comparativo ---- */
-  .pp-s--comp{padding:78px 0 90px}
-  .pp-s--comp .pp-sub{font-size:16px;line-height:1.3;margin-top:26px}   /* Dev Mode mobile: 16px */
-  .pp-s--comp .pp-cards{grid-template-columns:1fr;gap:22px;margin-top:40px}
+  .pp-s--comp {
+    padding: 78px 0 90px
+  }
+
+  .pp-s--comp .pp-sub {
+    font-size: 16px;
+    line-height: 1.3;
+    margin-top: 26px
+  }
+
+  /* Dev Mode mobile: 16px */
+  .pp-s--comp .pp-cards {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    margin-top: 40px
+  }
+
   /* Sem override de borda nem de radius: os cartões são independentes, com
      borda completa (#5D5D5D e rosa) e sem arredondamento, igual ao desktop.
      O que existia aqui era resíduo da versão em que os dois cartões dividiam
      uma única divisória vertical. */
-  .pp-card{padding:30px 26px 14px}
+  .pp-card {
+    padding: 30px 26px 14px
+  }
+
   /* título do cartão: maior e centralizado, como no design.
      Sem padding-bottom: o respiro abaixo dele vem do gap de 24 do cartão,
      agora que a divisória é um <hr>. */
-  .pp-card__t{font-size:32px;line-height:1.2;text-align:center}   /* mobile: 32px, igual ao desktop */
-  .pp-card li{font-size:16px;line-height:1.45;padding:26px 0;gap:18px}
-  .pp-card{--ico:30px}
-  .pp-s--comp .pp-kicker{font-size:16px;line-height:1.55;margin-top:46px}
-  .pp-s--comp .pp-btn{margin-top:48px;font-size:16px}
+  .pp-card__t {
+    font-size: 32px;
+    line-height: 1.2;
+    text-align: center
+  }
+
+  /* mobile: 32px, igual ao desktop */
+  .pp-card li {
+    font-size: 16px;
+    line-height: 1.45;
+    padding: 26px 0;
+    gap: 18px
+  }
+
+  .pp-card {
+    --ico: 30px
+  }
+
+  .pp-s--comp .pp-kicker {
+    font-size: 16px;
+    line-height: 1.55;
+    margin-top: 46px
+  }
+
+  .pp-s--comp .pp-btn {
+    margin-top: 48px;
+    font-size: 16px
+  }
 
   /* ---- números: os grandes números são o elemento dominante da tela ---- */
-  .pp-s--num{padding:64px 0 72px}
-  .pp-s--num .pp-h2{font-size:32px;line-height:1.2}
-  .pp-s--num .pp-stats{grid-template-columns:1fr;gap:48px;margin-top:56px}
-  .pp-stat{padding:0}   /* mobile: o respiro vem do gap de 48 da grade */
-  .pp-stat b{font-size:76px;letter-spacing:-.04em}
-  .pp-stat span{font-size:15.5px;margin-top:18px}
-  .pp-s--num .pp-models{font-size:48px;margin-top:60px}   /* mobile: 48px */
+  .pp-s--num {
+    padding: 64px 0 72px
+  }
+
+  .pp-s--num .pp-h2 {
+    font-size: 32px;
+    line-height: 1.2
+  }
+
+  .pp-s--num .pp-stats {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    margin-top: 56px
+  }
+
+  .pp-stat {
+    padding: 0
+  }
+
+  /* mobile: o respiro vem do gap de 48 da grade */
+  .pp-stat b {
+    font-size: 76px;
+    letter-spacing: -.04em
+  }
+
+  .pp-stat span {
+    font-size: 15.5px;
+    margin-top: 18px
+  }
+
+  .pp-s--num .pp-models {
+    font-size: 48px;
+    margin-top: 60px
+  }
+
+  /* mobile: 48px */
   /* sem override de top: o -.8em da regra base já escala com a fonte */
   /* marquee continua, só perde a inclinação para não cortar nas laterais */
-  .pp-s--num .pp-logobar{transform:none;padding:26px 0;border-right-width:0}
-  .pp-marquee{animation-duration:22s}
-  .pp-marquee__row img{height:36px}
+  .pp-s--num .pp-logobar {
+    transform: none;
+    padding: 26px 0;
+    border-right-width: 0
+  }
+
+  .pp-marquee {
+    animation-duration: 22s
+  }
+
+  .pp-marquee__row img {
+    height: 36px
+  }
 
   /* ---- camadas ---- */
-  .pp-s--cam{padding:64px 0 0}
-  .pp-s--cam .pp-sub{font-size:14.5px;line-height:1.6}
-  .pp-s--cam .pp-case{font-size:16px}   /* o espaçamento vem do gap de 48 */
+  .pp-s--cam {
+    padding: 64px 0 0
+  }
+
+  .pp-s--cam .pp-sub {
+    font-size: 14.5px;
+    line-height: 1.6
+  }
+
+  .pp-s--cam .pp-case {
+    font-size: 16px
+  }
+
+  /* o espaçamento vem do gap de 48 */
   /* os <br> dos títulos ajudam no desktop e atrapalham aqui: sem eles o texto
      flui em 3 linhas cheias, como no design, em vez de 4 quebradas */
-  .pp-s--cam .pp-h2 br{display:none}
-  .pp-h2{text-wrap:normal}
-  .pp-layer{padding-top:64px}
-  .pp-layer__head{gap:26px}
-  .pp-layer__title h3{font-size:28px}
-  .pp-layer__title h3 br{display:none}
-  .pp-layer__n{flex:0 0 52px;width:52px;height:52px;font-size:21px}
-  .pp-layer__desc{font-size:14.5px;line-height:1.6}
+  .pp-s--cam .pp-h2 br {
+    display: none
+  }
+
+  .pp-h2 {
+    text-wrap: normal
+  }
+
+  .pp-layer {
+    padding-top: 64px
+  }
+
+  .pp-layer__head {
+    gap: 26px
+  }
+
+  .pp-layer__title h3 {
+    font-size: 28px
+  }
+
+  .pp-layer__title h3 br {
+    display: none
+  }
+
+  .pp-layer__n {
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px;
+    font-size: 21px
+  }
+
+  .pp-layer__desc {
+    font-size: 14.5px;
+    line-height: 1.6
+  }
+
   /* donuts do dobro do tamanho: o viewBox escala junto, então o traço e o
      percentual acompanham sem precisar de outro SVG */
-  .pp-donuts{grid-template-columns:repeat(2,1fr);gap:22px 0}
+  .pp-donuts {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px 0
+  }
+
   /* teto no donut: sem ele o width:100% da regra base dava 271px em 640px */
-  .pp-donut svg{max-width:100px}
+  .pp-donut svg {
+    max-width: 100px
+  }
+
   /* sem tamanho fixo: o width:100% da regra base já dimensiona pela célula */
-  .pp-donut__lb{font-size:16px;min-height:0;margin-bottom:18px}
-  .pp-sent{grid-template-columns:repeat(2,1fr);gap:40px 16px;margin-top:48px}
-  .pp-sent__it svg[role=img]{max-width:100px}   /* teto, como no .pp-donut svg */
-  .pp-sent__lb{font-size:14px;margin-bottom:16px}
-  .pp-sent__lb svg{width:20px;height:20px;flex:0 0 20px}
-  .pp-summary{gap:22px 20px}   /* margin-top 72 vem da regra base */
+  .pp-donut__lb {
+    font-size: 16px;
+    min-height: 0;
+    margin-bottom: 18px
+  }
+
+  .pp-sent {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 16px;
+    margin-top: 48px
+  }
+
+  .pp-sent__it svg[role=img] {
+    max-width: 100px
+  }
+
+  /* teto, como no .pp-donut svg */
+  .pp-sent__lb {
+    font-size: 14px;
+    margin-bottom: 16px
+  }
+
+  .pp-sent__lb svg {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px
+  }
+
+  .pp-summary {
+    gap: 22px 20px
+  }
+
+  /* margin-top 72 vem da regra base */
   /* sem override: 100px + max-width:100% da regra base valem em toda largura */
-  .pp-summary__big{font-size:48px}
-  .pp-summary__lb,.pp-summary__txt{font-size:14.5px;line-height:1.6}
-  .pp-attr{margin-top:56px;gap:26px}
-  .pp-attr__t h4{font-size:26px}
-  .pp-attr__t h4 br{display:none}
-  .pp-attr__ic{flex:0 0 52px;width:52px;height:52px}
-  .pp-attr__ic svg{width:24px;height:24px}
-  .pp-attr p{font-size:14.5px;line-height:1.6}
+  .pp-summary__big {
+    font-size: 48px
+  }
+
+  .pp-summary__lb,
+  .pp-summary__txt {
+    font-size: 14.5px;
+    line-height: 1.6
+  }
+
+  .pp-attr {
+    margin-top: 56px;
+    gap: 26px
+  }
+
+  .pp-attr__t h4 {
+    font-size: 26px
+  }
+
+  .pp-attr__t h4 br {
+    display: none
+  }
+
+  .pp-attr__ic {
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px
+  }
+
+  .pp-attr__ic svg {
+    width: 100%;
+    height: 100%
+  }
+
+  .pp-attr p {
+    font-size: 14.5px;
+    line-height: 1.6
+  }
+
   /* legenda empilhada, como no design mobile */
-  .pp-legend{margin-top:34px;flex-direction:row;align-items:center;justify-content:center;gap:12px 20px}
+  .pp-legend {
+    margin-top: 34px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px 20px
+  }
 
   /* ---- CTA / plano / ilumine ---- */
-  .pp-s--cta{padding:96px 17px 104px;margin-top:60px}   /* 75 -> 17 no mobile */
-  .pp-s--cta .pp-h2{font-size:32px}
+  .pp-s--cta {
+    padding: 96px 17px 104px;
+    margin-top: 60px
+  }
+
+  /* 75 -> 17 no mobile */
+  .pp-s--cta .pp-h2 {
+    font-size: 32px
+  }
 
   /* ---- plano de ação: tudo centralizado (o tatu no fluxo já vem do <=960) ---- */
-  .pp-s--plano{padding:80px 0 0;text-align:center}
-  .pp-s--plano .pp-h2{font-size:32px;line-height:1.2;max-width:100%}
-  .pp-s--plano .pp-acc,.pp-s--plano .pp-final{max-width:100%}
-  .pp-s--plano .pp-sub,.pp-s--plano .pp-sub2{font-size:14.5px;line-height:1.6;max-width:100%}
-  .pp-s--plano .pp-acc{margin-top:58px}
-  .pp-acc__bt{font-size:15.5px;padding:32px 22px;text-align:left}
-  .pp-acc__bt svg{flex:0 0 22px;width:22px;height:22px}
-  .pp-acc__pn{font-size:14.5px;padding:0 22px 24px;text-align:left}
-  .pp-s--plano .pp-final{font-size:15.5px;margin-top:50px}
-  .pp-s--plano .pp-btn{margin-top:44px}
-  .pp-tatu img{margin:58px 0 -14%}
+  .pp-s--plano {
+    padding: 80px 0 0;
+    text-align: center
+  }
+
+  .pp-s--plano .pp-h2 {
+    font-size: 32px;
+    line-height: 1.2;
+    max-width: 100%
+  }
+
+  .pp-s--plano .pp-acc,
+  .pp-s--plano .pp-final {
+    max-width: 100%
+  }
+
+  .pp-s--plano .pp-sub,
+  .pp-s--plano .pp-sub2 {
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 100%
+  }
+
+  .pp-s--plano .pp-acc {
+    margin-top: 58px
+  }
+
+  .pp-acc__bt {
+    font-size: 15.5px;
+    padding: 32px 22px;
+    text-align: left
+  }
+
+  .pp-acc__bt svg {
+    flex: 0 0 22px;
+    width: 22px;
+    height: 22px
+  }
+
+  .pp-acc__pn {
+    font-size: 14.5px;
+    padding: 0 22px 24px;
+    text-align: left
+  }
+
+  .pp-s--plano .pp-final {
+    font-size: 15.5px;
+    margin-top: 50px
+  }
+
+  .pp-s--plano .pp-btn {
+    margin-top: 44px
+  }
+
+  .pp-tatu img {
+    margin: 58px 0 0;
+  }
+
   /* "Plano de ação" fica na primeira linha, como no design */
-  .pp-s--plano .pp-h2 .pp-rosa{white-space:nowrap}
-  .pp-s--plano .pp-btn{width:100%;max-width:320px;font-size:16px;padding:18px 30px}
-  .pp-s--ilum{padding:64px 0 72px}
-  .pp-s--ilum .pp-sub{font-size:14.5px;line-height:1.6}
-  .pp-s--ilum .pp-cols{gap:44px;margin-top:52px}
-  .pp-s--ilum .pp-cols>div:not(.pp-lampada){padding:0}
-  .pp-lampada{width:min(100%,300px)}
-  .pp-s--ilum .pp-item h3{font-size:22px}
-  .pp-s--ilum .pp-item p{font-size:14.5px;line-height:1.65}
+  .pp-s--plano .pp-h2 .pp-rosa {
+    white-space: nowrap
+  }
+
+  .pp-s--plano .pp-btn {
+    width: 100%;
+    max-width: 320px;
+    font-size: 16px;
+    padding: 18px 30px
+  }
+
+  .pp-s--ilum {
+    padding: 64px 0 72px
+  }
+
+  .pp-s--ilum .pp-sub {
+    font-size: 14.5px;
+    line-height: 1.6
+  }
+
+  .pp-s--ilum .pp-cols {
+    gap: 44px;
+    margin-top: 52px
+  }
+
+  .pp-s--ilum .pp-cols>div:not(.pp-lampada) {
+    padding: 0
+  }
+
+  .pp-lampada {
+    width: min(100%, 300px)
+  }
+
+  .pp-s--ilum .pp-item h3 {
+    font-size: 22px
+  }
+
+  .pp-s--ilum .pp-item p {
+    font-size: 14.5px;
+    line-height: 1.65
+  }
 
   /* ---- prova social / FAQ / formulário ---- */
-  .pp-s--prova{padding:64px 0 80px}
-  .pp-s--prova .pp-sub{font-size:14.5px;line-height:1.6}
-  .pp-s--prova .pp-clients{margin-top:52px}
-  .pp-s--prova .pp-clients li{width:118px;height:34px;flex:0 0 118px}
-  .pp-marquee--clientes .pp-marquee__row{gap:44px}
-  .pp-marquee--clientes{gap:44px}
+  .pp-s--prova {
+    padding: 64px 0 80px
+  }
+
+  .pp-s--prova .pp-sub {
+    font-size: 14.5px;
+    line-height: 1.6
+  }
+
+  .pp-s--prova .pp-clients {
+    margin-top: 52px
+  }
+
+  .pp-s--prova .pp-clients li {
+    width: 118px;
+    height: 34px;
+    flex: 0 0 118px
+  }
+
+  .pp-marquee--clientes .pp-marquee__row {
+    gap: 44px
+  }
+
+  .pp-marquee--clientes {
+    gap: 44px
+  }
+
   /* card mais largo: a 74% o texto quebrava em 7 linhas curtas.
      A 90% sobra só uma prévia do card seguinte, que é o que indica arrasto. */
-  .pp-carousel{margin-top:36px}
-  .pp-carousel__track{gap:24px}
-  .pp-quote{flex:0 0 90%;padding:26px 24px 18px}
-  .pp-quote p{font-size:16px;line-height:1.55;margin-bottom:20px}
-  .pp-quote__who{padding-top:16px;gap:14px}
-  .pp-quote__who img{width:44px;height:44px;flex:0 0 44px}   /* menor que os 48 do desktop */
-  .pp-quote__who strong{font-size:16px}
-  .pp-quote__who span{font-size:16px}
-  .pp-dots{margin-top:22px;gap:6px}
-  .pp-dots button{width:18px;height:3px}
-  .pp-anos{padding:28px 24px}   /* com borda, o padding 0 encostava o texto nela */
-  .pp-anos .pp-h2{font-size:32px;line-height:1.2}
-  .pp-anos__sub{font-size:14.5px}   /* sem margin-top: soma ao gap 56 do flex */
-  .pp-anos__grid{gap:26px}   /* sem margin-top: soma ao gap 56 do flex */
-  .pp-anos__it{padding:30px 28px 34px}
-  .pp-anos__ic{width:58px;height:58px;border-radius:0;margin-bottom:34px}
-  .pp-anos__ic svg{width:28px;height:28px}
-  .pp-anos__it h3{font-size:26px;line-height:1.22;margin-bottom:20px}
-  .pp-anos__it p{font-size:14.5px;line-height:1.62}
-  .pp-faq{margin-top:76px}
-  .pp-faq__sub{font-size:14px}
-  .pp-faq__bt{font-size:20px;padding:0}
-  .pp-faq__pn{font-size:16px;padding:0}
-  .pp-s--form{padding:72px 0 80px}
-  .pp-s--form .pp-h2{font-size:32px;line-height:1.2}
-  .pp-s--form .pp-sub{font-size:14.5px;line-height:1.6;max-width:100%;margin-top:28px}
-  .pp-s--form .pp-cols{gap:44px}
-  .pp-form{padding:28px 24px 32px}
-  .pp-form input{padding:15px 16px;font-size:16px}
-  .pp-form label{font-size:13.5px}
-  .pp-s--foot p{font-size:13px}
+  .pp-carousel {
+    margin-top: 36px
+  }
+
+  .pp-carousel__track {
+    gap: 24px
+  }
+
+  .pp-quote {
+    flex: 0 0 90%;
+    padding: 26px 24px 18px
+  }
+
+  .pp-quote p {
+    font-size: 16px;
+    line-height: 1.55;
+    margin-bottom: 20px
+  }
+
+  .pp-quote__who {
+    padding-top: 16px;
+    gap: 14px
+  }
+
+  .pp-quote__who img {
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px
+  }
+
+  /* menor que os 48 do desktop */
+  .pp-quote__who strong {
+    font-size: 16px
+  }
+
+  .pp-quote__who span {
+    font-size: 16px
+  }
+
+  .pp-dots {
+    margin-top: 22px;
+    gap: 6px
+  }
+
+  .pp-dots button {
+    width: 18px;
+    height: 3px
+  }
+
+  .pp-anos {
+    padding: 28px 24px
+  }
+
+  /* com borda, o padding 0 encostava o texto nela */
+  .pp-anos .pp-h2 {
+    font-size: 32px;
+    line-height: 1.2
+  }
+
+  .pp-anos__sub {
+    font-size: 14.5px
+  }
+
+  /* sem margin-top: soma ao gap 56 do flex */
+  .pp-anos__grid {
+    gap: 26px
+  }
+
+  /* sem margin-top: soma ao gap 56 do flex */
+  .pp-anos__it {
+    padding: 30px 28px 34px
+  }
+
+  .pp-anos__ic {
+    width: 58px;
+    height: 58px;
+    border-radius: 0;
+    margin-bottom: 34px
+  }
+
+  .pp-anos__ic svg {
+    width: 28px;
+    height: 28px
+  }
+
+  .pp-anos__it h3 {
+    font-size: 26px;
+    line-height: 1.22;
+    margin-bottom: 20px
+  }
+
+  .pp-anos__it p {
+    font-size: 14.5px;
+    line-height: 1.62
+  }
+
+  .pp-faq {
+    margin-top: 76px
+  }
+
+  .pp-faq__sub {
+    font-size: 14px
+  }
+
+  .pp-faq__bt {
+    font-size: 20px;
+    padding: 0
+  }
+
+  .pp-faq__pn {
+    font-size: 16px;
+    padding: 0
+  }
+
+  .pp-s--form {
+    padding: 72px 0 80px
+  }
+
+  .pp-s--form .pp-h2 {
+    font-size: 32px;
+    line-height: 1.2
+  }
+
+  .pp-s--form .pp-sub {
+    font-size: 14.5px;
+    line-height: 1.6;
+    max-width: 100%;
+    margin-top: 28px
+  }
+
+  .pp-s--form .pp-cols {
+    gap: 44px
+  }
+
+  .pp-form {
+    padding: 28px 24px 32px
+  }
+
+  .pp-form input {
+    padding: 15px 16px;
+    font-size: 16px
+  }
+
+  .pp-form label {
+    font-size: 13.5px
+  }
+
+  .pp-s--foot p {
+    font-size: 13px
+  }
 }
 
 /* telas muito estreitas: aproxima mais os rótulos e reduz a fonte, senão
    "Operacional" (74px) não cabe nos 71px disponíveis e quebra em 3 linhas */
-@media (max-width:380px){
-  .pp-radar__svg{left:29%;top:20.39%;width:42%;height:59.22%}   /* 42 x 1,41 */
-  .pp-radar__lb{--k:.78;font-size:11px}
+@media (max-width:380px) {
+  .pp-radar__svg {
+    left: 29%;
+    top: 20.39%;
+    width: 42%;
+    height: 59.22%
+  }
+
+  /* 42 x 1,41 */
+  .pp-radar__lb {
+    --k: .78;
+    font-size: 11px
+  }
 }
 
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
+@media (prefers-reduced-motion:reduce) {
+  html {
+    scroll-behavior: auto
+  }
+
   /* quem pede menos movimento abre e fecha na hora, sem transição */
-  .pp-acc__pn,.pp-faq__pn,.pp-acc__bt .pp-ic-v,.pp-faq__bt .pp-ic-v{transition:none}
-  .pp-btn:hover{transform:none}
-  .pp-carousel__track{scroll-behavior:auto}
-  .pp-lupa img{animation:none}
-  .pp-marquee{animation:none}
+  .pp-acc__pn,
+  .pp-faq__pn,
+  .pp-acc__bt .pp-ic-v,
+  .pp-faq__bt .pp-ic-v {
+    transition: none
+  }
+
+  .pp-btn:hover {
+    transform: none
+  }
+
+  .pp-carousel__track {
+    scroll-behavior: auto
+  }
+
+  .pp-lupa img {
+    animation: none
+  }
+
+  .pp-marquee {
+    animation: none
+  }
 }
