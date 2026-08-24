@@ -154,30 +154,71 @@ export default function DiagnosticoDeGeo() {
     }
     if (burger && menu) burger.addEventListener('click', onBurgerClick);
 
-    // ---------- carrossel de depoimentos ----------
-    // Um ponto por depoimento, não por "página" calculada: a conta antiga
-    // (scrollWidth/clientWidth) gerava 4 pontos para 3 cards em algumas larguras.
+    // ---------- carrossel de depoimentos (loop infinito contínuo) ----------
     const track = document.getElementById('pp-track');
     const dots = document.getElementById('pp-dots');
     let onDotsClick: ((e: MouseEvent) => void) | undefined;
-    let marcar: (() => void) | undefined;
+    let onScroll: (() => void) | undefined;
     let cards: HTMLElement[] = [];
+    const TOTAL_UNIQUE = 3;
+
     if (track && dots) {
       cards = Array.prototype.slice.call(track.querySelectorAll('.pp-quote'));
-      dots.innerHTML = cards
-        .map((_, i) => `<button type="button" aria-label="Ir para o depoimento ${i + 1}"${i === 0 ? ' aria-current="true"' : ''}></button>`)
+
+      // Renderiza exatamente 3 pontos de navegação
+      dots.innerHTML = Array.from({ length: TOTAL_UNIQUE })
+        .map(
+          (_, i) =>
+            `<button type="button" aria-label="Ir para o depoimento ${i + 1}"${i === 0 ? ' aria-current="true"' : ''}></button>`
+        )
         .join('');
 
-      onDotsClick = (e: MouseEvent) => {
-        const b = (e.target as HTMLElement).closest('button');
-        if (!b) return;
-        const i = Array.prototype.indexOf.call(dots.children, b);
-        if (cards[i]) track.scrollTo({ left: cards[i].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+      const getSetWidth = () => {
+        if (cards.length >= TOTAL_UNIQUE * 2 && cards[TOTAL_UNIQUE] && cards[0]) {
+          return cards[TOTAL_UNIQUE].offsetLeft - cards[0].offsetLeft;
+        }
+        return 0;
       };
-      dots.addEventListener('click', onDotsClick);
 
-      marcar = () => {
-        // o card ativo é o que está mais próximo da borda esquerda visível
+      // Inicializa na posição do conjunto do meio
+      if (cards[TOTAL_UNIQUE]) {
+        track.scrollLeft = cards[TOTAL_UNIQUE].offsetLeft - track.offsetLeft;
+      }
+
+      let isAdjusting = false;
+
+      const ajustarLoopInfinito = () => {
+        if (isAdjusting || cards.length < TOTAL_UNIQUE * 3) return;
+        const sw = getSetWidth();
+        if (sw <= 0) return;
+
+        const maxThreshold = sw * 1.9;
+        const minThreshold = sw * 0.4;
+
+        if (track.scrollLeft >= maxThreshold) {
+          isAdjusting = true;
+          track.style.scrollSnapType = 'none';
+          track.style.scrollBehavior = 'auto';
+          track.scrollLeft -= sw;
+          requestAnimationFrame(() => {
+            track.style.scrollSnapType = '';
+            track.style.scrollBehavior = '';
+            isAdjusting = false;
+          });
+        } else if (track.scrollLeft <= minThreshold) {
+          isAdjusting = true;
+          track.style.scrollSnapType = 'none';
+          track.style.scrollBehavior = 'auto';
+          track.scrollLeft += sw;
+          requestAnimationFrame(() => {
+            track.style.scrollSnapType = '';
+            track.style.scrollBehavior = '';
+            isAdjusting = false;
+          });
+        }
+      };
+
+      const marcarAtivo = () => {
         const alvo = track.scrollLeft;
         let melhor = 0;
         let dist = Infinity;
@@ -188,13 +229,32 @@ export default function DiagnosticoDeGeo() {
             melhor = i;
           }
         });
+        const activeDotIndex = melhor % TOTAL_UNIQUE;
         Array.prototype.forEach.call(dots.children, (b: HTMLElement, j: number) => {
-          if (j === melhor) b.setAttribute('aria-current', 'true');
+          if (j === activeDotIndex) b.setAttribute('aria-current', 'true');
           else b.removeAttribute('aria-current');
         });
       };
-      track.addEventListener('scroll', marcar, { passive: true });
-      window.addEventListener('resize', marcar);
+
+      onScroll = () => {
+        ajustarLoopInfinito();
+        marcarAtivo();
+      };
+
+      onDotsClick = (e: MouseEvent) => {
+        const b = (e.target as HTMLElement).closest('button');
+        if (!b) return;
+        const dotIndex = Array.prototype.indexOf.call(dots.children, b);
+        const targetCard = cards[TOTAL_UNIQUE + dotIndex];
+        if (targetCard) {
+          track.scrollTo({ left: targetCard.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+        }
+      };
+
+      dots.addEventListener('click', onDotsClick);
+      track.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      marcarAtivo();
     }
 
     return () => {
@@ -212,9 +272,9 @@ export default function DiagnosticoDeGeo() {
       if (burger && menu) burger.removeEventListener('click', onBurgerClick);
       if (track && dots) {
         if (onDotsClick) dots.removeEventListener('click', onDotsClick);
-        if (marcar) {
-          track.removeEventListener('scroll', marcar);
-          window.removeEventListener('resize', marcar);
+        if (onScroll) {
+          track.removeEventListener('scroll', onScroll);
+          window.removeEventListener('resize', onScroll);
         }
       }
     };
