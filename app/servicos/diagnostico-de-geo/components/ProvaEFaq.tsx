@@ -111,50 +111,44 @@ export function ProvaEFaq() {
 
           <div className="pp-carousel">
             <div className="pp-carousel__track" id="pp-track">
-              {[1, 2, 3].map((group) => (
-                <Fragment key={group}>
-                  <figure className="pp-quote">
-                    <p>
-                      O Doug construiu uma trajetória marcante que vai do Brasil ao Reino Unido, e confiou na Papoca ao
-                      longo de sua passagem por empresas como <b>Agendor, Zendesk, Intercom e Stenn.</b>
-                    </p>
-                    <figcaption className="pp-quote__who">
-                      <img src={`${ASSETS}/avatar-1.jpg`} alt="" width={48} height={48} loading="lazy" />
-                      <span>
-                        <strong>Douglas da Silva</strong>
-                        <span>Gerente de marketing sênior</span>
-                      </span>
-                    </figcaption>
-                  </figure>
-                  <figure className="pp-quote">
-                    <p>
-                      A Dani liderou equipes de marketing em três empresas diferentes, <b>Siteware, Blaq e Convenia</b>, e
-                      chamou a Papoca pra apoiá-la em todas elas.
-                    </p>
-                    <figcaption className="pp-quote__who">
-                      <img src={`${ASSETS}/avatar-2.jpg`} alt="" width={48} height={48} loading="lazy" />
-                      <span>
-                        <strong>Daniella Doyle</strong>
-                        <span>Gerente de marketing sênior</span>
-                      </span>
-                    </figcaption>
-                  </figure>
-                  <figure className="pp-quote">
-                    {/* TODO: texto cortado no export do Figma. Completar. */}
-                    <p>
-                      O Hugo iniciou <b>[texto cortado no export]</b> colaborar com <b>[…]</b> nos convidou <b>[…]</b>{' '}
-                      <b>internacionais</b>.
-                    </p>
-                    <figcaption className="pp-quote__who">
-                      <img src={`${ASSETS}/avatar-3.jpg`} alt="" width={48} height={48} loading="lazy" />
-                      <span>
-                        <strong>Hugo Genaro</strong>
-                        <span>Head de marketing</span>
-                      </span>
-                    </figcaption>
-                  </figure>
-                </Fragment>
-              ))}
+              <figure className="pp-quote">
+                <p>
+                  O Doug construiu uma trajetória marcante que vai do Brasil ao Reino Unido, e confiou na Papoca ao
+                  longo de sua passagem por empresas como <b>Agendor, Zendesk, Intercom e Stenn.</b>
+                </p>
+                <figcaption className="pp-quote__who">
+                  <img src={`${ASSETS}/avatar-1.jpg`} alt="" width={48} height={48} loading="lazy" />
+                  <span>
+                    <strong>Douglas da Silva</strong>
+                    <span>Gerente de marketing sênior</span>
+                  </span>
+                </figcaption>
+              </figure>
+              <figure className="pp-quote">
+                <p>
+                  A Dani liderou equipes de marketing em três empresas diferentes, <b>Siteware, Blaq e Convenia</b>, e
+                  chamou a Papoca pra apoiá-la em todas elas.
+                </p>
+                <figcaption className="pp-quote__who">
+                  <img src={`${ASSETS}/avatar-2.jpg`} alt="" width={48} height={48} loading="lazy" />
+                  <span>
+                    <strong>Daniella Doyle</strong>
+                    <span>Gerente de marketing sênior</span>
+                  </span>
+                </figcaption>
+              </figure>
+              <figure className="pp-quote">
+                <p>
+                  O Hugo inicialmente confiou na Papoca para colaborar com a <b>Zoop</b> e, posteriormente, nos convidou para atuar em <b>cinco projetos internacionais da Betsson.</b>
+                </p>
+                <figcaption className="pp-quote__who">
+                  <img src={`${ASSETS}/avatar-3.jpg`} alt="" width={48} height={48} loading="lazy" />
+                  <span>
+                    <strong>Hugo Genaro</strong>
+                    <span>Head de marketing</span>
+                  </span>
+                </figcaption>
+              </figure>
             </div>
             <div className="pp-dots" id="pp-dots"></div>
           </div>

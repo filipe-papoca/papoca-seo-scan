@@ -154,107 +154,97 @@ export default function DiagnosticoDeGeo() {
     }
     if (burger && menu) burger.addEventListener('click', onBurgerClick);
 
-    // ---------- carrossel de depoimentos (loop infinito contínuo) ----------
+    // ---------- carrossel de depoimentos ----------
     const track = document.getElementById('pp-track');
     const dots = document.getElementById('pp-dots');
     let onDotsClick: ((e: MouseEvent) => void) | undefined;
     let onScroll: (() => void) | undefined;
-    let cards: HTMLElement[] = [];
-    const TOTAL_UNIQUE = 3;
+    let onResize: (() => void) | undefined;
 
     if (track && dots) {
-      cards = Array.prototype.slice.call(track.querySelectorAll('.pp-quote'));
-
-      // Renderiza exatamente 3 pontos de navegação
-      dots.innerHTML = Array.from({ length: TOTAL_UNIQUE })
-        .map(
-          (_, i) =>
-            `<button type="button" aria-label="Ir para o depoimento ${i + 1}"${i === 0 ? ' aria-current="true"' : ''}></button>`
-        )
-        .join('');
-
-      const getSetWidth = () => {
-        if (cards.length >= TOTAL_UNIQUE * 2 && cards[TOTAL_UNIQUE] && cards[0]) {
-          return cards[TOTAL_UNIQUE].offsetLeft - cards[0].offsetLeft;
-        }
-        return 0;
-      };
-
-      // Inicializa na posição do conjunto do meio
-      if (cards[TOTAL_UNIQUE]) {
-        track.scrollLeft = cards[TOTAL_UNIQUE].offsetLeft - track.offsetLeft;
-      }
-
-      let isAdjusting = false;
-
-      const ajustarLoopInfinito = () => {
-        if (isAdjusting || cards.length < TOTAL_UNIQUE * 3) return;
-        const sw = getSetWidth();
-        if (sw <= 0) return;
-
-        const maxThreshold = sw * 1.9;
-        const minThreshold = sw * 0.4;
-
-        if (track.scrollLeft >= maxThreshold) {
-          isAdjusting = true;
-          track.style.scrollSnapType = 'none';
-          track.style.scrollBehavior = 'auto';
-          track.scrollLeft -= sw;
-          requestAnimationFrame(() => {
-            track.style.scrollSnapType = '';
-            track.style.scrollBehavior = '';
-            isAdjusting = false;
-          });
-        } else if (track.scrollLeft <= minThreshold) {
-          isAdjusting = true;
-          track.style.scrollSnapType = 'none';
-          track.style.scrollBehavior = 'auto';
-          track.scrollLeft += sw;
-          requestAnimationFrame(() => {
-            track.style.scrollSnapType = '';
-            track.style.scrollBehavior = '';
-            isAdjusting = false;
-          });
-        }
-      };
+      const cards = Array.prototype.slice.call(track.querySelectorAll('.pp-quote')) as HTMLElement[];
 
       const marcarAtivo = () => {
-        const alvo = track.scrollLeft;
-        let melhor = 0;
-        let dist = Infinity;
-        cards.forEach((c, i) => {
-          const d = Math.abs(c.offsetLeft - track.offsetLeft - alvo);
-          if (d < dist) {
-            dist = d;
-            melhor = i;
-          }
-        });
-        const activeDotIndex = melhor % TOTAL_UNIQUE;
-        Array.prototype.forEach.call(dots.children, (b: HTMLElement, j: number) => {
-          if (j === activeDotIndex) b.setAttribute('aria-current', 'true');
-          else b.removeAttribute('aria-current');
-        });
+        const totalDots = dots.children.length;
+        if (totalDots === 0) return;
+
+        if (totalDots === 2) {
+          const maxScroll = track.scrollWidth - track.clientWidth;
+          if (maxScroll <= 0) return;
+          const ratio = track.scrollLeft / maxScroll;
+          const activeIndex = ratio > 0.5 ? 1 : 0;
+          Array.prototype.forEach.call(dots.children, (b: HTMLElement, j: number) => {
+            if (j === activeIndex) b.setAttribute('aria-current', 'true');
+            else b.removeAttribute('aria-current');
+          });
+        } else {
+          // Mobile: 3 cards
+          const alvo = track.scrollLeft;
+          let melhor = 0;
+          let dist = Infinity;
+          cards.forEach((c, i) => {
+            const d = Math.abs(c.offsetLeft - track.offsetLeft - alvo);
+            if (d < dist) {
+              dist = d;
+              melhor = i;
+            }
+          });
+          Array.prototype.forEach.call(dots.children, (b: HTMLElement, j: number) => {
+            if (j === melhor) b.setAttribute('aria-current', 'true');
+            else b.removeAttribute('aria-current');
+          });
+        }
+      };
+
+      const updatePagination = () => {
+        // No desktop (onde 2 cards aparecem lado a lado): 2 bullets
+        // No mobile (onde 1 card ocupa a largura): 3 bullets
+        const isMobile = window.innerWidth <= 640;
+        const numBullets = isMobile ? 3 : 2;
+
+        dots.innerHTML = Array.from({ length: numBullets })
+          .map(
+            (_, i) =>
+              `<button type="button" aria-label="Ir para a página ${i + 1}"${i === 0 ? ' aria-current="true"' : ''}></button>`
+          )
+          .join('');
+
+        marcarAtivo();
       };
 
       onScroll = () => {
-        ajustarLoopInfinito();
         marcarAtivo();
+      };
+
+      onResize = () => {
+        updatePagination();
       };
 
       onDotsClick = (e: MouseEvent) => {
         const b = (e.target as HTMLElement).closest('button');
         if (!b) return;
         const dotIndex = Array.prototype.indexOf.call(dots.children, b);
-        const targetCard = cards[TOTAL_UNIQUE + dotIndex];
-        if (targetCard) {
-          track.scrollTo({ left: targetCard.offsetLeft - track.offsetLeft, behavior: 'smooth' });
+        const totalDots = dots.children.length;
+
+        if (totalDots === 2) {
+          // Desktop:
+          // Bullet 0: rola para o início (left: 0 -> mostra Doug e Dani)
+          // Bullet 1: rola para o final (mostra Dani e Hugo)
+          const maxScroll = track.scrollWidth - track.clientWidth;
+          const targetLeft = dotIndex === 0 ? 0 : maxScroll;
+          track.scrollTo({ left: targetLeft, behavior: 'smooth' });
+        } else {
+          // Mobile:
+          if (cards[dotIndex]) {
+            track.scrollTo({ left: cards[dotIndex].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+          }
         }
       };
 
       dots.addEventListener('click', onDotsClick);
       track.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', onScroll);
-      marcarAtivo();
+      window.addEventListener('resize', onResize);
+      updatePagination();
     }
 
     return () => {
@@ -272,10 +262,8 @@ export default function DiagnosticoDeGeo() {
       if (burger && menu) burger.removeEventListener('click', onBurgerClick);
       if (track && dots) {
         if (onDotsClick) dots.removeEventListener('click', onDotsClick);
-        if (onScroll) {
-          track.removeEventListener('scroll', onScroll);
-          window.removeEventListener('resize', onScroll);
-        }
+        if (onScroll) track.removeEventListener('scroll', onScroll);
+        if (onResize) window.removeEventListener('resize', onResize);
       }
     };
   }, []);

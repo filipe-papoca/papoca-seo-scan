@@ -2221,20 +2221,22 @@ input:focus-visible {
   margin-top: 32px
 }
 
-/* Figma: gap 32 antes dos pontos */
-/* v3: modelo de linha em vez de bolinha — evita problemas de contraste */
+/* v3: bullets circulares com borda rosa */
 .pp-dots button {
-  width: 24px;
-  height: 3px;
+  width: 10px;
+  height: 10px;
   padding: 0;
-  border: 0;
-  border-radius: 2px;
-  background: var(--pp-cinza-claro);
-  transition: background-color .2s ease;
+  border-radius: 100px;
+  border: 1px solid var(--pp-rosa);
+  background: #fff;
+  box-sizing: border-box;
+  transition: background-color .2s ease, transform .2s ease, border-color .2s ease;
 }
 
 .pp-dots button[aria-current="true"] {
-  background: var(--pp-rosa)
+  background: var(--pp-rosa);
+  border-color: var(--pp-rosa);
+  transform: scale(1.2);
 }
 
 /* card 11 anos */
