@@ -2920,8 +2920,13 @@ input:focus-visible {
   }
 
   /* a lâmpada fica DEPOIS dos três textos, como no design mobile */
-  .pp-s--ilum .pp-cols picture {
+  .pp-s--ilum .pp-cols>div:not(.pp-lampada) {
     order: 1
+  }
+
+  .pp-s--ilum .pp-cols .pp-lampada {
+    order: 2;
+    width: min(100%, 240px)
   }
 
   /* lupa é só desktop; a faixa reservada TEM de ser zerada junto, senão a
@@ -3406,7 +3411,7 @@ input:focus-visible {
   }
 
   .pp-lampada {
-    width: min(100%, 300px)
+    width: min(100%, 190px)
   }
 
   .pp-s--ilum .pp-item h3 {
