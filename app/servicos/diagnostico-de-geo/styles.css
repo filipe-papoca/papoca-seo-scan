@@ -48,12 +48,12 @@
   --ls-h2: -.03em;
   --ls-corpo: -.02em;
 
-  /* Container com 1312px de largura máxima total, incluindo os paddings laterais */
-  --pp-max: 1312px;
+  /* Container com 1140px de largura máxima total, incluindo os paddings laterais */
+  --pp-max: 1140px;
   --pp-r: 8px;
 
   /* ---- grade de 12 colunas ----
-     Fecha exata em 1312: 12 x 80px de coluna + 11 x 32px de gutter.
+     Fecha exata no container de 1140px.
      Use --cN para largura de N colunas em vez de números soltos. */
   --col: 80px;
   --gut: 32px;
@@ -67,8 +67,8 @@
   --c8: 864px;
   --c9: 976px;
   --c10: 1088px;
-  --c11: 1200px;
-  --c12: 1312px;
+  --c11: 1140px;
+  --c12: 1140px;
 }
 
 /* ---------- reset mínimo ---------- */
@@ -249,29 +249,43 @@ input:focus-visible {
 /* ---------- botões ---------- */
 .pp-btn {
   display: inline-block;
-  border: 0;
+  border: 2px solid transparent;
   border-radius: 0;
   /* CTAs sem arredondamento */
   padding: 15px 30px;
   font-size: 15px;
   font-weight: 700;
   text-decoration: none;
-  transition: transform .15s ease, filter .15s ease;
+  transition: transform .15s ease, background-color .15s ease, color .15s ease, border-color .15s ease;
+  box-sizing: border-box;
 }
 
 .pp-btn:hover {
   transform: translateY(-1px);
-  filter: brightness(1.07)
 }
 
 .pp-btn--rosa {
   background: var(--pp-rosa);
-  color: #fff
+  border-color: var(--pp-rosa);
+  color: #fff;
+}
+
+.pp-btn--rosa:hover {
+  background: transparent;
+  border-color: var(--pp-rosa);
+  color: var(--pp-rosa);
 }
 
 .pp-btn--preto {
   background: var(--pp-preto);
-  color: #fff
+  border-color: var(--pp-preto);
+  color: #fff;
+}
+
+.pp-btn--preto:hover {
+  background: transparent;
+  border-color: var(--pp-preto);
+  color: var(--pp-preto);
 }
 
 .pp-btn--full {
@@ -318,12 +332,12 @@ input:focus-visible {
 /* No topo o menu ocupa a largura cheia; ao rolar encolhe para o container de
    1312 (1346 com o padding). A transição acompanha a do fundo do header. */
 .pp-s--nav .pp-wrap {
-  max-width: 1612px;
-  transition: max-width .32s cubic-bezier(.4, 0, .2, 1)
+  max-width: 100%;
+  transition: max-width .32s cubic-bezier(.4, 0, .2, 1);
 }
 
 .pp-s--nav.is-rolado .pp-wrap {
-  max-width: var(--pp-max)
+  max-width: var(--pp-max);
 }
 
 :root {
@@ -409,20 +423,25 @@ input:focus-visible {
   font-weight: 400;
 }
 
-/* CTA do header: 44px de altura, padding 14/24, borda branca, sem radius */
+/* CTA do header: 44px de altura, padding 14/24, sem radius */
 .pp-s--nav .pp-btn {
   display: flex;
   align-items: center;
   height: 44px;
   padding: 14px 24px;
-  border: 0;
+  border: 2px solid var(--pp-rosa);
   border-radius: 0;
-  /* v3: sem borda branca */
   background: var(--pp-rosa);
   color: var(--pp-branco);
   font-size: 16px;
   font-weight: 700;
   line-height: 1;
+}
+
+.pp-s--nav .pp-btn:hover {
+  background: transparent;
+  color: var(--pp-rosa);
+  border-color: var(--pp-rosa);
 }
 
 .pp-s--nav .pp-burger {
@@ -530,7 +549,13 @@ input:focus-visible {
 }
 
 .pp-s--hero .pp-btn {
-  margin-top: 80px
+  margin-top: 80px;
+}
+
+.pp-s--hero .pp-btn:hover {
+  background: transparent;
+  color: var(--pp-rosa);
+  border-color: var(--pp-rosa);
 }
 
 /* Figma: gap 80 */
@@ -721,12 +746,20 @@ input:focus-visible {
   align-items: center;
   gap: 10px;
   padding: 18px 32px;
+  background: var(--pp-rosa);
+  border: 2px solid var(--pp-rosa);
   color: var(--pp-branco);
   font-size: 24px;
   font-weight: 700;
   line-height: 1;
   letter-spacing: -.04em;
   /* -0.96px em 24px */
+}
+
+.pp-s--comp .pp-btn:hover {
+  background: transparent;
+  color: var(--pp-rosa);
+  border-color: var(--pp-rosa);
 }
 
 /* =========================================================================
@@ -894,11 +927,8 @@ input:focus-visible {
   --lupa-w: min(30vw, 430px);
   --lupa-h: calc(var(--lupa-w) * 0.7145);
   /* 438/613 do asset */
-  /* Faixa direita reservada para a lupa, como no Figma: lá o parágrafo da
-     camada termina em 1120 de 1728 e a lupa começa em 1170. O conteúdo das
-     camadas recua exatamente o quanto a lupa invade além do vão natural,
-     então ela viaja a seção toda sem nunca cruzar texto. */
-  --lane: max(0px, calc(var(--lupa-w) - (50vw - 656px) + 28px));
+  /* Faixa direita reservada para a lupa, ajustada para o container de 1140px (metade = 570px) */
+  --lane: max(0px, calc(var(--lupa-w) - (50vw - 570px) + 28px));
   /* +28px de folga */
 }
 
@@ -1649,11 +1679,8 @@ input:focus-visible {
      passa a centralizar sozinho na área livre, em toda largura. */
   padding: 120px var(--tatu-w) 120px 0;
   --tatu-w: min(30vw, 400px);
-  /* Faixa reservada para o tatu, mesmo princípio da lupa.
-     O design foi desenhado em 1728px, onde a folga é de só 6px; abaixo disso
-     o texto invadia a ilustração. A conta recua o conteúdo o quanto o tatu
-     avança além do vão natural, com 32px de respiro. */
-  --lane: max(0px, calc(656px + var(--tatu-w) + 32px - 50vw));
+  /* Faixa reservada para o tatu, ajustada para 1140px (metade = 570px) */
+  --lane: max(0px, calc(570px + var(--tatu-w) + 32px - 50vw));
 }
 
 /* Figma: 932px. `margin-left` alinha a caixa onde o container de 1346 começaria,
@@ -1724,7 +1751,14 @@ input:focus-visible {
   margin-top: 48px;
   padding: 18px 33px;
   font-size: 22px;
-  line-height: 1.1
+  line-height: 1.1;
+  border: 2px solid var(--pp-rosa);
+}
+
+.pp-s--plano .pp-btn:hover {
+  background: transparent;
+  color: var(--pp-rosa);
+  border-color: var(--pp-rosa);
 }
 
 /* .pp-tatu é um <picture>: display:contents faz o <img> virar o filho
@@ -2215,7 +2249,7 @@ input:focus-visible {
   align-items: flex-start;
   gap: 0;
   /* v3: gap fixo trocado por margins abaixo, título/subtítulo != subtítulo/grid */
-  max-width: 1312px;
+  max-width: var(--pp-max);
   padding: 48px;
   margin: 0;
   align-self: stretch;
