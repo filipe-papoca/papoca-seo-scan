@@ -3,36 +3,36 @@ import { Fragment } from 'react';
 
 const ASSETS = '/servicos/diagnostico-de-geo/assets';
 
-// 26 logos individuais com alpha. A lista é duplicada para o marquee não ter
-// costura; a 2ª cópia é aria-hidden para o leitor de tela não repetir as 26
-// marcas. WebP com PNG de fallback.
+// 27 logos individuais com alpha. A lista é duplicada para o marquee não ter
+// costura; as cópias extras são aria-hidden para o leitor de tela. WebP com PNG de fallback.
 const CLIENTES = [
-  { file: 'benegrip', alt: 'Benegrip', w: 160, h: 23 },
-  { file: 'braze', alt: 'Braze', w: 103, h: 48 },
-  { file: 'clevertap', alt: 'CleverTap', w: 131, h: 48 },
-  { file: 'convenia', alt: 'Convenia', w: 138, h: 48 },
-  { file: 'direcional', alt: 'Direcional', w: 160, h: 20 },
+  { file: 'heflo', alt: 'HEFLO', w: 130, h: 44 },
   { file: 'engov', alt: 'Engov', w: 125, h: 48 },
-  { file: 'falconi', alt: 'Falconi', w: 160, h: 40 },
-  { file: 'neosaldina', alt: 'Neosaldina', w: 160, h: 23 },
+  { file: 'benegrip', alt: 'Benegrip', w: 160, h: 23 },
+  { file: 'twilio', alt: 'Twilio', w: 160, h: 48 },
   { file: 'inter', alt: 'Inter', w: 160, h: 41 },
-  { file: 'itau', alt: 'Itaú', w: 48, h: 48 },
-  { file: 'lg-lugar-de-gente', alt: 'LG lugar de gente', w: 142, h: 42 },
   { file: 'linkana', alt: 'Linkana', w: 160, h: 26 },
-  { file: 'simples-vet', alt: 'SimplesVet', w: 160, h: 34 },
-  { file: 'buscopan', alt: 'Buscopan', w: 157, h: 48 },
+  { file: 'workvivo', alt: 'Workvivo by Zoom', w: 160, h: 48 },
+  { file: 'ticket', alt: 'Ticket', w: 95, h: 48 },
   { file: 'safetec', alt: 'Safetec', w: 160, h: 38 },
-  { file: 'c6-bank', alt: 'C6 Bank', w: 160, h: 32 },
+  { file: 'convenia', alt: 'Convenia', w: 138, h: 48 },
+  { file: 'neo-quimica', alt: 'Neo Química', w: 105, h: 48 },
+  { file: 'lg-lugar-de-gente', alt: 'LG lugar de gente', w: 142, h: 42 },
   { file: 'mantecorp-skincare', alt: 'Mantecorp Skincare', w: 138, h: 48 },
-  { file: 'mapa-hds', alt: 'Mapa HDS', w: 160, h: 35 },
   { file: 'riva', alt: 'Riva', w: 160, h: 48 },
   { file: 'supersonic', alt: 'Supersonic', w: 160, h: 32 },
   { file: 'tamarine', alt: 'Tamarine', w: 160, h: 27 },
-  { file: 'ticket', alt: 'Ticket', w: 95, h: 48 },
-  { file: 'twilio', alt: 'Twilio', w: 160, h: 48 },
+  { file: 'direcional', alt: 'Direcional', w: 160, h: 20 },
+  { file: 'neosaldina', alt: 'Neosaldina', w: 160, h: 23 },
+  { file: 'buscopan', alt: 'Buscopan', w: 157, h: 48 },
+  { file: 'braze', alt: 'Braze', w: 103, h: 48 },
+  { file: 'mapa-hds', alt: 'Mapa HDS', w: 160, h: 35 },
+  { file: 'clevertap', alt: 'CleverTap', w: 131, h: 48 },
   { file: 'fasthotel', alt: 'FastHotel', w: 160, h: 40 },
-  { file: 'workvivo', alt: 'Workvivo by Zoom', w: 160, h: 48 },
-  { file: 'neo-quimica', alt: 'Neo Química', w: 105, h: 48 },
+  { file: 'falconi', alt: 'Falconi', w: 160, h: 40 },
+  { file: 'simples-vet', alt: 'SimplesVet', w: 160, h: 34 },
+  { file: 'itau', alt: 'Itaú', w: 48, h: 48 },
+  { file: 'c6-bank', alt: 'C6 Bank', w: 160, h: 32 },
 ];
 
 function ClientesRow({ hidden }: { hidden?: boolean }) {
@@ -105,6 +105,7 @@ export function ProvaEFaq() {
           <div className="pp-clients">
             <div className="pp-marquee pp-marquee--clientes">
               <ClientesRow />
+              <ClientesRow hidden />
               <ClientesRow hidden />
             </div>
           </div>

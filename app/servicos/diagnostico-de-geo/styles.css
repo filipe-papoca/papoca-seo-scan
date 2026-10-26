@@ -2073,8 +2073,8 @@ input:focus-visible {
 
 /* Figma: gap 64 */
 .pp-marquee--clientes {
-  gap: 56px;
-  animation-duration: 40s
+  gap: 0;
+  animation-duration: 50s;
 }
 
 .pp-s--prova .pp-clients:hover .pp-marquee {
@@ -2093,7 +2093,7 @@ input:focus-visible {
   gap: 56px;
   list-style: none;
   margin: 0;
-  padding: 0
+  padding: 0 28px;
 }
 
 .pp-s--prova .pp-clients li {
@@ -3446,11 +3446,12 @@ input:focus-visible {
   }
 
   .pp-marquee--clientes .pp-marquee__row {
-    gap: 44px
+    gap: 44px;
+    padding: 0 22px;
   }
 
   .pp-marquee--clientes {
-    gap: 44px
+    gap: 0;
   }
 
   /* card mais largo: a 74% o texto quebrava em 7 linhas curtas.
