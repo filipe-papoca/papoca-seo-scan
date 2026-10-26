@@ -1,0 +1,279 @@
+/* =========================================================================
+   SITE NOVO PAPOCA — BASE
+   Reset, tipografia, container, secao e grade.
+   Depende de tokens.css. Nenhum valor literal aqui, so tokens.
+   ========================================================================= */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }  /* override intencional: respeita prefers-reduced-motion */
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte-corpo);
+  font-size: var(--fs-corpo);
+  line-height: var(--lh-corpo);
+  font-weight: var(--peso-light);   /* MEDIDO · "Texto longo" e Inter 300 */
+  letter-spacing: var(--tracking-corpo);   /* MEDIDO · -0.32px em 16px */
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg, video, canvas { display: block; max-width: 100%; height: auto; }
+
+/* --- titulos ------------------------------------------------------------
+   Os estilos H1..H4 do Figma viram classes, nao tags. Assim a hierarquia
+   visual e a hierarquia semantica ficam independentes, que e o que permite
+   ter um <h2> com aparencia de H3 sem quebrar o SEO da pagina. */
+
+h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: inherit; }
+
+/* Com o corpo em 300, o `font-weight: bolder` que o navegador da a b/strong
+   resolve para 400, nao 700: o negrito sumiria sem ninguem notar. Valor
+   absoluto e a unica forma segura. */
+b, strong { font-weight: var(--peso-bold); }
+
+.t-h1, .t-h2, .t-h3, .t-h4 {
+  font-family: var(--fonte-titulo);
+  /* CORRIGIDO na rodada de fidelidade · a 320px "componentes" em 48px estourava
+     a caixa em 3px. Titulo grande em tela estreita precisa poder quebrar. */
+  overflow-wrap: break-word;
+  hyphens: auto;
+  letter-spacing: var(--tracking-titulo);
+  /* CORRIGIDO 06/10 · era text-wrap: balance. O Figma quebra linha do jeito
+     normal (enche a linha e quebra), e o balance mudava onde cada titulo
+     quebrava: o H2 dos cases saia "produzido / pela" em vez de "produzido
+     pela / Agencia". Fidelidade ao desenho vence o gosto. */
+  text-wrap: wrap;
+  margin: 0;
+}
+
+/* Cada classe espelha um estilo nomeado do arquivo. Onde o Figma tem duas
+   variantes (regular e bold) com valores diferentes, a diferenca fica no
+   .is-bold, nao numa media query. */
+
+.t-h1 { font-size: var(--fs-h1); line-height: var(--lh-h1); line-height: round(nearest, calc(var(--lh-h1) * 1em), 1px); font-weight: var(--peso-h1-reg); }  /* "H1 500": o regular do H1 e peso 500, nao 400 */
+.t-h2 { font-size: var(--fs-h2); line-height: var(--lh-h2); line-height: round(nearest, calc(var(--lh-h2) * 1em), 1px); font-weight: var(--peso-regular); }  /* override do fallback: arredonda a linha para pixel inteiro, como o Figma */
+.t-h3 { font-size: var(--fs-h3-reg); line-height: var(--lh-h3); line-height: round(nearest, calc(var(--lh-h3) * 1em), 1px); font-weight: var(--peso-regular); }  /* override do fallback: arredonda a linha para pixel inteiro, como o Figma */
+.t-h4 { font-size: var(--fs-h4); line-height: var(--lh-h4); line-height: round(nearest, calc(var(--lh-h4) * 1em), 1px); font-weight: var(--peso-bold); }    /* o arquivo so tem H4 em 700 */
+
+.t-h1.is-bold, .t-h2.is-bold, .t-h4.is-bold { font-weight: var(--peso-bold); }
+
+/* SINALIZADO · no mobile o arquivo declara H3 bold em 28 e H3 regular em 32.
+   O negrito sair menor que o regular e provavelmente engano de quem criou o
+   estilo, mas esta implementado como declarado ate o UX confirmar. No desktop
+   os dois sao 32, entao a diferenca so aparece abaixo de 1728. */
+.t-h3.is-bold { font-weight: var(--peso-bold); font-size: var(--fs-h3); }
+
+/* --- corpo -------------------------------------------------------------- */
+
+.t-corpo { font-size: var(--fs-corpo); line-height: var(--lh-corpo); line-height: round(nearest, calc(var(--lh-corpo) * 1em), 1px); margin: 0; }  /* override do fallback: arredonda a linha para pixel inteiro, como o Figma */
+.t-corpo.is-bold { font-weight: var(--peso-bold); }
+.t-pequeno { font-size: var(--fs-pequeno); line-height: var(--lh-pequeno); line-height: round(nearest, calc(var(--lh-pequeno) * 1em), 1px); margin: 0; }  /* override do fallback: arredonda a linha para pixel inteiro, como o Figma */
+/* "Fonte bold 400": no estilo de 14px o bold e peso 400, porque o corpo e 300 */
+.t-pequeno.is-bold { font-weight: var(--peso-pequeno-bold); }
+.t-footer { font-size: var(--fs-footer); line-height: var(--lh-footer); line-height: round(nearest, calc(var(--lh-footer) * 1em), 1px); margin: 0; }  /* override do fallback: arredonda a linha para pixel inteiro, como o Figma */
+/* "Subtitulo" 24/120, em Light 300 ou bold 700 */
+.t-subtitulo { font-size: var(--fs-subtitulo); line-height: var(--lh-subtitulo); line-height: round(nearest, calc(var(--lh-subtitulo) * 1em), 1px); margin: 0; }  /* override do fallback: arredonda a linha para pixel inteiro, como o Figma */
+.t-subtitulo.is-bold { font-weight: var(--peso-bold); }
+
+/* Destaque 24/140, o estilo do Figma para texto de apoio grande */
+.t-destaque { font-size: var(--fs-destaque); line-height: var(--lh-destaque); line-height: round(nearest, calc(var(--lh-destaque) * 1em), 1px); margin: 0; }  /* override do fallback: arredonda a linha para pixel inteiro, como o Figma */
+.t-destaque.is-bold { font-weight: var(--peso-bold); }
+
+/* Titulo em duas cores. No Figma, metade da headline vem em rosa.
+   Um <span> dentro do titulo, nao dois titulos. */
+.realce { color: var(--acento); }
+
+.t-label {
+  font-size: var(--fs-micro);
+  line-height: var(--lh-micro); line-height: round(nearest, calc(var(--lh-micro) * 1em), 1px);   /* "TAG 700" e 12/130 */
+  letter-spacing: 0;              /* CORRIGIDO 06/10 · "TAG 700" nao tem tracking no Dev Mode */
+  text-transform: uppercase;
+  font-weight: var(--peso-bold);  /* CORRIGIDO 06/10 · "TAG 700" e peso 700, nao 500 */
+  margin: 0;
+}
+
+.t-suave { color: var(--texto-suave); }
+
+/* largura de leitura confortavel */
+.t-medida { max-width: var(--medida); }
+
+/* --- links -------------------------------------------------------------- */
+
+a { color: var(--acento); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover { text-decoration-thickness: 2px; }
+
+/* PENDENTE D1 · o foco de teclado nao esta desenhado em lugar nenhum.
+   Este e o minimo aceitavel, nao uma escolha de design. */
+:where(a, button, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: var(--foco) solid var(--acento);
+  outline-offset: 2px;
+  border-radius: var(--raio-1);
+}
+
+/* --- container e secao --------------------------------------------------
+   .secao e o componente mais importante do sistema. Ele e quem colapsa as
+   12 copias de "Sessao de texto longo" e as 9 de "Sessao - Pessoas" em uma. */
+
+/* MEDIDO no Dev Mode (nodes 465-12126 e 465-16807): as duas secoes marcadas
+   Ready for dev tem exatamente `padding: 112px 16px`, e o conteudo interno
+   e uma caixa de 1696 de largura em 1728 de viewport (1728 - 16 - 16).
+   RESPONDIDO C1 · "1144px e o tamanho maximo do conteiner de conteudo".
+   RESPONDIDO C2 · mobile e "viewport de 400 com 16px de cada lado".
+
+   Entao o modelo e: a SECAO carrega a guarda de 16px, e o CONTAINER so
+   limita a 1144 e centraliza. O container nao tem padding proprio, senao
+   os dois somam e o mobile perde 32px de cada lado em vez de 16. */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+}
+
+.secao {
+  background: var(--fundo);
+  color: var(--texto);
+  padding-block: var(--secao-y);
+  padding-inline: var(--margem-secao);   /* 16 no minimo, conteiner de 1144 no desktop */
+}
+
+.secao--curta  { padding-block: calc(var(--secao-y) * 0.6); }
+.secao--colada { padding-block: 0; }
+
+/* MEDIDO · as duas secoes Ready for dev sao a mesma caixa:
+   flex column, centralizada, gap 48. Isso e o padrao de secao deste
+   design system, nao um caso especial de uma delas. */
+.secao--pilha {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--secao-gap);   /* 48px */
+}
+.secao--pilha > * { width: 100%; }
+.secao--pilha > .botao,
+.secao--pilha > .titulo-secao--centro { width: auto; }
+
+/* o cabecalho e sticky, entao pular para uma ancora precisa de folga
+   ou o topo do alvo fica escondido atras dele */
+:target { scroll-margin-top: calc(72px + var(--e-5)); }
+
+/* --- fluxo vertical ------------------------------------------------------
+   Espaco entre irmaos vem do pai, nunca de margin solta no filho.
+   Isso evita margin collapse e o CSS de espacamento que briga entre secoes. */
+
+/* CORRIGIDO 28/09, na montagem da home · `align-items: start` encolhia TODO
+   filho para max-content. Num titulo isso vazava a caixa do pai; numa grade
+   como .pessoas isso fazia quatro cards de 270px virarem quatro de 110px
+   dentro de um conteiner de 1144, com meia tela vazia do lado.
+   A regra certa e o contrario: por padrao o filho ocupa a largura do fluxo, e
+   so quem deve abracar o proprio conteudo pede isso. Quem deve abracar sao os
+   elementos interativos, que nao podem virar uma barra de 1144 de largura.
+   Mesmo desenho de .secao--pilha, que ja tinha chegado nessa conclusao. */
+.fluxo    { display: flex; flex-direction: column; gap: var(--e-5); align-items: stretch; }
+.fluxo > *, .fluxo--centro > * { max-width: 100%; }
+.fluxo > .botao, .fluxo > .link-seta, .fluxo > .chip-filtro { align-self: start; }
+.fluxo--centro > .botao, .fluxo--centro > .link-seta { align-self: center; }
+.fluxo--1 { gap: var(--e-2); }
+.fluxo--2 { gap: var(--e-4); }
+.fluxo--4 { gap: var(--e-6); }
+.fluxo--5 { gap: var(--e-7); }
+.fluxo--centro { align-items: center; text-align: center; }
+
+/* --- grade ---------------------------------------------------------------
+   RESPONDIDO C6 · "Ao diminuir a tela os cards diminuem ate um tamanho maximo
+   de 336px e se tornam cards que se dispoe na vertical."
+   Entao a largura minima do card e --card-min (336px) e abaixo disso a grade
+   vira uma coluna. auto-fit com esse minimo faz exatamente isso sozinho. */
+
+.grade {
+  display: grid;
+  gap: var(--grade-gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--card-min)), 1fr));
+}
+
+.grade--2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+/* Conjuntos de 4: uma, duas, quatro. Nunca tres, que deixa um orfao. */
+.grade--4 { grid-template-columns: 1fr; }
+@media (min-width: 480px)  { .grade--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }  /* override mobile-first: 1 col vira 2 a partir de 480 */
+@media (min-width: 1024px) { .grade--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }  /* override mobile-first: 2 cols viram 4 a partir de 1024 */
+
+/* Conjuntos de 3 itens: uma coluna, depois tres. Nunca duas.
+   Com auto-fit, tres cards viram 2 + 1 no tablet e o terceiro fica orfao
+   numa linha sozinho. Contando as colunas na mao isso nao acontece. */
+/* CORRIGIDO na rodada de fidelidade · mesma causa do .pilares: um breakpoint
+   fixo de 768 nao garante o piso de 336px do card que a resposta C6 pede.
+   O piso e que decide quantas colunas cabem, nao a largura da tela. */
+.grade--3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--card-min)), 1fr)); }
+
+/* --- grid de 6 colunas ---------------------------------------------------
+   RESPONDIDO C3 · "Para o grid de Desktop temos 6 colunas com gap de 56px
+   entre elas. Ja no mobile temos 2 colunas com gap de 56 entre elas."
+   Este e o grid de diagramacao, para quando um bloco precisa se alinhar a
+   colunas especificas. A .grade acima continua sendo o caminho normal para
+   listas de cards, porque ela se ajusta ao conteudo. */
+
+.grid {
+  display: grid;
+  gap: var(--grid-gap);
+  grid-template-columns: repeat(var(--grid-colunas-mobile), minmax(0, 1fr));
+}
+@media (min-width: 768px) {
+  .grid { grid-template-columns: repeat(var(--grid-colunas-desktop), minmax(0, 1fr)); }  /* override mobile-first: 2 cols do mobile viram 6 no desktop */
+}
+
+/* vaos por numero de colunas, para posicionar dentro do grid de 6 */
+.col-2  { grid-column: span 2; }
+.col-3  { grid-column: span 3; }
+.col-4  { grid-column: span 4; }
+.col-6  { grid-column: span 6; }
+@media (max-width: 767px) {
+  .col-2, .col-3, .col-4, .col-6 { grid-column: span 2; }  /* override mobile-first: todos os vaos colapsam para 2 cols no mobile */
+}
+
+
+/* --- utilitarios enxutos ------------------------------------------------- */
+
+.visualmente-oculto {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* --- link de pular para o conteudo ---------------------------------------
+   CRIADO 28/09 ao montar a home. Nao existia, e a primeira tentativa foi
+   pendurar .visualmente-oculto num .botao: nao funciona, porque o botao e
+   inline-flex com padding e o clip de 1px briga com isso, alem de o link
+   nunca reaparecer no foco, que e justamente para que ele existe.
+   O padrao correto e sair da tela por posicao e voltar no :focus-visible. */
+.pular {
+  position: absolute;
+  left: var(--e-2);
+  top: calc(-1 * var(--e-11));
+  z-index: 100;
+  transition: top var(--transicao);
+}
+.pular:focus-visible { top: var(--e-2); }
+@media (prefers-reduced-motion: reduce) {
+  .pular { transition: none; }   /* override intencional: respeita prefers-reduced-motion */
+}
+
+[hidden] { display: none !important; }
+
+/* o cabecalho flutuante e fixo e tem 76 de altura: ancora (#contato,
+   #servicos) nao pode parar escondida embaixo dele */
+main [id] { scroll-margin-top: var(--e-10); }

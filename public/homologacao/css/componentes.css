@@ -1,0 +1,743 @@
+/* =========================================================================
+   SITE NOVO PAPOCA — COMPONENTES (lote 1)
+   =========================================================================
+   Escolhi estes nove pelo quanto cada um colapsa do inventario de 115.
+   Nenhum deles usa cor literal: tudo vem de --fundo/--texto/--acento, entao
+   todos funcionam nos quatro temas sem uma linha a mais.
+
+   .botao        <-  CTA Papoca (20 var) + CTA especifico (2)       22 -> 1
+   .marquee      <-  os 7 carrosseis de logo                         7 -> 1
+   .titulo-secao <-  Titulo da sessao x2, Titulo dos Pilares,
+                     H2 dos cases, Nosso processo - titulo,
+                     Titulo e subtitulo do Hero                      6 -> 1
+   .cartao       <-  card de servico, pilar, big number, blog,
+                     cases, minibio, passo a passo, tabela           9 -> 1
+   .acordeao     <-  FAQ + os 4 FAQ-PRETO soltos                     5 -> 1
+   .campo        <-  Formulario, Formulario-Desktop, -Mobile         3 -> 1
+   .cabecalho, .rodape, .depoimento                                  base
+   ========================================================================= */
+
+
+/* =========================================================================
+   BOTAO
+   RESPONDIDO E1 · "Sao variacoes de cor e de tamanho. O menor usamos dentro
+   de cards especificos como o de blog, e o maior e para o final das sessoes.
+   A metade dessas variantes sao estados de Hover de cada cor."
+   Entao os 20 sao: cor x tamanho x (normal|hover). Em CSS o hover nao e
+   variante, e estado, entao o que sobra e cor x tamanho, que e o que esta
+   aqui: --primario/--secundario/--texto x --p/padrao/--g.
+   O --p e o de dentro de card (blog), o --g e o de fim de secao.
+   PENDENTE D1b · os estados exatos estao "no nome das variacoes e no menu de
+   protótipo" (resposta do UX), que eu nao consigo ler sem assento. Os hovers
+   abaixo continuam sendo suposicao minha.
+   ========================================================================= */
+
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e-2);
+  font-family: var(--fonte-corpo);
+  /* estilo "CTA pequeno 700" do arquivo: 16/100, peso 700 */
+  font-size: var(--fs-cta);
+  font-weight: var(--peso-bold);
+  line-height: var(--lh-cta); line-height: round(nearest, calc(var(--lh-cta) * 1em), 1px);  /* override do fallback: arredonda a linha para pixel inteiro, como o Figma */
+  letter-spacing: var(--tracking-cta);  /* -0.64px a 16, estilo nomeado; o botao--g herda em em, nao medido */
+  text-decoration: none;
+  padding: var(--e-3) var(--e-5);
+  min-height: 44px;              /* alvo de toque minimo */
+  border: 1px solid transparent;
+  border-radius: var(--raio-padrao);
+  cursor: pointer;
+  transition: background var(--transicao), color var(--transicao), border-color var(--transicao);
+  text-align: center;
+}
+
+.botao--primario {
+  background: var(--acento-chapado);
+  color: var(--sobre-acento);
+  border-color: var(--acento-chapado);
+}
+/* Estado "Clicado" do CTA Papoca (195:2688), lido em 09/10: fundo some, o
+   traco de 2 fica, o texto ganha a cor que era do fundo. Transicao do
+   prototipo: SMART_ANIMATE 0,3 s ease-out (no Maior Preto, DISSOLVE 0,3 s).
+   O Figma so liga essa variante ao ON_PRESS; no hover ela tambem entra,
+   DECISAO 09/10 pelo precedente da secao "Menu hover". Hover so em aparelho
+   com mouse, para nao grudar no toque. --cta-cor e a cor de fundo de cada
+   botao; quem pinta o botao de outra cor redefine a variavel. */
+.botao--primario { --cta-cor: var(--acento-chapado); transition: background 0.3s ease-out, color 0.3s ease-out, border-color 0.3s ease-out; }
+.botao--primario:not(.botao--seta):active {
+  background: transparent; color: var(--cta-cor); border-color: var(--cta-cor);   /* variante Clicado, MEDIDO */
+}
+@media (hover: hover) {
+  .botao--primario:not(.botao--seta):hover { background: transparent; color: var(--cta-cor); border-color: var(--cta-cor); }
+}
+
+.botao--secundario {
+  background: transparent;
+  color: var(--texto);
+  border-color: var(--linha-forte);
+}
+.botao--secundario:hover { border-color: var(--texto); background: var(--fundo-alt); }
+
+.botao--texto {
+  background: transparent;
+  color: var(--acento);
+  border-color: transparent;
+  padding-inline: 0;
+  min-height: 0;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+.botao--texto:hover { text-decoration-thickness: 2px; }
+
+/* estilo "CTA maior 700" do arquivo: 24/100. Era 1.125rem por chute meu. */
+/* "CTA maior 700": 24/100, -0.96px. Caixa do CTA Papoca medida no big
+   numbers (06/10): padding 18 32 com traco de 2 por dentro = 16 30 + borda 2,
+   sem raio. */
+.botao--g {
+  font-size: var(--fs-cta-g);
+  padding: 16px 30px;
+  border-width: 2px;                 /* override do .botao: traco de 2, MEDIDO */
+  border-radius: 0;                  /* override do .botao: CTA Papoca nao tem raio, MEDIDO */
+}
+/* "CTA Papoca" com "CTA pequeno 700": padding 14 24 com traco de 2 por
+   dentro = 12 22 + borda 2, 44 de altura, sem raio. MEDIDO no menu e na
+   tabela de servicos (06/10). */
+.botao--p {
+  font-size: var(--fs-cta);
+  padding: 12px 22px;
+  min-height: 44px;
+  border-width: 2px;                 /* override do .botao: traco de 2, MEDIDO */
+  border-radius: 0;                  /* override do .botao: CTA Papoca nao tem raio, MEDIDO */
+}
+
+
+/* PENDENTE D2 · nao existe botao desabilitado desenhado. */
+.botao:disabled, .botao[aria-disabled="true"] {
+  opacity: 0.45; cursor: not-allowed; pointer-events: none;
+}
+
+.botao .icone { width: 1em; height: 1em; flex: none; }
+
+
+/* =========================================================================
+   TITULO DE SECAO
+   Um componente, tres partes opcionais: olho, titulo, subtitulo.
+   Todos os "Titulo da sessao" do Figma sao este com conteudo diferente.
+   ========================================================================= */
+
+/* CORRIGIDO 28/09 · a home escancarou um bug antigo. O `34ch` estava no
+   CONTEINER, e `ch` resolve na fonte do proprio elemento, que aqui e o corpo
+   de 16px. Resultado: 34ch = 340px, e todo titulo de secao de 48px quebrava
+   em quatro linhas dentro de uma caixa de 340. A medida so faz sentido em
+   `ch` quando esta no elemento que tem aquela fonte, como no __sub abaixo.
+   No conteiner, vai em rem. */
+.titulo-secao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-3);
+  max-width: 46rem;    /* 736px */
+}
+
+.titulo-secao--largo  { max-width: 60rem; }   /* 960px */
+.titulo-secao--centro { align-items: center; text-align: center; margin-inline: auto; }
+
+/* MEDIDO 23/09 no Dev Mode, node 694-10332 "Titulo dos Pilares":
+     display:flex; width:1142px; max-width:1144px; padding:32px;
+     flex-direction:column; align-items:flex-start; gap:24px;
+     border-radius:4px; border:1px solid rgba(25,25,25,0.15);
+     background:var(--Branco,#F9F9F9);
+     box-shadow:0 30px 47.2px -8px rgba(25,25,25,0.11);
+   Ou seja: nas secoes de pilares o titulo NAO e um heading solto e centrado,
+   e um cartao claro de largura total, com o texto alinhado a esquerda.
+   O 1142 e o 1144 menos a borda de 1px de cada lado, entao o alvo aqui e a
+   caixa de 1144 com border-box, que e o que o max-width entrega.
+   PENDENTE B9 · confirmar se esse cartao vale so nos pilares ou em toda secao.
+   Por isso e um modificador, nao o padrao. */
+.titulo-secao--cartao {
+  align-items: flex-start;
+  text-align: left;
+  gap: var(--e-3);                 /* 24, MEDIDO */
+  padding: calc(var(--e-4) - 1px); /* 32 do Figma menos o traco de 1, que no Figma fica por dentro: 1080 + 64 = 1144, MEDIDO 07/10 */
+  max-width: var(--container);     /* 1144, MEDIDO */
+  background: var(--papoca-branco);
+  color: var(--papoca-preto);
+  border: 1px solid var(--linha-cartao);
+  border-radius: var(--raio-padrao);   /* 4, MEDIDO */
+  box-shadow: var(--sombra-cartao);
+  margin-inline: auto;
+}
+
+.titulo-secao__olho { color: var(--acento); }
+
+.titulo-secao__sub {
+  color: var(--texto-suave);
+  max-width: 56ch;
+  margin-top: var(--e-1);
+}
+
+
+/* =========================================================================
+   CARTAO
+   Base neutra + modificadores. O conteudo muda, a caixa nao.
+   PENDENTE G1 · nao sei o limite de texto de cada slot antes de quebrar mal.
+   ========================================================================= */
+
+.cartao {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-3);
+  padding: var(--e-5);
+  background: var(--fundo-alt);
+  color: var(--texto);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio-padrao);
+  height: 100%;
+}
+
+.cartao--limpo   { background: transparent; border-color: transparent; padding: 0; }
+.cartao--contorno{ background: transparent; }
+.cartao--link    { text-decoration: none; transition: border-color var(--transicao); }
+.cartao--link:hover { border-color: var(--acento); }
+
+.cartao__midia {
+  aspect-ratio: 16 / 9;          /* PENDENTE G2 · proporcao arbitrada */
+  background: var(--linha);
+  border-radius: var(--raio-padrao);
+  object-fit: cover;
+  width: 100%;
+}
+.cartao__midia--retrato { aspect-ratio: 3 / 4; }
+.cartao__midia--quadrada{ aspect-ratio: 1 / 1; }
+
+.cartao__olho  { color: var(--acento); }
+.cartao__corpo { color: var(--texto-suave); }
+.cartao__pe    { margin-top: auto; padding-top: var(--e-3); }
+
+/* big number */
+.cartao__numero {
+  font-family: var(--fonte-titulo);
+  font-size: var(--fs-h1);
+  line-height: 1; line-height: round(nearest, calc(1 * 1em), 1px);  /* override do fallback: arredonda a linha para pixel inteiro, como o Figma */
+  font-weight: var(--peso-bold);
+  letter-spacing: var(--tracking-titulo);
+  color: var(--acento);
+  font-variant-numeric: tabular-nums;
+}
+
+/* passo a passo: o numero do passo vira dado, nao enfeite */
+.cartao--passo { counter-increment: passo; }
+.cartao--passo .cartao__olho::before { content: counter(passo, decimal-leading-zero) " · "; }
+.grade--passos { counter-reset: passo; }
+
+
+/* =========================================================================
+   DEPOIMENTO
+   PENDENTE G3 · se um depoimento tiver o dobro do texto dos outros, hoje ele
+   estica a linha inteira. Falta decidir se trunca, rola ou cresce.
+   ========================================================================= */
+
+.depoimento { display: flex; flex-direction: column; gap: var(--e-4); height: 100%; }
+
+.depoimento__texto {
+  font-size: var(--fs-h4);
+  line-height: 1.35; line-height: round(nearest, calc(1.35 * 1em), 1px);  /* override do fallback: arredonda a linha para pixel inteiro, como o Figma */
+  font-family: var(--fonte-titulo);
+  letter-spacing: var(--tracking-titulo);
+  margin: 0;
+}
+
+.depoimento__autor { display: flex; align-items: center; gap: var(--e-3); margin-top: auto; }
+
+.depoimento__foto {
+  width: 48px; height: 48px; flex: none;
+  border-radius: var(--raio-pill);
+  object-fit: cover;
+  background: var(--linha);
+}
+
+
+/* =========================================================================
+   ACORDEAO (FAQ)
+   <details>/<summary> nativo: acessivel de graca, funciona sem JS,
+   e o conteudo fica no HTML para o Google e para os crawlers de IA ler.
+   PENDENTE · abre um por vez ou varios? Hoje: varios.
+   ========================================================================= */
+
+.acordeao { border-top: 1px solid var(--linha); }
+
+.acordeao__item { border-bottom: 1px solid var(--linha); }
+
+.acordeao__gatilho {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--e-4);
+  width: 100%;
+  padding: var(--e-4) 0;
+  font-family: var(--fonte-titulo);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-justo); line-height: round(nearest, calc(var(--lh-justo) * 1em), 1px);  /* override do fallback: arredonda a linha para pixel inteiro, como o Figma */
+  letter-spacing: var(--tracking-titulo);
+  color: var(--texto);
+  cursor: pointer;
+  list-style: none;
+  transition: color var(--transicao);
+}
+.acordeao__gatilho::-webkit-details-marker { display: none; }
+.acordeao__gatilho:hover { color: var(--acento); }
+
+.acordeao__sinal {
+  flex: none;
+  font-family: var(--fonte-corpo);
+  font-size: 1.25rem;
+  line-height: 1; line-height: round(nearest, calc(1 * 1em), 1px);  /* override do fallback: arredonda a linha para pixel inteiro, como o Figma */
+  color: var(--acento);
+  transition: transform var(--transicao);
+}
+.acordeao__item[open] .acordeao__sinal { transform: rotate(45deg); }
+
+.acordeao__resposta {
+  padding-bottom: var(--e-5);
+  color: var(--texto-suave);
+  max-width: 68ch;
+}
+
+
+/* =========================================================================
+   FORMULARIO
+   PENDENTE G4 · campos, obrigatorios, mascara e destino do lead nao definidos.
+   PENDENTE D3 · erro e sucesso nao estao desenhados. O que esta aqui e o
+   minimo funcional, nao um desenho aprovado.
+   ========================================================================= */
+
+.formulario { display: flex; flex-direction: column; gap: var(--e-4); }
+
+.campo { display: flex; flex-direction: column; gap: var(--e-2); }
+
+.campo__rotulo { color: var(--texto); font-weight: var(--peso-medio); }
+.campo__rotulo[data-obrigatorio]::after { content: " *"; color: var(--acento); }
+
+.campo__entrada {
+  font-family: var(--fonte-corpo);
+  font-size: var(--fs-corpo);
+  line-height: var(--lh-corpo); line-height: round(nearest, calc(var(--lh-corpo) * 1em), 1px);  /* override do fallback: arredonda a linha para pixel inteiro, como o Figma */
+  color: var(--texto);
+  background: transparent;
+  border: 1px solid var(--linha-forte);
+  border-radius: var(--raio-padrao);
+  padding: var(--e-3) var(--e-4);
+  width: 100%;
+  min-height: 44px;
+  transition: border-color var(--transicao);
+}
+.campo__entrada::placeholder { color: var(--texto-suave); opacity: 1; }
+.campo__entrada:hover { border-color: var(--texto); }
+textarea.campo__entrada { min-height: 120px; resize: vertical; }
+
+.campo__ajuda { color: var(--texto-suave); font-size: var(--fs-pequeno); }
+
+.campo[data-estado="erro"] .campo__entrada { border-color: var(--erro); border-width: 2px; }
+.campo__erro { color: var(--erro); font-size: var(--fs-pequeno); font-weight: var(--peso-medio); }
+
+.formulario__aviso {
+  padding: var(--e-4);
+  border: 1px solid currentColor;
+  border-radius: var(--raio-padrao);
+  font-size: var(--fs-pequeno);
+}
+.formulario__aviso[data-tipo="sucesso"] { color: var(--ok); }
+.formulario__aviso[data-tipo="erro"]    { color: var(--erro); }
+
+
+/* =========================================================================
+   CABECALHO
+   REFEITO 06/10 contra o node 808-14065 "Menu" (instancia, Property 1
+   "Incial") da Pagina nova - V1, lido no Inspect do Dev Mode. Contrato em
+   fidelidade/spec-cabecalho.json.
+
+   O que o Dev Mode diz da instancia da home:
+     Menu ......... flex, 1728 x 76, padding 16 75, space-between,
+                    align center, position absolute (por cima do hero)
+     Frame 5 ...... 128 x 44, coluna, align flex-start. Dentro, Layer_1:
+                    o logo em SVG 48 x 44 (img/logo-papoca.svg, exportado
+                    do proprio painel, conferido por hash)
+     links-pill ... flex, padding 4, gap 56, raio 4, max-height 44,
+                    SEM preenchimento. O #2B2B2B que eu tinha lido em 17/09
+                    e do componente principal; a instancia da home nao tem
+                    fundo, e o canvas confirma: os links ficam soltos
+     itens ........ altura 36, padding 8, raio 4, centralizados.
+                    Texto: estilo "Texto corrido 300", 16/140%/300, -0.32px
+     CTA Papoca ... "Rosa com texto branco", padding 14 24, traco 2 #F32B99,
+                    fundo #F32B99, texto "CTA pequeno 700". O texto renderizado
+                    e "Comecar". A camada se chama "Entre em contato", mas o
+                    conteudo foi sobrescrito: a caixa de 68 de largura so
+                    fecha com "Comecar"
+   Vaos a 1728 no Figma: 1578 - (128 + 780 + 116) = 554, dois de 277.
+   No conteiner de 1144 (decisao de 06/10): 1144 - 1024 = 120, dois de 60.
+
+   RESPONDIDO D7 · ao rolar, o header encolhe e vira sticky. Continua na
+   classe .is-reduzido, que o JS liga depois de 80px. O desenho da instancia
+   e o estado inicial; o estado reduzido nao foi medido (PENDENTE C4c).
+   PENDENTE G6 · o menu mobile continua sem desenho. A gaveta e invencao minha.
+   ========================================================================= */
+
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: padding var(--transicao);
+}
+
+/* variante flutuante, a do Figma: o Menu e position:absolute em cima do
+   hero, entao o hero comeca em y=0 e o padding-top de 400 dele ja conta com
+   o menu por cima. Sticky ocupava 72px de fluxo e empurrava a pagina inteira
+   para baixo. Fixed tira o menu do fluxo e continua acompanhando a rolagem. */
+.cabecalho--flutuante {
+  position: fixed;  /* override do sticky da base: o flutuante nao ocupa fluxo, MEDIDO hero em y=0 */
+  inset: 0 0 auto 0;
+  background: transparent;
+}
+
+/* variante barra, para paginas internas sem hero de imagem */
+.cabecalho--barra {
+  background: var(--fundo);
+  border-bottom: 1px solid var(--linha);
+}
+
+.cabecalho__interno {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-4);                 /* piso de 32 entre blocos; no desenho o vao e 277 */
+  min-height: 76px;                /* 16 + 44 + 16, MEDIDO */
+  /* DECISAO 06/10 (Filipe) · o cabecalho segue o conteiner global de 1144,
+     como toda secao. O Figma desenha o Menu com padding 75 na prancheta de
+     1728; essa leitura foi substituida pela decisao. A pilula cai no mesmo
+     x=480 nos dois casos, so a marca e o CTA mudam de lugar. */
+  padding: var(--e-2) var(--margem-secao);
+  transition: max-width var(--transicao), min-height var(--transicao), padding var(--transicao);
+}
+
+/* estado reduzido: ganha fundo proprio, porque sobre secao clara os links
+   brancos somem. Nao medido no Figma, ver PENDENTE C4c. */
+.cabecalho.is-reduzido { padding-block: var(--e-1); }
+.cabecalho.is-reduzido .cabecalho__interno {
+  /* CONFLITO 2 · a resposta D7 pede 1008 aqui. Marca 128 + pilula 780 +
+     CTA 116 + dois vaos de 32 + padding 2 x 24 = 1136. O 1008 continua nao
+     cabendo. A barra reduzida usa o conteiner + 24 de cada lado. */
+  max-width: calc(var(--container) + 2 * var(--e-3));  /* 1192: a barra cresce 24 para cada lado e o conteudo continua alinhado ao conteiner */
+  min-height: 60px;
+  margin-inline: auto;
+  background: var(--papoca-preto);
+  border-radius: var(--raio-2);
+  padding: var(--e-1) var(--e-3);  /* override: no estado reduzido a margem vira 24 fixo, dentro da barra */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cabecalho, .cabecalho__interno { transition: none; }  /* override intencional: prefers-reduced-motion desliga a transicao */
+}
+
+/* Frame 5: caixa de 128 x 44 com o logo encostado a esquerda. A largura de
+   128 nao e enfeite, ela entra na conta do space-between e define onde a
+   pilula cai (x 480 a 1728).
+   NAO REPRODUZIDO · o Frame 5 tem "Blend mode: Difference" no Figma, e o
+   ponto final do SVG tambem. Em CSS, mix-blend-mode so mistura com o que
+   esta dentro do mesmo contexto de empilhamento, e um cabecalho fixo cria
+   o proprio. O logo misturaria com o fundo transparente do header, isto e,
+   com nada. Sobre o hero escuro a diferenca e de no maximo ~25 niveis no
+   branco. O efeito so importaria ao rolar sobre secao clara, e ali o estado
+   reduzido ja poe fundo escuro. */
+.cabecalho__marca {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 128px;
+  height: 44px;
+  text-decoration: none;
+}
+.cabecalho__logo { display: block; width: 48px; height: 44px; }
+
+/* --- CTA ao lado da pilula -----------------------------------------------
+   No Figma o traco de 2 fica dentro da caixa de 44 (traco nao entra no
+   auto-layout). Em CSS, com box-sizing border-box, isso e padding 12 22 +
+   borda 2, que fecha 116 x 44 com o texto de 68 x 16. */
+.cabecalho__cta {
+  display: none;
+  padding: 12px 22px;               /* override do .botao: 14/24 do Figma menos a borda de 2 */
+  min-height: 44px;
+  border-width: 2px;                /* override do .botao: traco de 2, MEDIDO */
+  border-radius: 0;                 /* override do .botao: a instancia nao tem raio */
+  font-size: var(--fs-cta);
+  line-height: var(--lh-cta); line-height: round(nearest, calc(var(--lh-cta) * 1em), 1px);  /* override do fallback: arredonda a linha para pixel inteiro, como o Figma */
+  white-space: nowrap;
+}
+
+/* div.links-pill. Sem fundo na instancia da home (ver topo). */
+.menu-pilula {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--e-7);                 /* 56, MEDIDO */
+  max-height: 44px;
+  padding: var(--e-meio);          /* 4, MEDIDO */
+  border-radius: var(--raio-2);    /* 4, MEDIDO */
+  list-style: none;
+  margin: 0;
+}
+
+/* Item de menu nao quebra: ou cabe na pilula, ou a pilula vira gaveta.
+   Altura fixa de 36 com padding de 8: sobram 20 de conteudo para uma linha
+   de 22,4. O texto vaza 1,2 para cima e para baixo, centralizado, que e
+   exatamente o que o Figma faz com o mesmo par de valores. */
+.menu-pilula a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: var(--e-1);             /* 8, MEDIDO */
+  color: var(--papoca-branco);
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: var(--fs-corpo);      /* Texto corrido 300: 16 */
+  font-weight: var(--peso-light);
+  line-height: 1.4; line-height: round(nearest, calc(1.4 * 1em), 1px);  /* override do fallback: arredonda a linha para pixel inteiro, como o Figma */
+  letter-spacing: var(--tracking-corpo);  /* -0.02em = -0.32px */
+  border-radius: var(--raio-2);
+  transition: background var(--transicao), color var(--transicao);
+}
+/* MEDIDO · so o ultimo item da instancia ("Conteudos") tem min-width 104.
+   Copiado porque desloca o CTA, mas parece resto de edicao. PENDENTE H2. */
+.menu-pilula li:last-child a { min-width: 104px; }
+
+/* PENDENTE H3 · o Figma tem variantes de hover/press no prototipo, mas o
+   estado nao foi medido. Mantenho o rosa chapado de antes. */
+.menu-pilula a:hover,
+.menu-pilula a[aria-current="page"] { background: var(--acento-chapado); }
+
+.cabecalho__nav { display: none; }
+
+.cabecalho__lista {
+  display: flex;
+  align-items: center;
+  gap: var(--e-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cabecalho__link {
+  color: var(--texto);
+  text-decoration: none;
+  padding-block: var(--e-2);
+  border-bottom: 2px solid transparent;
+  transition: border-color var(--transicao), color var(--transicao);
+}
+.cabecalho__link:hover,
+.cabecalho__link[aria-current="page"] { border-bottom-color: var(--acento); color: var(--acento); }
+
+/* hamburguer: branco, porque o cabecalho flutua sobre o hero escuro */
+.cabecalho__botao-menu {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px; height: 44px;
+  padding: 0 10px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.cabecalho__botao-menu span {
+  display: block; height: 2px; width: 100%;
+  background: var(--papoca-branco);
+  transition: transform var(--transicao), opacity var(--transicao);
+}
+.cabecalho__botao-menu[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.cabecalho__botao-menu[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.cabecalho__botao-menu[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.cabecalho__gaveta {
+  position: fixed;
+  inset: 0;
+  top: auto;  /* override do inset: a gaveta abre so para baixo do cabecalho */
+  height: calc(100dvh - 76px - env(safe-area-inset-top, 0px));
+  margin-top: calc(76px + env(safe-area-inset-top, 0px));
+  background: var(--fundo);
+  padding: var(--e-6) var(--gutter) var(--e-8);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-5);
+}
+.cabecalho__gaveta .cabecalho__lista { flex-direction: column; align-items: stretch; gap: 0; }
+.cabecalho__gaveta .cabecalho__link {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-size: var(--fs-h4);
+  padding: var(--e-4) 0;
+  border-bottom: 1px solid var(--linha);
+}
+
+/* variante barra (paginas internas e laboratorio): fundo claro, entao os
+   links e o hamburguer brancos do Figma sumiriam. Nao tem desenho. */
+.cabecalho--barra .menu-pilula a { color: var(--texto); }  /* override: o branco do Figma e para o hero escuro */
+.cabecalho--barra .cabecalho__botao-menu span { background: var(--texto); }  /* override: idem */
+.cabecalho--barra .cabecalho__marca { width: auto; }  /* override: a marca do laboratorio tem texto ao lado */
+
+/* Breakpoints, das larguras medidas (marca 128, pilula 780, CTA 116) com a
+   margem do conteiner (16 ate 1176):
+     pilula  a partir de 1024: 128 + 780 + 32 + 2 x 16 = 972
+     CTA     a partir de 1120: 128 + 780 + 116 + 2 x 32 + 2 x 16 = 1120
+   Abaixo de 1024, marca + hamburguer. */
+@media (min-width: 1024px) {
+  .cabecalho__nav { display: block; }  /* override: o nav horizontal so aparece quando a pilula cabe, a 1024 */
+  .cabecalho__botao-menu { display: none; }  /* override: o hamburguer some quando a pilula entra */
+  .cabecalho__gaveta { display: none !important; }  /* override: a gaveta mobile nao existe a partir de 1024 */
+}
+@media (min-width: 1120px) {
+  .cabecalho__cta { display: inline-flex; }  /* override: o CTA so cabe ao lado da pilula a partir de 1120, medido */
+}
+
+/* =========================================================================
+   RODAPE
+   ========================================================================= */
+
+/* CORRIGIDO 06/10 · o rodape nao tinha margem lateral: abaixo de 1176 o
+   texto encostava na borda da tela. Figma: Footer com padding 60 16. */
+.rodape { padding-block: var(--e-8) var(--e-7); padding-inline: var(--margem-secao); }
+
+.rodape__grade {
+  display: grid;
+  gap: var(--e-7) var(--e-5);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+}
+
+.rodape__coluna { display: flex; flex-direction: column; gap: var(--e-3); }
+.rodape__titulo { color: var(--texto-suave); }
+
+.rodape__lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--e-2); }
+/* CORRIGIDO 28/09 · "contato@agenciapapoca.com.br" nao cabe na coluna do
+   rodape entre 960 e 1024 e vazava a viewport. E-mail e URL nao tem espaco
+   para quebrar, entao precisam de permissao explicita. */
+.rodape__lista a { color: var(--texto); text-decoration: none; overflow-wrap: anywhere; }
+.rodape__lista a:hover { color: var(--acento); text-decoration: underline; }
+
+.rodape__base {
+  margin-top: var(--e-8);
+  padding-top: var(--e-5);
+  border-top: 1px solid var(--linha);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-3) var(--e-5);
+  justify-content: space-between;
+  color: var(--texto-suave);
+  font-size: var(--fs-pequeno);
+}
+
+
+/* =========================================================================
+   MARQUEE (rotativo de logos)
+   Um componente para os 7 carrosseis de logo do Figma.
+   RESPONDIDO F3 · "Os carrosseis nao precisam pausar quando o mouse passa
+   por cima. O rotativo de eventos ja e diferente, se ele for passar
+   automaticamente ele precisa pausar quando o mouse passar por cima pois
+   possui um CTA no card."
+   Entao a pausa no hover saiu do padrao e virou o modificador --pausavel,
+   usado so pelo rotativo de eventos. A pausa no FOCO de teclado fica em
+   todos, porque sem ela e impossivel tabular ate um link que esta passando,
+   e isso e acessibilidade, nao preferencia.
+   O conteudo e duplicado no HTML com aria-hidden na copia, para o leitor de
+   tela nao ler tudo duas vezes.
+   ========================================================================= */
+
+.marquee {
+  --marquee-duracao: 40s;
+  --marquee-gap: var(--e-7);
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee__trilha {
+  display: flex;
+  width: max-content;
+  gap: var(--marquee-gap);
+  animation: marquee var(--marquee-duracao) linear infinite;
+}
+
+/* foco de teclado pausa sempre: sem isso nao da para tabular ate um link
+   que esta se movendo */
+.marquee:focus-within .marquee__trilha { animation-play-state: paused; }
+
+/* hover so pausa onde tem CTA dentro do card (rotativo de eventos, F3) */
+.marquee--pausavel:hover .marquee__trilha { animation-play-state: paused; }
+
+.marquee__item {
+  flex: none;
+  display: grid;
+  place-items: center;
+  height: 40px;
+  opacity: 0.75;
+  transition: opacity var(--transicao);
+}
+.marquee__item:hover { opacity: 1; }
+.marquee__item img { max-height: 100%; width: auto; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-50% - var(--marquee-gap) / 2)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee { mask-image: none; -webkit-mask-image: none; overflow-x: auto; }  /* override intencional: prefers-reduced-motion desliga a mascara do marquee */
+  .marquee__trilha { animation: none; }  /* override intencional: prefers-reduced-motion para a animacao */
+}
+
+
+/* =========================================================================
+   CONTEINER · excecoes e composicoes que saem da regra unica (06/10)
+   A regra e --margem-secao (tokens): toda secao tem margem lateral de
+   max(16, (tela - 1144) / 2). Tudo abaixo e o que o Figma desenha
+   diferente disso, medido, e nada mais.
+   ========================================================================= */
+
+/* Carrossel de clientes. Figma: padding 112 0 32 292, flex, align center.
+   O rotulo fica parado na borda esquerda do conteiner; a faixa de logos
+   ocupa o resto e sangra ate a borda direita da tela. */
+.secao-clientes {
+  display: flex;
+  align-items: center;
+  padding-block: var(--e-11) var(--e-4);  /* 112 / 32, MEDIDO */
+  padding-right: 0;                       /* override de .secao: a faixa sangra a direita, MEDIDO */
+}
+.secao-clientes__rotulo {
+  flex: none;
+  margin: 0;
+  padding-right: 26px;                    /* MEDIDO, Frame 4 */
+  background: var(--fundo);
+}
+.secao-clientes__faixa {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 10px;                          /* MEDIDO */
+  --marquee-gap: 39px;                    /* MEDIDO, "Logos - Pagina de produto GEO": gap 39 */
+  --marquee-duracao: 130s;                /* NAO MEDIDO: 26 logos x ~195px, ~40px/s. O Figma marca a animacao como 'apenas para design' */
+  mask-image: none;                       /* override do .marquee: no Figma o rotulo corta a faixa seco, sem degrade */
+  -webkit-mask-image: none;               /* override do .marquee: idem */
+}
+
+/* Destaque: na instancia da home o texto ocupa o conteiner (max-width 1140,
+   align-self stretch). Os 4px de diferenca para 1144 sao do arquivo. */
+.titulo-secao--cheio { max-width: none; }  /* override do .titulo-secao: este bloco ocupa o conteiner */
+
+/* Cada logo mora numa caixa de 160 x 48, centralizado (Figma: Frame 33125,
+   flex, center). Arquivos: SVG do componente do Figma, um por logo (06/10). */
+.secao-clientes .marquee__item {
+  width: 160px;                           /* override do .marquee__item: caixa fixa do logo, MEDIDO */
+  height: 48px;                           /* override do .marquee__item: idem */
+  opacity: 1;                             /* override do .marquee__item: no Figma o logo vai em cor cheia */
+}
+.secao-clientes .marquee__item img { width: 160px; height: 62px; max-width: none; max-height: none; margin-block: -7px; }  /* SVG do Figma: 160 de largura, 62 de altura (alguns logos passam 7px da caixa de 48 em cima e embaixo, como no arquivo) */

@@ -1,0 +1,401 @@
+/* =========================================================================
+   SITE NOVO PAPOCA — TOKENS
+   =========================================================================
+   Reescrito em 23/09/2026 com as respostas do time de UX ao checklist das
+   53 duvidas (respondido em 21 e 22/09). O codigo entre parenteses em cada
+   comentario e a pergunta correspondente.
+
+   Camada 1  primitivos ....... as tintas da marca
+   Camada 2  semanticos ....... papeis (fundo, texto, acento), por tema
+   Camada 3  espaco/tipo ...... escala base 8 e tipografia fluida
+
+   REGRA DE OURO: nenhum componente usa a camada 1 diretamente.
+   Componente usa --fundo, --texto, --acento. Quem decide o valor e o tema.
+
+   PENDENTE = ainda sem resposta. RESPONDIDO = veio do UX, com a resposta
+   citada. MEDIDO = veio do Dev Mode do Figma.
+   ========================================================================= */
+
+
+/* =========================================================================
+   CAMADA 1 — PRIMITIVOS
+   ========================================================================= */
+
+:root {
+  --papoca-azul:     #051A30;
+  --papoca-rosa:     #D92B8A;
+  --papoca-preto:    #191919;
+
+  /* RESPONDIDO B1 · "A cor correta e #F9F9F9".
+     ATENCAO: isso contraria o manual de marca que a Papoca tem configurado
+     aqui, que diz Branco #F5F5F5. Segui a resposta do UX porque foi resposta
+     direta a esta pergunta, mas os dois documentos divergem e alguem precisa
+     alinhar. A diferenca e invisivel a olho nu e visivel em auditoria. */
+  --papoca-branco:   #F9F9F9;
+
+  /* RESPONDIDO B3 · "O cinza deve ser usado somente sobre o fundo branco."
+     Da 6.25 sobre #F9F9F9. Nao usar em fundo escuro. */
+  --papoca-cinza:    #5D5D5D;
+
+  /* RESPONDIDO B2 · "Sao cores auxiliares da marca. Podem ser utilizadas
+     para erro, sucesso e alerta (...) mas tambem sao utilizadas para
+     diferenciacao de topicos/categorias como acontece nos servicos." */
+  --papoca-amarelo:  #F7C800;   /* alerta + categoria */
+  --papoca-vermelho: #B2143D;   /* erro + categoria */
+  --papoca-verde:    #4EBF3D;   /* sucesso + categoria */
+  --papoca-laranja:  #FF5500;   /* categoria */
+  --papoca-roxo:     #301744;   /* categoria */
+
+  /* RESPONDIDO B6 · "Nao, mas o preto sobre o Rosa sim. Estamos testando a
+     cor de codigo #F32B99."
+     Medido: preto sobre #F32B99 da 4.70 e passa AA para 16px; sobre o rosa
+     antigo dava 3.90 e reprovava. O rosa novo com texto PRETO resolve o
+     problema que eu tinha levantado. Branco sobre ele da 3.55 e reprova,
+     entao o tema rosa passa a ter texto preto, nao branco.
+     Isto e muito provavelmente a cor "Rosa novo" da biblioteca externa
+     "Agencia Papoca" que apareceu no Dev Mode (antiga pendencia B7). */
+  --papoca-rosa-novo: #F32B99;
+
+  /* Derivados acessiveis. Nao estao no Figma, existem porque nem o rosa nem
+     o cinza da marca passam em todo fundo. Medidos com WCAG 2.1. */
+  --papoca-rosa-claro:  #E468AB;  /* 5.74 sobre azul · 5.75 sobre preto */
+  --papoca-rosa-escuro: #CB247F;  /* 4.70 sobre branco, para link em fundo claro */
+  --papoca-cinza-claro: #8FA0B2;  /* texto suave sobre azul (o cinza da marca nao serve, B3) */
+  --papoca-cinza-neutro:#9A9A9A;  /* texto suave sobre preto */
+
+  --veu-borda: rgba(255, 255, 255, 0.10);   /* MEDIDO: #FFFFFF a 10% */
+}
+
+
+/* =========================================================================
+   CAMADA 2 — SEMANTICOS, POR TEMA DE SECAO
+   RESPONDIDO B4 · "Nos ja definimos as cores para cada secao dentro do
+   figma. Assim facilita a aplicacao modular para novas paginas."
+   RESPONDIDO B5 · a cor da secao e escolha livre do designer, sem ritmo fixo.
+   ========================================================================= */
+
+:root,
+[data-tema="branco"] {
+  --fundo:          var(--papoca-branco);
+  --fundo-alt:      #EDEDEF;
+  --texto:          var(--papoca-azul);           /* 16.66 sobre #F9F9F9 */
+  --texto-suave:    var(--papoca-cinza);          /* 6.25, e o unico fundo onde o cinza vale (B3) */
+  --acento:         var(--papoca-rosa-escuro);    /* 4.70; o rosa chapado reprova como texto aqui */
+  --acento-chapado: var(--papoca-rosa-novo);      /* fundo de botao */
+  /* DECISAO 06/10 (Filipe): texto BRANCO sobre o rosa, igual ao Figma em
+     todos os CTAs. Substitui a B6 (preto, 4,70). Branco sobre #F32B99 da
+     3,55: passa AA para o "CTA maior" (24 bold, texto grande) e REPROVA no
+     "CTA pequeno" (16 bold precisa de 4,5). Risco aceito conscientemente. */
+  --sobre-acento:   var(--papoca-branco);         /* 3.55 sobre o rosa novo */
+  --linha:          #D9DBE0;
+  --linha-forte:    #B4BCC8;
+  --erro:           var(--papoca-vermelho);       /* 6.52, passa */
+  --alerta:         #8A6E00;                      /* o amarelo da marca da 1.51 como texto, nao serve */
+  --ok:             #1F6B16;                      /* o verde da marca da 2.26 como texto, nao serve */
+}
+
+[data-tema="azul"] {
+  --fundo:          var(--papoca-azul);
+  --fundo-alt:      #0A2542;
+  --texto:          var(--papoca-branco);
+  --texto-suave:    var(--papoca-cinza-claro);
+  --acento:         var(--papoca-rosa-claro);
+  --acento-chapado: var(--papoca-rosa-novo);
+  --sobre-acento:   var(--papoca-branco);       /* decisao 06/10, ver tema branco */
+  --linha:          #163A5E;
+  --linha-forte:    #24507B;
+  --erro:           #F0708F;
+  --alerta:         var(--papoca-amarelo);
+  --ok:             #7ED370;
+}
+
+[data-tema="preto"] {
+  --fundo:          var(--papoca-preto);
+  --fundo-alt:      #232323;
+  --texto:          var(--papoca-branco);
+  --texto-suave:    var(--papoca-cinza-neutro);
+  --acento:         var(--papoca-rosa-claro);
+  --acento-chapado: var(--papoca-rosa-novo);
+  --sobre-acento:   var(--papoca-branco);       /* decisao 06/10, ver tema branco */
+  --linha:          #333333;
+  --linha-forte:    #4A4A4A;
+  --erro:           #F0708F;
+  --alerta:         var(--papoca-amarelo);
+  --ok:             #7ED370;
+}
+
+/* RESOLVIDO B6 · o tema rosa agora usa o rosa novo com texto PRETO.
+   Preto sobre #F32B99 = 4.70, passa AA para texto de 16px.
+   Era o unico tema que nao tinha solucao; com a cor nova, tem. */
+[data-tema="rosa"] {
+  --fundo:          var(--papoca-rosa-novo);
+  --fundo-alt:      #DC2189;
+  --texto:          var(--papoca-preto);          /* 4.70 */
+  --texto-suave:    #3D1030;
+  --acento:         var(--papoca-preto);
+  --acento-chapado: var(--papoca-preto);
+  --sobre-acento:   var(--papoca-branco);
+  --linha:          #F87FBF;
+  --linha-forte:    #FBAED7;
+  --erro:           var(--papoca-preto);
+  --alerta:         var(--papoca-preto);
+  --ok:             var(--papoca-preto);
+}
+
+
+/* =========================================================================
+   CAMADA 3 — ESPACO, GRID, RAIO, TIPOGRAFIA
+   ========================================================================= */
+
+:root {
+
+  /* --- espaco -----------------------------------------------------------
+     RESPONDIDO C7 · "A base e multiplo de 8. E nao tem um padrao definido,
+     elas variam de acordo com o peso otico."
+     Eu tinha usado base 4. Refeito em base 8. Isso tambem resolve a duvida
+     do gap de 56 do menu, que eu tinha achado fora de escala: 56 = 8 x 7,
+     esta na escala, e e o mesmo gap do grid (C3). */
+  --e-1:   8px;
+  --e-2:  16px;
+  --e-3:  24px;
+  --e-4:  32px;
+  --e-5:  40px;
+  --e-6:  48px;
+  --e-7:  56px;   /* gap do grid e do menu */
+  --e-8:  64px;
+  --e-9:  80px;
+  --e-10: 96px;
+  --e-11:112px;   /* padding vertical de secao, MEDIDO no Dev Mode */
+  --e-12:128px;
+  --e-13:160px;
+
+  /* meio passo, para quando o peso otico pedir (C7 diz que varia) */
+  --e-meio: 4px;
+
+  /* Ritmo vertical de secao. MEDIDO: `padding: 112px 16px` na Sessao big
+     numbers. REVISTO 09/10: era uma curva minha de 48 em 400 ate 112 em
+     1728; as variantes Mobile do arquivo (pessoas, formulario, texto longo,
+     destaque, depoimentos, tabela de servicos) tem TODAS 112 em cima e
+     embaixo, entao o valor e fixo. */
+  --secao-y: 112px;
+  --secao-gap: var(--e-6);   /* 48px entre titulo, conteudo e CTA, MEDIDO */
+
+  /* --- grid -------------------------------------------------------------
+     RESPONDIDO C1 · "1144px e o tamanho maximo do conteiner de conteudo, o
+     viewport que estamos usando de exemplos para as paginas desktop e o de
+     1728px."
+     RESPONDIDO C2 · "Seria um viewport de 400 com 16px de cada lado como
+     padding." (400 - 32 = 368, que bate com o grid "Mobile novo - 368")
+     RESPONDIDO C3 · "Para o grid de Desktop temos 6 colunas com gap de 56px
+     entre elas. Ja no mobile temos 2 colunas com gap de 56 entre elas." */
+  --container: 1144px;
+  /* O CONTEINER COMO MARGEM (06/10). Lido no Figma em todas as secoes da
+     Pagina nova - V1: secao full-bleed, padding lateral 16, filhos com
+     max-width 1144 centralizados. Isso e o mesmo que uma margem lateral de
+     max(16, (largura - 1144) / 2). O 100% resolve na secao que usa a
+     variavel, isto e, na largura da tela. */
+  --margem-secao: max(var(--e-2), calc((100% - var(--container)) / 2));
+  --viewport-desktop: 1728px;   /* so referencia, nao e usado como limite */
+  --gutter: clamp(16px, 4vw, 56px);
+  --grid-colunas-desktop: 6;
+  --grid-colunas-mobile: 2;
+  --grid-gap: var(--e-7);       /* 56 */
+  --grade-gap: var(--e-3);      /* espaco entre cards, menor que o gap do grid */
+
+  /* RESPONDIDO C6 · "Ao diminuir a tela os cards diminuem ate um tamanho
+     maximo de 336px e se tornam cards que se dispoe na vertical." */
+  --card-min: 336px;
+
+  /* RESPONDIDO C8 · "Sim, de 4px." Eu tinha comecado com raio 0. */
+  --raio-0: 0;
+  --raio-1: 2px;
+  --raio-2: 4px;
+  --raio-3: 8px;
+  --raio-pill: 999px;
+  --raio-padrao: var(--raio-2);   /* 4px */
+
+  /* --- tipografia -------------------------------------------------------
+     MEDIDO no Dev Mode: o titulo do Card pilar usa `font-family: Inter` e
+     o big number usa `font-family: Satoshi; font-weight: 900`.
+     RESPONDIDO A2 e A5 · "Deixamos anotado nos nomes dos Styles do figma."
+
+     Satoshi NAO esta no Google Fonts (e da Fontshare). Precisa ser
+     auto-hospedada, o que mexe com licenca e com peso de carregamento. */
+  --fonte-display: "Satoshi", "Inter", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  --fonte-corpo:   "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  --fonte-titulo:  var(--fonte-corpo);    /* REVISAO 06/10: todo titulo lido no Dev Mode (H2 de pilares, numeros, servicos, cases, destaque, depoimentos, formulario) e Inter. Satoshi fica so no --fonte-display (big numbers e valores dos cases). */
+  --peso-light:   300;   /* MEDIDO 23/09 no node 453-11985 ("Texto texto texto"):
+                            o estilo nomeado "Texto longo" do arquivo e Inter 300,
+                            nao 400. Isso muda o peso do corpo do site inteiro. */
+  --peso-regular: 400;
+  --peso-medio:   500;
+  --peso-bold:    700;
+  --peso-black:   900;
+
+  /* RESPONDIDO A1 · "H1 48/100 - H2 32/130 - H3 24/120 - H4 24/120"
+     Esses sao os tamanhos MOBILE. Meus chutes eram 40/32/24/22: errei o H1
+     por 8px e o H4 por 2px.
+     Desktop, confirmado no arquivo: H1 64/105 · H2 48/120 · H3 32/130 ·
+     H4 32/100 · corpo 16/140 · destaque 24/140.
+     As clamps interpolam entre 400px e 1728px de viewport. */
+/* =========================================================================
+   ESCALA TIPOGRAFICA · REESCRITA 23/09 A PARTIR DOS ESTILOS NOMEADOS
+   -------------------------------------------------------------------------
+   Ate agora eu montei a escala lendo no isolado e juntando com as respostas
+   do UX. Errado: o arquivo TEM 21 estilos de texto nomeados, em tres grupos
+   (Desktop e mobile / Desktop / Mobile). Eles sao o sistema, e o que o
+   designer aplica nos componentes. Decisao do Filipe: o estilo nomeado vence
+   a resposta escrita quando os dois divergem.
+
+   Desktop e mobile (nao mudam de tamanho):
+     Big numbers 900 ......... 56/105     <- NAO 72. Ver nota abaixo.
+     H4 700 .................. 24/100
+     Subtitulo bold 700 ...... 24/120
+     Subtitulo Light 300 ..... 24/120
+     Destaque 400 / 700 ...... 24/140
+     CTA maior 700 ........... 24/100
+     CTA pequeno 700 ......... 16/100
+     Texto corrido 300 ....... 16/140
+     Texto corrido bold 700 .. 16/140
+     Fonte 300 / link 300 .... 14/140
+     Fonte bold 400 .......... 14/140     <- "bold" aqui e peso 400, porque
+                                             o corpo do site e 300
+     TAG 700 ................. 12/130
+     Texto footer ............ 12/140
+   Desktop:
+     H1 500 / H1 bold 700 .... 72/100
+     H2 400 / H2 bold 700 .... 48/120
+     H3 400 / H3 bold 700 .... 32/130
+   Mobile:
+     H1 bold 700 ............. 48/100
+     H2 400 / bold 700 ....... 32/120
+     H3 bold 700 ............. 28/130
+     H3 regular 400 .......... 32/130
+
+   CONSEQUENCIA IMPORTANTE: o line-height NAO muda mais entre mobile e
+   desktop em nenhum estilo. H1 100, H2 120, H3 130, H4 100 dos dois lados.
+   O bloco de media query que trocava os line-heights sumiu.
+
+   SINALIZADO 1 · no mobile o H3 BOLD e 28 e o H3 REGULAR e 32. O negrito
+   menor que o regular quase certamente e engano de quem criou o estilo.
+   Implementei como esta declarado, e cada um usa o seu, mas isso precisa de
+   confirmacao do UX.
+   SINALIZADO 2 · Big numbers: o estilo diz 56/105 e a instancia da secao
+   marcada Ready for dev usa 72/105. Decisao do Filipe: vale o estilo, 56.
+   A instancia no Figma e que precisa ser corrigida.
+   SINALIZADO 3 · tres valores de mobile contradizem as respostas do UX:
+     H2 mobile   estilo 32/120   resposta A1 disse 32/130
+     H3 mobile   estilo 28/130   resposta A1 disse 24/120
+     H4          estilo 24/100   resposta A1 disse 24/120 no mobile
+   Seguindo o estilo nos tres, por decisao do Filipe.
+
+   As clamps interpolam entre 400px e 1728px de viewport.
+   ========================================================================= */
+
+  /* REVISTO 09/10 (passo 3): de curva para DEGRAU. As variantes do arquivo
+     sao discretas: Mobile (368) usa o grupo de estilos "Mobile"; as
+     intermediarias (663 no texto longo, 800 nos depoimentos) e a Tablet
+     (1150 no hero do manifesto) ja usam o grupo "Desktop". A curva de 400 a
+     1728 era minha e deixava, por exemplo, o H2 com 37 a 800. Degrau em 640
+     (DECISAO 09/10: abaixo da menor intermediaria, 663). */
+  --fs-h1:       4.5rem;     /* 72; 48 abaixo de 640 */
+  --fs-h2:       3rem;       /* 48; 32 abaixo de 640 */
+  --fs-h3:       2rem;       /* 32, o BOLD; 28 abaixo de 640 */
+  --fs-h3-reg:   2rem;                                         /* 32 fixo, o REGULAR */
+  --fs-h4:       1.5rem;     /* 24, nao muda */
+  --fs-subtitulo:1.5rem;     /* 24/120 */
+  --fs-destaque: 1.5rem;     /* 24/140, nao muda (grupo "Desktop e mobile") */
+  --fs-corpo:    1rem;       /* 16/140 */
+  --fs-pequeno:  0.875rem;   /* 14/140, estilo "Fonte" */
+  --fs-micro:    0.75rem;    /* 12/130, estilo "TAG" */
+  --fs-footer:   0.75rem;    /* 12/140, estilo "Texto footer" */
+  --fs-numero:   3.5rem;     /* 56/105, estilo "Big numbers 900" */
+  --fs-cta:      1rem;       /* 16/100, "CTA pequeno 700" */
+  --fs-cta-g:    1.5rem;     /* 24/100, "CTA maior 700" */
+  --fs-botao:    var(--fs-cta);
+
+  /* line-height: um valor por estilo, igual em mobile e desktop */
+  --lh-h1: 1.0;
+  --lh-h2: 1.2;
+  --lh-h3: 1.3;
+  --lh-h4: 1.0;
+  --lh-subtitulo: 1.2;
+  --lh-destaque: 1.4;
+  --lh-corpo: 1.4;
+  --lh-pequeno: 1.4;
+  --lh-micro: 1.3;
+  --lh-footer: 1.4;
+  --lh-numero: 1.05;
+  --lh-cta: 1.0;
+  --lh-justo: 1.2;
+
+  /* pesos por estilo, tambem do arquivo */
+  --peso-h1-reg:   var(--peso-medio);    /* "H1 500" */
+  --peso-pequeno-bold: var(--peso-regular);  /* "Fonte bold 400": 400 e o bold
+                                                 do 14px, porque o corpo e 300 */
+
+  /* MEDIDO 23/09 · a borda e a sombra dos blocos de conteudo dos pilares. */
+  --linha-cartao:  rgba(25, 25, 25, 0.15);
+  --sombra-cartao: 0 30px 47.2px -8px rgba(25, 25, 25, 0.11);
+
+  /* tracking: um valor por estilo, nao um do sistema.
+       Texto longo 16px -> -0.32px = -0.02em
+       H3 bold     32px -> -1.28px = -0.04em
+       H2 bold     48px -> -1.44px = -0.03em
+       Big number  72px -> -2.16px = -0.03em  (na instancia; no estilo e 56) */
+  --tracking-titulo: -0.03em;
+  --tracking-h3:     -0.04em;
+  --tracking-corpo:  -0.02em;
+  --tracking-cta:   -0.04em;   /* estilo "CTA pequeno 700": -0.64px a 16, MEDIDO 06/10 */
+  --tracking-label:   0.08em;
+
+  /* --- medida de leitura ------------------------------------------------- */
+  --medida: 68ch;
+  --medida-curta: 56ch;
+
+  /* --- icones ----------------------------------------------------------- */
+  /* MEDIDO no painel Assets: 40x40.
+     RESPONDIDO E7 · "Sim", todos no mesmo grid e na mesma espessura. */
+  --icone: 40px;
+  --icone-p: 24px;
+  --icone-g: 64px;
+
+  /* --- movimento --------------------------------------------------------
+     RESPONDIDO F4 · "Sim, swipe no mobile. 10s para trocar e volta do inicio."
+     RESPONDIDO F3 · carrosseis NAO pausam no hover; so o rotativo de eventos
+     pausa, porque tem CTA dentro do card.
+     RESPONDIDO F5 · "Nao existem animacoes de entrada." */
+  --carrossel-intervalo: 10s;
+  --transicao: 160ms ease;
+  --foco: 2px;
+
+  /* RESPONDIDO D7 · "Ao scrollar o header diminui para um tamanho fixo de
+     1008px e vira sticky acompanhando a scrollagem." */
+  --header-altura: 72px;
+  --header-largura-scroll: 1008px;
+}
+
+/* O bloco "LINE-HEIGHT DE DESKTOP" que ficava aqui foi removido em 23/09.
+   Os estilos nomeados do arquivo mostram o mesmo line-height nos dois lados
+   em todos os estilos, entao nao havia o que trocar no breakpoint. O que eu
+   tinha era uma reconstrucao minha a partir de nos isolados. */
+
+/* =========================================================================
+   BREAKPOINTS — media query nao aceita custom property, ficam literais.
+
+     base            ate  767px   mobile   (viewport 400, container 368)
+     min-width: 768px          tablet / "Intermediario"   PENDENTE C4b
+     min-width: 1024px         desktop, menu em pilula
+     min-width: 1728px         viewport de referencia do desenho
+
+   PENDENTE C4b · o valor real do "Intermediario" continua sem numero.
+   ========================================================================= */
+
+/* Grupo de estilos "Mobile" do arquivo, abaixo de 640 (passo 3, 09/10). */
+@media (max-width: 639px) {
+  :root {
+    --fs-h1: 3rem;      /* "H1 bold 700" Mobile: 48/100 */
+    --fs-h2: 2rem;      /* "H2 bold 700" Mobile: 32/120 */
+    --fs-h3: 1.75rem;   /* "H3 bold 700" Mobile: 28/130 */
+  }
+}

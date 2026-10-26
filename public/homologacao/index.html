@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agência de SEO, GEO e Conteúdo | Papoca</title>
+<meta name="description" content="Agência boutique de SEO, GEO e conteúdo, com no máximo quatro clientes por gerente. Medimos como sua marca aparece no Google e nas respostas de IA.">
+<link rel="canonical" href="https://agenciapapoca.com/pt-br/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Agência de SEO, GEO e Conteúdo | Papoca">
+<meta property="og:description" content="Agência boutique de SEO, GEO e conteúdo, com no máximo quatro clientes por gerente. Medimos como sua marca aparece no Google e nas respostas de IA.">
+<meta property="og:url" content="https://agenciapapoca.com/pt-br/">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+
+
+<link rel="preload" href="/homologacao/fonts/inter-300.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/homologacao/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/homologacao/css/fontes.css?v=20261026">
+<link rel="stylesheet" href="/homologacao/css/tokens.css?v=20261026">
+<link rel="stylesheet" href="/homologacao/css/base.css?v=20261026">
+<link rel="stylesheet" href="/homologacao/css/componentes.css?v=20261026">
+<link rel="stylesheet" href="/homologacao/css/componentes-2.css?v=20261026">
+
+<!--
+  ESTA PÁGINA NÃO TEM CSS PRÓPRIO.
+  Tudo vem do design system. Se algo aqui estiver errado visualmente, o defeito
+  está num componente, não nesta página, e a correção é lá.
+
+  ORDEM DAS SEÇÕES · LIDA DO FIGMA EM 26/10/2026, frame "Página nova - V1"
+  da página "Home - V5" (node 1341:11372, 1728 x 10770), a versão que a
+  Thais liberou em 22/10:
+
+     Menu (flutuante)
+     Hero (com o carrossel "Quem já papoca:" dentro)
+     Seção pilares
+     Tabela de serviços
+     Big numbers
+     Seção Feedback de destaque   (componente novo)
+     Casos de sucesso
+     Formulário
+     Vídeo
+     Blog
+     Footer
+
+  Saíram da Home nesta versão: o carrossel de clientes separado, a faixa
+  "Destaque" e a seção de depoimentos.
+  SEO (title, description, Open Graph, JSON-LD): documento oficial do novo
+  site, aba Home, com o domínio agenciapapoca.com (decisão de Filipe, 26/10).
+-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://agenciapapoca.com/#organizacao",
+      "name": "Agência Papoca",
+      "url": "https://agenciapapoca.com/pt-br/",
+      "logo": "https://agenciapapoca.com/img/logo-papoca.svg",
+      "description": "Agência boutique de SEO, GEO e conteúdo, com no máximo quatro clientes por gerente. Medimos como sua marca aparece no Google e nas respostas de IA.",
+      "email": "contato@agenciapapoca.com.br",
+      "foundingDate": "2014",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "CNPJ",
+        "value": "23.008.081/0001-71"
+      },
+      "sameAs": [
+        "https://www.instagram.com/agenciapapoca/",
+        "https://www.linkedin.com/company/agencia-papoca/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://agenciapapoca.com/#site",
+      "url": "https://agenciapapoca.com/pt-br/",
+      "name": "Agência Papoca",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://agenciapapoca.com/#organizacao" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://agenciapapoca.com/pt-br/#pagina",
+      "url": "https://agenciapapoca.com/pt-br/",
+      "name": "Agência de SEO, GEO e Conteúdo | Papoca",
+      "isPartOf": { "@id": "https://agenciapapoca.com/#site" },
+      "about": { "@id": "https://agenciapapoca.com/#organizacao" }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="botao botao--primario botao--p pular" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- ============================ CABEÇALHO · componente "Menu" (745:8027) ============================
+     Figma, página "Menu - interações" (1075:9675), lida pela API em 08/10.
+     Variante "Incial" no topo da página e "Após scroll" depois de 80px de
+     rolagem (smart animate 0,3s ease-out). Submenus abrem no hover, como as
+     variantes "aberto" do "Itens do menu". Gerado por partes/cabecalho.py:
+     não editar aqui, editar lá. -->
+<div class="cabecalho-fundo" aria-hidden="true"></div>
+<header class="cabecalho cabecalho--flutuante cabecalho--menu" data-tema="branco">
+  <div class="cabecalho__interno">
+    <a class="cabecalho__marca" href="/homologacao">
+      <img class="cabecalho__logo" src="/homologacao/img/logo-papoca.svg" width="48" height="44" alt="Papoca">
+    </a>
+    <nav class="cabecalho__nav" aria-label="Principal">
+  <ul class="menu-topo">
+    <li class="menu-item menu-item--solucoes"><a class="menu-item__link" href="/homologacao/servicos"><span class="menu-item__texto" style="--w:67px">Soluções</span></a></li>
+    <li class="menu-item menu-item--sobre"><a class="menu-item__link" href="/homologacao/quem-somos"><span class="menu-item__texto" style="--w:73px">Sobre nós</span></a></li>
+    <li class="menu-item menu-item--contato"><a class="menu-item__link" href="/homologacao/contato"><span class="menu-item__texto" style="--w:57px">Contato</span></a></li>
+  </ul>
+    </nav>
+    <a class="botao botao--primario cabecalho__cta" href="#contato" style="min-width:min(145px, 100%)">Fale conosco</a>
+    <button class="cabecalho__botao-menu" type="button" aria-expanded="false" aria-controls="gaveta" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="cabecalho__gaveta" id="gaveta" hidden>
+    <ul class="cabecalho__lista">
+      <li><a class="cabecalho__link" href="/homologacao/servicos">Soluções</a></li>
+      <li><a class="cabecalho__link" href="/homologacao/quem-somos">Sobre nós</a></li>
+      <li><a class="cabecalho__link" href="/homologacao/contato">Contato</a></li>
+    </ul>
+    <a class="botao botao--primario" href="#contato" style="min-width:min(145px, 100%)">Fale conosco</a>
+  </div>
+<svg class="menu-sprite" aria-hidden="true" focusable="false">
+  <symbol id="mi-blog" viewBox="0 0 24 24"><path d="M5 21C4.45 21 3.97917 20.8042 3.5875 20.4125C3.19583 20.0208 3 19.55 3 19V5C3 4.45 3.19583 3.97917 3.5875 3.5875C3.97917 3.19583 4.45 3 5 3H16L21 8V19C21 19.55 20.8042 20.0208 20.4125 20.4125C20.0208 20.8042 19.55 21 19 21H5ZM5 19H19V9H15V5H5V19ZM7 17H17V15H7V17ZM7 9H12V7H7V9ZM7 13H17V11H7V13Z" fill="currentColor"/></symbol>
+  <symbol id="mi-diagnostico-geo" viewBox="0 0 24 24"><path d="M4 15C3.16667 15 2.45833 14.7083 1.875 14.125C1.29167 13.5417 1 12.8333 1 12C1 11.1667 1.29167 10.4583 1.875 9.875C2.45833 9.29167 3.16667 9 4 9V7C4 6.45 4.19583 5.97917 4.5875 5.5875C4.97917 5.19583 5.45 5 6 5H9C9 4.16667 9.29167 3.45833 9.875 2.875C10.4583 2.29167 11.1667 2 12 2C12.8333 2 13.5417 2.29167 14.125 2.875C14.7083 3.45833 15 4.16667 15 5H18C18.55 5 19.0208 5.19583 19.4125 5.5875C19.8042 5.97917 20 6.45 20 7V9C20.8333 9 21.5417 9.29167 22.125 9.875C22.7083 10.4583 23 11.1667 23 12C23 12.8333 22.7083 13.5417 22.125 14.125C21.5417 14.7083 20.8333 15 20 15V19C20 19.55 19.8042 20.0208 19.4125 20.4125C19.0208 20.8042 18.55 21 18 21H6C5.45 21 4.97917 20.8042 4.5875 20.4125C4.19583 20.0208 4 19.55 4 19V15ZM10.0625 12.5625C10.3542 12.2708 10.5 11.9167 10.5 11.5C10.5 11.0833 10.3542 10.7292 10.0625 10.4375C9.77083 10.1458 9.41667 10 9 10C8.58333 10 8.22917 10.1458 7.9375 10.4375C7.64583 10.7292 7.5 11.0833 7.5 11.5C7.5 11.9167 7.64583 12.2708 7.9375 12.5625C8.22917 12.8542 8.58333 13 9 13C9.41667 13 9.77083 12.8542 10.0625 12.5625ZM16.0625 12.5625C16.3542 12.2708 16.5 11.9167 16.5 11.5C16.5 11.0833 16.3542 10.7292 16.0625 10.4375C15.7708 10.1458 15.4167 10 15 10C14.5833 10 14.2292 10.1458 13.9375 10.4375C13.6458 10.7292 13.5 11.0833 13.5 11.5C13.5 11.9167 13.6458 12.2708 13.9375 12.5625C14.2292 12.8542 14.5833 13 15 13C15.4167 13 15.7708 12.8542 16.0625 12.5625ZM8 17H16V15H8V17ZM6 19H18V7H6V19Z" fill="currentColor"/></symbol>
+  <symbol id="mi-ebook" viewBox="0 0 24 24"><path d="M6.75 22C6 22 5.35417 21.7459 4.8125 21.2375C4.27083 20.7292 4 20.1 4 19.35V5.40005C4 4.76672 4.19583 4.20005 4.5875 3.70005C4.97917 3.20005 5.49167 2.88338 6.125 2.75005L16 0.800049V16.8L6.525 18.7C6.375 18.7334 6.25 18.8125 6.15 18.9375C6.05 19.0625 6 19.2 6 19.35C6 19.5334 6.075 19.6875 6.225 19.8125C6.375 19.9375 6.55 20 6.75 20H18V4.00005H20V22H6.75ZM9 16.175L14 15.2V3.25005L9 4.22505V16.175ZM7 16.575V4.62505L6.625 4.70005C6.44167 4.73338 6.29167 4.81255 6.175 4.93755C6.05833 5.06255 6 5.21672 6 5.40005V16.825C6.08333 16.7917 6.17083 16.7625 6.2625 16.7375C6.35417 16.7125 6.44167 16.6917 6.525 16.675L7 16.575Z" fill="currentColor"/></symbol>
+  <symbol id="mi-landing-pages" viewBox="0 0 24 24"><path d="M8 21V19H10V17H4C3.45 17 2.97917 16.8042 2.5875 16.4125C2.19583 16.0208 2 15.55 2 15V5C2 4.45 2.19583 3.97917 2.5875 3.5875C2.97917 3.19583 3.45 3 4 3H20C20.55 3 21.0208 3.19583 21.4125 3.5875C21.8042 3.97917 22 4.45 22 5V15C22 15.55 21.8042 16.0208 21.4125 16.4125C21.0208 16.8042 20.55 17 20 17H14V19H16V21H8ZM4 15H20V5H4V15Z" fill="currentColor"/></symbol>
+  <symbol id="mi-materiais-ricos" viewBox="0 0 24 24"><path d="M5 21C4.45 21 3.97917 20.8042 3.5875 20.4125C3.19583 20.0208 3 19.55 3 19V5C3 4.45 3.19583 3.97917 3.5875 3.5875C3.97917 3.19583 4.45 3 5 3H19C19.55 3 20.0208 3.19583 20.4125 3.5875C20.8042 3.97917 21 4.45 21 5V19C21 19.55 20.8042 20.0208 20.4125 20.4125C20.0208 20.8042 19.55 21 19 21H5ZM5 5V19H19V5H17V12L14.5 10.5L12 12V5H5Z" fill="currentColor"/></symbol>
+  <symbol id="mi-metodologia" viewBox="0 0 24 24"><path d="M16.4 21L15 19.6L16.575 18L15 16.425L16.4 15L18 16.6L19.575 15L21 16.425L19.4 18L21 19.6L19.575 21L18 19.425L16.4 21ZM6.7125 18.7125C6.90417 18.5208 7 18.2833 7 18C7 17.7167 6.90417 17.4792 6.7125 17.2875C6.52083 17.0958 6.28333 17 6 17C5.71667 17 5.47917 17.0958 5.2875 17.2875C5.09583 17.4792 5 17.7167 5 18C5 18.2833 5.09583 18.5208 5.2875 18.7125C5.47917 18.9042 5.71667 19 6 19C6.28333 19 6.52083 18.9042 6.7125 18.7125ZM6 21C5.16667 21 4.45833 20.7083 3.875 20.125C3.29167 19.5417 3 18.8333 3 18C3 17.1667 3.29167 16.4583 3.875 15.875C4.45833 15.2917 5.16667 15 6 15C6.61667 15 7.17917 15.1708 7.6875 15.5125C8.19583 15.8542 8.56667 16.3167 8.8 16.9C9.45 16.7167 9.97917 16.3583 10.3875 15.825C10.7958 15.2917 11 14.6833 11 14V10C11 8.61667 11.4875 7.4375 12.4625 6.4625C13.4375 5.4875 14.6167 5 16 5H17.15L15.575 3.425L17 2L21 6L17 10L15.575 8.6L17.15 7H16C15.1667 7 14.4583 7.29167 13.875 7.875C13.2917 8.45833 13 9.16667 13 10V14C13 15.2167 12.6083 16.2875 11.825 17.2125C11.0417 18.1375 10.05 18.7083 8.85 18.925C8.65 19.5417 8.2875 20.0417 7.7625 20.425C7.2375 20.8083 6.65 21 6 21ZM4.4 9L3 7.6L4.575 6L3 4.425L4.4 3L6 4.6L7.575 3L9 4.425L7.4 6L9 7.6L7.575 9L6 7.425L4.4 9Z" fill="currentColor"/></symbol>
+  <symbol id="mi-monitoramento" viewBox="0 0 24 24"><path d="M6 23H3C2.45 23 1.97917 22.8042 1.5875 22.4125C1.19583 22.0208 1 21.55 1 21V18H3V21H6V23ZM18 23V21H21V18H23V21C23 21.55 22.8042 22.0208 22.4125 22.4125C22.0208 22.8042 21.55 23 21 23H18ZM12 18.5C10 18.5 8.1875 17.9083 6.5625 16.725C4.9375 15.5417 3.75 13.9667 3 12C3.75 10.0333 4.9375 8.45833 6.5625 7.275C8.1875 6.09167 10 5.5 12 5.5C14 5.5 15.8125 6.09167 17.4375 7.275C19.0625 8.45833 20.25 10.0333 21 12C20.25 13.9667 19.0625 15.5417 17.4375 16.725C15.8125 17.9083 14 18.5 12 18.5ZM12 16.5C13.4667 16.5 14.8083 16.1 16.025 15.3C17.2417 14.5 18.175 13.4 18.825 12C18.175 10.6 17.2417 9.5 16.025 8.7C14.8083 7.9 13.4667 7.5 12 7.5C10.5333 7.5 9.19167 7.9 7.975 8.7C6.75833 9.5 5.825 10.6 5.175 12C5.825 13.4 6.75833 14.5 7.975 15.3C9.19167 16.1 10.5333 16.5 12 16.5ZM12 15.5C12.9667 15.5 13.7917 15.1583 14.475 14.475C15.1583 13.7917 15.5 12.9667 15.5 12C15.5 11.0333 15.1583 10.2083 14.475 9.525C13.7917 8.84167 12.9667 8.5 12 8.5C11.0333 8.5 10.2083 8.84167 9.525 9.525C8.84167 10.2083 8.5 11.0333 8.5 12C8.5 12.9667 8.84167 13.7917 9.525 14.475C10.2083 15.1583 11.0333 15.5 12 15.5ZM12 13.5C11.5833 13.5 11.2292 13.3542 10.9375 13.0625C10.6458 12.7708 10.5 12.4167 10.5 12C10.5 11.5833 10.6458 11.2292 10.9375 10.9375C11.2292 10.6458 11.5833 10.5 12 10.5C12.4167 10.5 12.7708 10.6458 13.0625 10.9375C13.3542 11.2292 13.5 11.5833 13.5 12C13.5 12.4167 13.3542 12.7708 13.0625 13.0625C12.7708 13.3542 12.4167 13.5 12 13.5ZM1 6V3C1 2.45 1.19583 1.97917 1.5875 1.5875C1.97917 1.19583 2.45 1 3 1H6V3H3V6H1ZM21 6V3H18V1H21C21.55 1 22.0208 1.19583 22.4125 1.5875C22.8042 1.97917 23 2.45 23 3V6H21Z" fill="currentColor"/></symbol>
+  <symbol id="mi-newsletter" viewBox="0 0 24 24"><path d="M4 20C3.45 20 2.97917 19.8042 2.5875 19.4125C2.19583 19.0208 2 18.55 2 18V6C2 5.45 2.19583 4.97917 2.5875 4.5875C2.97917 4.19583 3.45 4 4 4H20C20.55 4 21.0208 4.19583 21.4125 4.5875C21.8042 4.97917 22 5.45 22 6V18C22 18.55 21.8042 19.0208 21.4125 19.4125C21.0208 19.8042 20.55 20 20 20H4ZM12 13L4 8V18H20V8L12 13ZM12 11L20 6H4L12 11ZM4 8V6V18V8Z" fill="currentColor"/></symbol>
+  <symbol id="mi-otimizacao-conteudo" viewBox="0 0 24 24"><path d="M2 24V20H22V24H2ZM6 16H7.4L15.2 8.225L14.475 7.5L13.775 6.8L6 14.6V16ZM4 18V13.75L15.2 2.575C15.3833 2.39167 15.5958 2.25 15.8375 2.15C16.0792 2.05 16.3333 2 16.6 2C16.8667 2 17.125 2.05 17.375 2.15C17.625 2.25 17.85 2.4 18.05 2.6L19.425 4C19.625 4.18333 19.7708 4.4 19.8625 4.65C19.9542 4.9 20 5.15833 20 5.425C20 5.675 19.9542 5.92083 19.8625 6.1625C19.7708 6.40417 19.625 6.625 19.425 6.825L8.25 18H4ZM15.2 8.225L14.475 7.5L13.775 6.8L15.2 8.225Z" fill="currentColor"/></symbol>
+  <symbol id="mi-seo-off-site" viewBox="0 0 24 24"><path d="M10 17H14V15H10V17ZM10 13H17V11H10V13ZM7 9H17V7H7V9ZM6.625 22C5.30833 22 4.1875 21.5375 3.2625 20.6125C2.3375 19.6875 1.875 18.5667 1.875 17.25C1.875 16.3 2.12083 15.45 2.6125 14.7C3.10417 13.95 3.75 13.3833 4.55 13H2V11H8V17H6V14.575C5.38333 14.7083 4.875 15.025 4.475 15.525C4.075 16.025 3.875 16.6 3.875 17.25C3.875 18.0167 4.14583 18.6667 4.6875 19.2C5.22917 19.7333 5.875 20 6.625 20V22ZM10 21V19H19V5H5V9H3V5C3 4.45 3.19583 3.97917 3.5875 3.5875C3.97917 3.19583 4.45 3 5 3H19C19.55 3 20.0208 3.19583 20.4125 3.5875C20.8042 3.97917 21 4.45 21 5V19C21 19.55 20.8042 20.0208 20.4125 20.4125C20.0208 20.8042 19.55 21 19 21H10Z" fill="currentColor"/></symbol>
+  <symbol id="mi-seo-on-page" viewBox="0 0 24 24"><path d="M21.6 23L18.525 19.95C18.225 20.1333 17.9042 20.2708 17.5625 20.3625C17.2208 20.4542 16.8667 20.5 16.5 20.5C15.4 20.5 14.4583 20.1083 13.675 19.325C12.8917 18.5417 12.5 17.6 12.5 16.5C12.5 15.4 12.8917 14.4583 13.675 13.675C14.4583 12.8917 15.4 12.5 16.5 12.5C17.6 12.5 18.5417 12.8917 19.325 13.675C20.1083 14.4583 20.5 15.4 20.5 16.5C20.5 16.8833 20.45 17.2458 20.35 17.5875C20.25 17.9292 20.1083 18.25 19.925 18.55L23 21.6L21.6 23ZM5.5 20.5C4.4 20.5 3.45833 20.1083 2.675 19.325C1.89167 18.5417 1.5 17.6 1.5 16.5C1.5 15.4 1.89167 14.4583 2.675 13.675C3.45833 12.8917 4.4 12.5 5.5 12.5C6.6 12.5 7.54167 12.8917 8.325 13.675C9.10833 14.4583 9.5 15.4 9.5 16.5C9.5 17.6 9.10833 18.5417 8.325 19.325C7.54167 20.1083 6.6 20.5 5.5 20.5ZM5.5 18.5C6.05 18.5 6.52083 18.3042 6.9125 17.9125C7.30417 17.5208 7.5 17.05 7.5 16.5C7.5 15.95 7.30417 15.4792 6.9125 15.0875C6.52083 14.6958 6.05 14.5 5.5 14.5C4.95 14.5 4.47917 14.6958 4.0875 15.0875C3.69583 15.4792 3.5 15.95 3.5 16.5C3.5 17.05 3.69583 17.5208 4.0875 17.9125C4.47917 18.3042 4.95 18.5 5.5 18.5ZM16.5 18.5C17.05 18.5 17.5208 18.3042 17.9125 17.9125C18.3042 17.5208 18.5 17.05 18.5 16.5C18.5 15.95 18.3042 15.4792 17.9125 15.0875C17.5208 14.6958 17.05 14.5 16.5 14.5C15.95 14.5 15.4792 14.6958 15.0875 15.0875C14.6958 15.4792 14.5 15.95 14.5 16.5C14.5 17.05 14.6958 17.5208 15.0875 17.9125C15.4792 18.3042 15.95 18.5 16.5 18.5ZM5.5 9.5C4.4 9.5 3.45833 9.10833 2.675 8.325C1.89167 7.54167 1.5 6.6 1.5 5.5C1.5 4.4 1.89167 3.45833 2.675 2.675C3.45833 1.89167 4.4 1.5 5.5 1.5C6.6 1.5 7.54167 1.89167 8.325 2.675C9.10833 3.45833 9.5 4.4 9.5 5.5C9.5 6.6 9.10833 7.54167 8.325 8.325C7.54167 9.10833 6.6 9.5 5.5 9.5ZM16.5 9.5C15.4 9.5 14.4583 9.10833 13.675 8.325C12.8917 7.54167 12.5 6.6 12.5 5.5C12.5 4.4 12.8917 3.45833 13.675 2.675C14.4583 1.89167 15.4 1.5 16.5 1.5C17.6 1.5 18.5417 1.89167 19.325 2.675C20.1083 3.45833 20.5 4.4 20.5 5.5C20.5 6.6 20.1083 7.54167 19.325 8.325C18.5417 9.10833 17.6 9.5 16.5 9.5ZM5.5 7.5C6.05 7.5 6.52083 7.30417 6.9125 6.9125C7.30417 6.52083 7.5 6.05 7.5 5.5C7.5 4.95 7.30417 4.47917 6.9125 4.0875C6.52083 3.69583 6.05 3.5 5.5 3.5C4.95 3.5 4.47917 3.69583 4.0875 4.0875C3.69583 4.47917 3.5 4.95 3.5 5.5C3.5 6.05 3.69583 6.52083 4.0875 6.9125C4.47917 7.30417 4.95 7.5 5.5 7.5ZM16.5 7.5C17.05 7.5 17.5208 7.30417 17.9125 6.9125C18.3042 6.52083 18.5 6.05 18.5 5.5C18.5 4.95 18.3042 4.47917 17.9125 4.0875C17.5208 3.69583 17.05 3.5 16.5 3.5C15.95 3.5 15.4792 3.69583 15.0875 4.0875C14.6958 4.47917 14.5 4.95 14.5 5.5C14.5 6.05 14.6958 6.52083 15.0875 6.9125C15.4792 7.30417 15.95 7.5 16.5 7.5Z" fill="currentColor"/></symbol>
+  <symbol id="mi-seo-tecnico" viewBox="0 0 24 24"><path d="M11 11V4H22V11H11ZM2 20V13H12V20H2ZM2 11V4H9V11H2ZM13 9H20V6H13V9ZM4 18H10V15H4V18ZM4 9H7V6H4V9ZM14 22V18.925L19.525 13.425C19.675 13.275 19.8417 13.1667 20.025 13.1C20.2083 13.0333 20.3917 13 20.575 13C20.775 13 20.9667 13.0375 21.15 13.1125C21.3333 13.1875 21.5 13.3 21.65 13.45L22.575 14.375C22.725 14.525 22.8333 14.6917 22.9 14.875C22.9667 15.0583 23 15.2417 23 15.425C23 15.6083 22.9667 15.7958 22.9 15.9875C22.8333 16.1792 22.725 16.35 22.575 16.5L17.075 22H14ZM15.5 20.5H16.45L19.475 17.45L19.025 16.975L18.55 16.525L15.5 19.55V20.5ZM19.025 16.975L18.55 16.525L19.475 17.45L19.025 16.975Z" fill="currentColor"/></symbol>
+  <symbol id="mi-sobre" viewBox="0 0 24 24"><path d="M11 17H13V11H11V17ZM12.7125 8.7125C12.9042 8.52083 13 8.28333 13 8C13 7.71667 12.9042 7.47917 12.7125 7.2875C12.5208 7.09583 12.2833 7 12 7C11.7167 7 11.4792 7.09583 11.2875 7.2875C11.0958 7.47917 11 7.71667 11 8C11 8.28333 11.0958 8.52083 11.2875 8.7125C11.4792 8.90417 11.7167 9 12 9C12.2833 9 12.5208 8.90417 12.7125 8.7125ZM12 22C10.6167 22 9.31667 21.7375 8.1 21.2125C6.88333 20.6875 5.825 19.975 4.925 19.075C4.025 18.175 3.3125 17.1167 2.7875 15.9C2.2625 14.6833 2 13.3833 2 12C2 10.6167 2.2625 9.31667 2.7875 8.1C3.3125 6.88333 4.025 5.825 4.925 4.925C5.825 4.025 6.88333 3.3125 8.1 2.7875C9.31667 2.2625 10.6167 2 12 2C13.3833 2 14.6833 2.2625 15.9 2.7875C17.1167 3.3125 18.175 4.025 19.075 4.925C19.975 5.825 20.6875 6.88333 21.2125 8.1C21.7375 9.31667 22 10.6167 22 12C22 13.3833 21.7375 14.6833 21.2125 15.9C20.6875 17.1167 19.975 18.175 19.075 19.075C18.175 19.975 17.1167 20.6875 15.9 21.2125C14.6833 21.7375 13.3833 22 12 22ZM12 20C14.2333 20 16.125 19.225 17.675 17.675C19.225 16.125 20 14.2333 20 12C20 9.76667 19.225 7.875 17.675 6.325C16.125 4.775 14.2333 4 12 4C9.76667 4 7.875 4.775 6.325 6.325C4.775 7.875 4 9.76667 4 12C4 14.2333 4.775 16.125 6.325 17.675C7.875 19.225 9.76667 20 12 20Z" fill="currentColor"/></symbol>
+</svg>
+</header>
+
+<main id="conteudo">
+
+  <!-- ===================== 1 · HERO · "Hero padrão - desktop" na Home V5 (1341:11376) =====================
+       26/10, Home V5: padding 300/16/80/16, gap 64; título e subtítulo novos
+       (subtítulo Inter Light 24 com trecho Inter Bold); CTA "Fale com um
+       especialista" 337 x 60 leva ao formulário desta página (comentário #49);
+       o carrossel de clientes entrou no hero ("Carrossel de clientes -
+       desktop", 1144 x 68, gap 32) com os logos em branco. Logos com 32px de
+       altura, pedido do comentário #41 do Figma. -->
+  <section class="hero hero--home hero--com-foto f-hero hero--v5" data-tema="azul">
+    <img class="hero__midia" src="/homologacao/img/hero/home-pronta.jpg" alt="" width="2400" height="1600" fetchpriority="high" decoding="async">
+    <svg class="hero__efeitos" data-sangra viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <defs>
+        <radialGradient id="hero-efeito-a" gradientUnits="userSpaceOnUse" cx="0.5" cy="0.5" r="0.5" gradientTransform="matrix(1.05045 -0.18799 0.14612 4.21473 -0.67656 -1.60029)"><stop offset="0" stop-color="#D92B8A"/><stop offset="1" stop-color="#191919"/></radialGradient>
+        <radialGradient id="hero-efeito-b" gradientUnits="userSpaceOnUse" cx="0.5" cy="0.5" r="0.5" gradientTransform="matrix(-0.52494 1.07587 -1.07587 -1.95645 1.35879 1.03743)"><stop offset="0" stop-color="#191919"/><stop offset="1" stop-color="#191919" stop-opacity="0"/></radialGradient>
+        <radialGradient id="hero-efeito-c" gradientUnits="userSpaceOnUse" cx="0.5" cy="0.5" r="0.5" gradientTransform="matrix(0.17592 0.81589 -0.62618 0.70732 1.10856 0.07806)"><stop offset="0" stop-color="#D92B8A"/><stop offset="1" stop-color="#191919"/></radialGradient>
+      </defs>
+      <rect class="hero__efeito-a" width="1" height="1" fill="url(#hero-efeito-a)"/>
+      <rect width="1" height="1" fill="url(#hero-efeito-b)"/>
+      <rect class="hero__efeito-c" width="1" height="1" fill="url(#hero-efeito-c)"/>
+    </svg>
+    <div class="container hero__conteudo f-hero-titulo">
+      <h1 class="t-h1 is-bold hero__titulo"><span class="realce">SEO, GEO e Conteúdo</span>&nbsp;da sua empresa à frente dos seus concorrentes</h1>
+      <p class="t-corpo hero__sub">Planejamento e execução de <strong>SEO e GEO para empresas que precisam crescer</strong> no Google e aparecer nas respostas de IA.</p>
+      <a class="botao botao--primario botao--g hero__cta" href="#contato" style="min-width:min(337px, 100%)">Fale com um especialista</a>
+    </div>
+    <div class="hero-clientes" role="region" aria-label="Clientes">
+      <p class="hero-clientes__titulo">Quem já papoca<span class="hero-clientes__ponto">:</span></p>
+      <div class="marquee hero-clientes__faixa">
+        <div class="marquee__trilha">
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/heflo.svg" alt="HEFLO" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo hero-clientes__logo--cor" src="/homologacao/img/clientes/carrossel/engov-branco.svg" alt="Engov" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/benegrip.svg" alt="Benegrip" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/twilio.svg" alt="Twilio" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/inter.svg" alt="Inter" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/linkana.svg" alt="Linkana" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/workvivo.svg" alt="Workvivo by Zoom" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/ticket.svg" alt="Ticket" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/safetec.svg" alt="Safetec" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/convenia.svg" alt="Convenia" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/neo-quimica.svg" alt="Neo Química" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/lg-lugar-de-gente.svg" alt="LG lugar de gente" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/mantecorp-skincare.svg" alt="Mantecorp Skincare" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/riva.svg" alt="Riva" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/supersonic.svg" alt="Supersonic" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/tamarine.svg" alt="Tamarine" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/direcional.svg" alt="Direcional" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/neosaldina.svg" alt="Neosaldina" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/braze.svg" alt="Braze" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/mapa-hds.svg" alt="Mapa HDS" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/clevertap.svg" alt="CleverTap" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/fasthotel.svg" alt="Fasthotel" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/falconi.svg" alt="Falconi" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/simplesvet.svg" alt="SimplesVet" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/itau.svg" alt="Itaú" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/heflo.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo hero-clientes__logo--cor" src="/homologacao/img/clientes/carrossel/engov-branco.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/benegrip.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/twilio.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/inter.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/linkana.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/workvivo.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/ticket.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/safetec.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/convenia.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/neo-quimica.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/lg-lugar-de-gente.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/mantecorp-skincare.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/riva.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/supersonic.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/tamarine.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/direcional.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/neosaldina.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/braze.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/mapa-hds.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/clevertap.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/fasthotel.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/falconi.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/simplesvet.svg" alt="" width="160" height="62" decoding="async"></span>
+          <span class="marquee__item hero-clientes__item" aria-hidden="true"><img class="hero-clientes__logo" src="/homologacao/img/clientes/carrossel/itau.svg" alt="" width="160" height="62" decoding="async"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 2 · PILARES · "Seção pilares - responsivo" na Home V5 (1341:11377) =====================
+       26/10: texto novo no cartão de título (Bold 48 com "A sua marca aparece
+       por lá" em Rosa Site, e uma linha Regular 24 depois de uma linha em
+       branco), títulos e textos novos nos três cartões, sem CTA. -->
+  <section class="secao secao--pilha secao-pilares secao-pilares--v5" data-tema="branco">
+    <div class="titulo-secao titulo-secao--cartao">
+      <h2 class="t-h2 is-bold">Seus clientes estão escolhendo fornecedores no Google e nas IAs. <span class="realce">A sua marca aparece por lá</span>?</h2>
+      <p class="pilares-v5__apoio">Com a Papoca, ela aparece em cada momento da escolha:</p>
+    </div>
+    <div class="container">
+      <div class="pilares pilares--3">
+        <article class="pilar">
+          <span class="icone-tile" aria-hidden="true"><svg class="icone-svg" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none"><path d="M36 38.33L30.87 33.25C30.37 33.55 29.84 33.78 29.27 33.93C28.70 34.09 28.11 34.16 27.5 34.16C25.66 34.16 24.09 33.51 22.79 32.20C21.48 30.90 20.83 29.33 20.83 27.5C20.83 25.66 21.48 24.09 22.79 22.79C24.09 21.48 25.66 20.83 27.5 20.83C29.33 20.83 30.90 21.48 32.20 22.79C33.51 24.09 34.16 25.66 34.16 27.5C34.16 28.13 34.08 28.74 33.91 29.31C33.75 29.88 33.51 30.41 33.20 30.91L38.33 36L36 38.33ZM9.16 34.16C7.33 34.16 5.76 33.51 4.45 32.20C3.15 30.90 2.5 29.33 2.5 27.5C2.5 25.66 3.15 24.09 4.45 22.79C5.76 21.48 7.33 20.83 9.16 20.83C11 20.83 12.56 21.48 13.87 22.79C15.18 24.09 15.83 25.66 15.83 27.5C15.83 29.33 15.18 30.90 13.87 32.20C12.56 33.51 11 34.16 9.16 34.16ZM9.16 30.83C10.08 30.83 10.86 30.50 11.52 29.85C12.17 29.20 12.5 28.41 12.5 27.5C12.5 26.58 12.17 25.79 11.52 25.14C10.86 24.49 10.08 24.16 9.16 24.16C8.25 24.16 7.46 24.49 6.81 25.14C6.15 25.79 5.83 26.58 5.83 27.5C5.83 28.41 6.15 29.20 6.81 29.85C7.46 30.50 8.25 30.83 9.16 30.83ZM27.5 30.83C28.41 30.83 29.20 30.50 29.85 29.85C30.50 29.20 30.83 28.41 30.83 27.5C30.83 26.58 30.50 25.79 29.85 25.14C29.20 24.49 28.41 24.16 27.5 24.16C26.58 24.16 25.79 24.49 25.14 25.14C24.49 25.79 24.16 26.58 24.16 27.5C24.16 28.41 24.49 29.20 25.14 29.85C25.79 30.50 26.58 30.83 27.5 30.83ZM9.16 15.83C7.33 15.83 5.76 15.18 4.45 13.87C3.15 12.56 2.5 11 2.5 9.16C2.5 7.33 3.15 5.76 4.45 4.45C5.76 3.15 7.33 2.5 9.16 2.5C11 2.5 12.56 3.15 13.87 4.45C15.18 5.76 15.83 7.33 15.83 9.16C15.83 11 15.18 12.56 13.87 13.87C12.56 15.18 11 15.83 9.16 15.83ZM27.5 15.83C25.66 15.83 24.09 15.18 22.79 13.87C21.48 12.56 20.83 11 20.83 9.16C20.83 7.33 21.48 5.76 22.79 4.45C24.09 3.15 25.66 2.5 27.5 2.5C29.33 2.5 30.90 3.15 32.20 4.45C33.51 5.76 34.16 7.33 34.16 9.16C34.16 11 33.51 12.56 32.20 13.87C30.90 15.18 29.33 15.83 27.5 15.83ZM9.16 12.5C10.08 12.5 10.86 12.17 11.52 11.52C12.17 10.86 12.5 10.08 12.5 9.16C12.5 8.25 12.17 7.46 11.52 6.81C10.86 6.15 10.08 5.83 9.16 5.83C8.25 5.83 7.46 6.15 6.81 6.81C6.15 7.46 5.83 8.25 5.83 9.16C5.83 10.08 6.15 10.86 6.81 11.52C7.46 12.17 8.25 12.5 9.16 12.5ZM27.5 12.5C28.41 12.5 29.20 12.17 29.85 11.52C30.50 10.86 30.83 10.08 30.83 9.16C30.83 8.25 30.50 7.46 29.85 6.81C29.20 6.15 28.41 5.83 27.5 5.83C26.58 5.83 25.79 6.15 25.14 6.81C24.49 7.46 24.16 8.25 24.16 9.16C24.16 10.08 24.49 10.86 25.14 11.52C25.79 12.17 26.58 12.5 27.5 12.5Z" fill="#F9F9F9"/></svg></span>
+          <h3 class="pilar__titulo">No Google, quando o cliente pesquisa</h3>
+          <p class="t-corpo pilar__corpo">Conteúdo, SEO técnico e autoridade trabalhados juntos para a sua marca ocupar as buscas que vêm antes de uma compra.</p>
+        </article>
+        <article class="pilar">
+          <span class="icone-tile" aria-hidden="true"><svg class="icone-svg" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none"><mask id="mask0_1061_827" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="40" height="40"><rect width="40" height="40" fill="#D9D9D9"/></mask><g mask="url(#mask0_1061_827)"><path d="M35.49 31.16L30.49 26.16L32.83 23.83L37.83 28.83L35.49 31.16ZM29.49 11.16L27.16 8.83L32.16 3.83L34.49 6.16L29.49 11.16ZM10.49 11.16L5.49 6.16L7.83 3.83L12.83 8.83L10.49 11.16ZM4.49 31.16L2.16 28.83L7.16 23.83L9.49 26.16L4.49 31.16ZM14.74 28.04L19.99 24.87L25.24 28.08L23.87 22.08L28.49 18.08L22.41 17.54L19.99 11.87L17.58 17.5L11.49 18.04L16.12 22.08L14.74 28.04ZM9.70 35L12.41 23.29L3.33 15.41L15.33 14.37L19.99 3.33L24.66 14.37L36.66 15.41L27.58 23.29L30.29 35L19.99 28.79L9.70 35Z" fill="#F9F9F9"/></g></svg></span>
+          <h3 class="pilar__titulo">Nas IAs, quando pede indicação</h3>
+          <p class="t-corpo pilar__corpo">Mais de 5 milhões de prompts analisados em dez modelos mostram onde a sua marca é citada e o que falta para ser citada.</p>
+        </article>
+        <article class="pilar">
+          <span class="icone-tile" aria-hidden="true"><svg class="icone-svg" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none"><mask id="mask0_1061_840" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="40" height="40"><rect width="40" height="40" fill="#D9D9D9"/></mask><g mask="url(#mask0_1061_840)"><path d="M15 35V11.37L12.33 14L10 11.66L16.66 5L23.33 11.66L21 14.04L18.33 11.37V22.25C19.30 21.38 20.40 20.77 21.62 20.39C22.84 20.02 24.06 19.83 25.29 19.83C25.59 19.83 25.88 19.84 26.16 19.87C26.44 19.90 26.70 19.94 26.95 20L24.33 17.33L26.66 15L33.33 21.66L26.66 28.33L24.33 26L26.95 23.33C26.65 23.27 26.34 23.22 26.04 23.18C25.73 23.14 25.43 23.12 25.12 23.12C23.62 23.12 22.24 23.54 20.97 24.39C19.71 25.24 18.83 26.55 18.33 28.33V35H15Z" fill="#F9F9F9"/></g></svg></span>
+          <h3 class="pilar__titulo">No seu site, quando decide</h3>
+          <p class="t-corpo pilar__corpo">Páginas pensadas a partir do seu negócio levam a visita até o contato, e o relatório mostra quantos leads isso gerou.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 3 · TABELA DE SERVIÇOS · Home V5 (1341:11378) =====================
+       26/10: subiu para antes dos big numbers. Título Regular 48 Branco com
+       trecho Bold Rosa Site; cartões sem botão, com "Leia mais →" Light 16
+       Rosa Site (todos para a página de serviços, comentário #56); CTA
+       "Conheça todos os serviços" (comentário #51). -->
+  <section class="secao secao-servicos secao-servicos--v5" data-tema="preto" id="servicos">
+    <div class="secao-servicos__corpo">
+      <div class="secao-servicos__cabeca">
+        <div class="titulo-secao">
+          <p class="t-label titulo-secao__olho">serviços</p>
+          <h2 class="t-h2">Tudo o que a sua marca precisa para <span class="realce">crescer no Google e nas respostas de IA</span></h2>
+          <p class="t-corpo titulo-secao__sub">Onze anos ajudando sites, blogs e e-commerces a reverter queda, recuperar tráfego qualificado e continuar crescendo, inclusive depois dos updates do Google e da chegada das respostas de IA.</p>
+        </div>
+        <div class="secao-servicos__arte" aria-hidden="true">
+          <img class="secao-servicos__gif" src="/homologacao/img/servicos/computador-girando.svg" alt="" width="594" height="593" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <div class="servicos">
+        <article class="servico servico--leia">
+          <div class="servico__texto">
+            <h3 class="servico__titulo">SEO <span class="sem-quebra">On-page</span> &amp; Marketing de Conteúdo</h3>
+            <p class="servico__corpo">Mais páginas do seu site aparecendo nas buscas que geram negócio. Planejamos clusters por intenção de busca, otimizamos o que já existe e produzimos o que falta, em quatro idiomas.</p>
+          </div>
+          <a class="servico__leia" href="/homologacao/servicos">Leia mais <span aria-hidden="true">→</span><span class="visualmente-oculto">: SEO On-page & Marketing de Conteúdo</span></a>
+        </article>
+        <article class="servico servico--leia">
+          <div class="servico__texto">
+            <h3 class="servico__titulo">SEO <span class="sem-quebra">Off-site</span></h3>
+            <p class="servico__corpo">Sua marca citada nas fontes que o Google e as IAs usam para responder. Construímos autoridade fora do seu site com guest posts e parcerias com portais de referência do seu setor.</p>
+          </div>
+          <a class="servico__leia" href="/homologacao/servicos">Leia mais <span aria-hidden="true">→</span><span class="visualmente-oculto">: SEO Off-site</span></a>
+        </article>
+        <article class="servico servico--leia">
+          <div class="servico__texto">
+            <h3 class="servico__titulo">SEO Técnico</h3>
+            <p class="servico__corpo">Um site que o Google rastreia e indexa sem perder tráfego. Auditoria, plano de correção priorizado por impacto e acompanhamento da implementação junto ao seu time de desenvolvimento.</p>
+          </div>
+          <a class="servico__leia" href="/homologacao/servicos">Leia mais <span aria-hidden="true">→</span><span class="visualmente-oculto">: SEO Técnico</span></a>
+        </article>
+        <article class="servico servico--leia">
+          <div class="servico__texto">
+            <h3 class="servico__titulo">Diagnóstico de GEO</h3>
+            <p class="servico__corpo">Onde sua marca aparece nas respostas de IA e quem aparece no lugar dela. Rodamos milhares de prompts da sua categoria em dez modelos de IA e entregamos um plano de ação priorizado.</p>
+          </div>
+          <a class="servico__leia" href="/homologacao/servicos">Leia mais <span aria-hidden="true">→</span><span class="visualmente-oculto">: Diagnóstico de GEO</span></a>
+        </article>
+        <article class="servico servico--leia">
+          <div class="servico__texto">
+            <h3 class="servico__titulo">Criação e otimização de conteúdo</h3>
+            <p class="servico__corpo">Conteúdo que ranqueia e leva o leitor até a conversão, em blog, landing pages, home e materiais. Cada peça parte de uma pesquisa de palavra-chave e é revisada depois de publicada.</p>
+          </div>
+          <a class="servico__leia" href="/homologacao/servicos">Leia mais <span aria-hidden="true">→</span><span class="visualmente-oculto">: Criação e otimização de conteúdo</span></a>
+        </article>
+        <article class="servico servico--leia">
+          <div class="servico__texto">
+            <h3 class="servico__titulo">Monitoramento contínuo e dedicado</h3>
+            <p class="servico__corpo">Um relatório que a sua diretoria entende. Acompanhamos posição, tráfego, conversão e citações em IA, e traduzimos os números nas decisões que orientam o próximo mês do projeto.</p>
+          </div>
+          <a class="servico__leia" href="/homologacao/servicos">Leia mais <span aria-hidden="true">→</span><span class="visualmente-oculto">: Monitoramento contínuo e dedicado</span></a>
+        </article>
+        <article class="servico servico--leia">
+          <div class="servico__texto">
+            <h3 class="servico__titulo">Criação de <span class="sem-quebra">e-book</span>, infográfico e quiz</h3>
+            <p class="servico__corpo">Materiais ricos que geram e nutrem leads qualificados. Cuidamos de tudo, da apuração à diagramação, com e-books, infográficos, quizzes e calculadoras feitos no padrão da sua marca.</p>
+          </div>
+          <a class="servico__leia" href="/homologacao/servicos">Leia mais <span aria-hidden="true">→</span><span class="visualmente-oculto">: Criação de e-book, infográfico e quiz</span></a>
+        </article>
+        <article class="servico servico--leia">
+          <div class="servico__texto">
+            <h3 class="servico__titulo">Criação de landing pages</h3>
+            <p class="servico__corpo">Páginas que convertem a mídia paga e também são encontradas no orgânico. Estrutura semântica, copy feita a partir de objeções reais de venda e conversão medida desde o primeiro dia.</p>
+          </div>
+          <a class="servico__leia" href="/homologacao/servicos">Leia mais <span aria-hidden="true">→</span><span class="visualmente-oculto">: Criação de landing pages</span></a>
+        </article>
+      </div>
+    </div>
+
+    <a class="botao botao--primario botao--g botao--seta" href="/homologacao/servicos" style="--w0:360px;--w1:423px;--wr:296px"><span class="botao__rotulo">Conheça todos os serviços</span><span class="botao__seta" aria-hidden="true">→</span></a>
+  </section>
+
+  <!-- ===================== 4 · BIG NUMBERS · Home V5 (1341:11397) =====================
+       26/10: título "Agência boutique de SEO e GEO", subtítulo novo, textos
+       descritivos agora Bold 24. CTA leva ao formulário (comentário #50). -->
+  <section class="secao-numeros secao-numeros--textura secao-numeros--v5" data-tema="rosa">
+    <img class="secao-numeros__textura" src="/homologacao/img/textura/pedra-rosa.webp" srcset="/homologacao/img/textura/pedra-rosa.webp 1728w, /homologacao/img/textura/pedra-rosa@2x.webp 3456w" sizes="100vw" alt="" width="1728" height="1169" loading="lazy" decoding="async">
+    <div class="titulo-secao titulo-secao--centro">
+      <h2 class="t-h2 is-bold">Agência boutique de <span class="realce">SEO e GEO</span></h2>
+      <p class="t-corpo titulo-secao__sub">Atendemos empresas no Brasil, na América Latina, nos Estados Unidos e na Europa com o mesmo time sênior, e produzimos conteúdo com redatores nativos em quatro idiomas.</p>
+    </div>
+    <div class="numeros">
+      <div class="numero">
+        <div class="numero__topo">
+          <p class="numero__valor">+11 anos</p>
+          <p class="numero__rotulo">de SEO, GEO e Conteúdo</p>
+        </div>
+        <p class="numero__corpo">Com a nossa expertise e serviço diferenciado.</p>
+      </div>
+      <div class="numero">
+        <div class="numero__topo">
+          <p class="numero__valor">+500</p>
+          <p class="numero__rotulo">projetos de sucesso</p>
+        </div>
+        <p class="numero__corpo">Em SEO, GEO e conteúdo, para empresas de todos os portes.</p>
+      </div>
+      <div class="numero">
+        <div class="numero__topo">
+          <p class="numero__valor">+5 MM</p>
+          <p class="numero__rotulo">de prompts analisados</p>
+        </div>
+        <p class="numero__corpo">Em diversas LLMs. Nosso foco em GEO vem de antes do hype.</p>
+      </div>
+    </div>
+    <a class="botao botao--primario botao--g" href="#contato" style="min-width:min(251px, 100%)">Entre em contato</a>
+  </section>
+
+  <!-- ===================== 5 · FEEDBACK DE DESTAQUE · componente novo (1407:16372) =====================
+       26/10: padding 112/16, gap 56, Branco. Cartão de título igual ao dos
+       pilares (centralizado aqui), e "Depoimento + Foto" 1144 de largura,
+       padding 24, gap 56, traço Preto 1: coluna de 510 (nome Bold 32, cargo
+       Regular 24 Rosa Site, linha, depoimento Regular 24/140) e foto de 528 x
+       562 com degradê e logo. SINALIZADO: o componente tem 3 indicadores de
+       carrossel, mas só o depoimento da Daniella tem texto (as variantes 2 e
+       3 são cópias com "Cliente"); fica um cartão só, sem indicadores, até
+       chegarem os outros dois. -->
+  <section class="secao-feedback" data-tema="branco" aria-labelledby="feedback-titulo">
+    <div class="titulo-secao titulo-secao--cartao secao-feedback__titulo">
+      <h2 class="t-h2 is-bold" id="feedback-titulo">Quem contrata a Papoca uma vez contrata de novo, <span class="realce">mesmo quando muda de empresa</span></h2>
+    </div>
+    <figure class="feedback">
+      <div class="feedback__texto">
+        <figcaption class="feedback__autor">
+          <span class="feedback__nome">Daniella Doyle</span>
+          <span class="feedback__cargo">Head de Marketing @ Convenia</span>
+        </figcaption>
+        <blockquote class="feedback__citacao">
+          <p>A Dani contratou a Papoca em <strong>quatro posições de liderança diferentes</strong> e conta um pouco de como é trabalhar com a Papoca.</p>
+          <p>“A equipe é extremamente técnica e capacitada, trabalham de forma estratégica e lidam com cada marca de forma bem individual, e é <strong class="realce">por isso que os resultados são tão nítidos</strong>.”</p>
+        </blockquote>
+      </div>
+      <div class="feedback__foto">
+        <img src="/homologacao/img/depoimentos/daniella-doyle-convenia.jpg" srcset="/homologacao/img/depoimentos/daniella-doyle-convenia.jpg 1056w" sizes="(min-width: 1176px) 528px, 100vw" alt="Daniella Doyle" width="1056" height="1124" loading="lazy" decoding="async">
+      </div>
+    </figure>
+  </section>
+
+  <!-- ===================== 6 · CASOS DE SUCESSO · Home V5 (1341:11414) =====================
+       26/10: título novo centralizado, sem o texto de apoio; uma linha de
+       dois cases em destaque (Bling 2026, Mapa HDS 2025) e a linha de três
+       resumidos; CTA leva ao hub de cases (comentário #53). Os "Leia mais"
+       dos cartões também vão para o hub, porque as páginas de cada case
+       ainda não existem. -->
+  <section class="secao secao-cases secao-cases--v5" data-tema="branco" id="cases">
+    <div class="titulo-secao titulo-secao--centro">
+      <h2 class="t-h2 is-bold"><span class="realce">Mais leads, mais visitas e mais presença nas IAs</span> para quem trabalha com a gente</h2>
+    </div>
+
+    <div class="cases cases--destaque">
+        <article class="case">
+          <div class="case__topo">
+            <p class="case__cliente"><span class="case__nome" style="min-width:min(60px, 100%)">Bling</span> <span class="case__sep">|</span> <span class="case__ano">2026</span></p>
+            <img class="case__logo" src="/homologacao/img/clientes/bling.svg" width="66" height="32" alt="Bling">
+          </div>
+          <div class="case__corpo">
+            <div class="case__dado">
+              <p class="case__valor" style="flex-basis:min(245px, 100%)">+388%</p>
+              <p class="case__legenda"><span class="case__legenda-titulo">de leads vindos de IA</span> <span class="case__legenda-tempo">em um único mês</span></p>
+            </div>
+            <p class="case__texto">Com uma taxa de conversão até 5x maior que os outros canais, Bling teve um crescimento exponencial de leads qualificados vindos de IA em apenas um mês, com a parceria da Papoca atuando lado a lado.</p>
+            <a class="case__link" href="/homologacao/cases"><span class="case__leia" aria-hidden="true">Leia mais</span><span class="case__seta" aria-hidden="true">→</span><span class="visualmente-oculto">Ver o caso Bling</span></a>
+          </div>
+        </article>
+        <article class="case">
+          <div class="case__topo">
+            <p class="case__cliente"><span class="case__nome" style="min-width:min(122px, 100%)">Mapa HDS</span> <span class="case__sep">|</span> <span class="case__ano">2025</span></p>
+            <img class="case__logo" src="/homologacao/img/clientes/mapa-hds.svg" width="148" height="32" alt="Mapa HDS">
+          </div>
+          <div class="case__corpo">
+            <div class="case__dado">
+              <p class="case__valor" style="flex-basis:min(227px, 100%)">+173%</p>
+              <p class="case__legenda"><span class="case__legenda-titulo">de leads via tráfego orgânico</span> <span class="case__legenda-tempo">no período</span></p>
+            </div>
+            <p class="case__texto">O canal orgânico se tornou a principal fonte de aquisição de Mapa HDS. Além do aumento em demandas, os leads são os mais qualificados da base. O retorno sobre investimento em 2025 fechou em 500%.</p>
+            <a class="case__link" href="/homologacao/cases"><span class="case__leia" aria-hidden="true">Leia mais</span><span class="case__seta" aria-hidden="true">→</span><span class="visualmente-oculto">Ver o caso Mapa HDS</span></a>
+          </div>
+        </article>
+    </div>
+
+    <div class="cases cases--resumo">
+        <article class="case">
+          <div class="case__topo">
+            <p class="case__cliente"><span class="case__nome" style="min-width:min(103px, 100%)">Zendesk</span> <span class="case__sep">|</span> <span class="case__ano">2024</span></p>
+          </div>
+          <div class="case__corpo">
+            <div class="case__dado">
+              <p class="case__valor">+500k</p>
+              <p class="case__legenda"><span class="case__legenda-titulo">acessos orgânicos</span> <span class="case__legenda-tempo">gerados mensalmente</span></p>
+            </div>
+            <a class="case__link" href="/homologacao/cases"><span class="case__leia" aria-hidden="true">Leia mais</span><span class="case__seta" aria-hidden="true">→</span><span class="visualmente-oculto">Ver o caso Zendesk</span></a>
+          </div>
+        </article>
+        <article class="case">
+          <div class="case__topo">
+            <p class="case__cliente"><span class="case__nome" style="min-width:min(88px, 100%)">Memed</span> <span class="case__sep">|</span> <span class="case__ano">2024</span></p>
+          </div>
+          <div class="case__corpo">
+            <div class="case__dado">
+              <p class="case__valor">+1MM</p>
+              <p class="case__legenda"><span class="case__legenda-titulo">visitas geradas</span> <span class="case__legenda-tempo">apenas no blog</span></p>
+            </div>
+            <a class="case__link" href="/homologacao/cases"><span class="case__leia" aria-hidden="true">Leia mais</span><span class="case__seta" aria-hidden="true">→</span><span class="visualmente-oculto">Ver o caso Memed</span></a>
+          </div>
+        </article>
+        <article class="case">
+          <div class="case__topo">
+            <p class="case__cliente"><span class="case__nome" style="min-width:min(107px, 100%)">Benegrip</span> <span class="case__sep">|</span> <span class="case__ano">2025</span></p>
+          </div>
+          <div class="case__corpo">
+            <div class="case__dado">
+              <p class="case__valor">+20K</p>
+              <p class="case__legenda"><span class="case__legenda-titulo">palavras na IA overview</span> <span class="case__legenda-tempo">crescimento de +105%</span></p>
+            </div>
+            <a class="case__link" href="/homologacao/cases"><span class="case__leia" aria-hidden="true">Leia mais</span><span class="case__seta" aria-hidden="true">→</span><span class="visualmente-oculto">Ver o caso Benegrip</span></a>
+          </div>
+        </article>
+    </div>
+
+    <div class="cases__fim">
+      <a class="botao botao--primario botao--g botao--seta" href="/homologacao/cases" style="--w0:462px;--w1:525px;--wr:398px"><span class="botao__rotulo">Veja todos nossos casos de sucesso</span><span class="botao__seta" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
+  <!-- ===================== 7 · FORMULÁRIO · Home V5 (1341:11407) =====================
+       26/10: veio para antes do vídeo. Texto novo (título Bold 48 com
+       "Descubra" e o ponto em Rosa Site; corpo Bold/Regular 24 em lista;
+       nota Bold 16), sem os links de redes. Campos: placeholders novos,
+       "Qual seu cargo?" e "Qual é o seu principal desafio hoje?" (este sem
+       asterisco no Figma, então opcional). Mensagens de sucesso, erro e de
+       cada campo: notas 1406:25633 e 1406:25675 do Figma. -->
+  <section class="secao-formulario secao-formulario--v5" data-tema="preto" id="contato" aria-labelledby="formulario-titulo">
+    <img class="secao-formulario__fundo" src="/homologacao/img/formulario/fundo.jpg" alt="" width="1728" height="1076" loading="lazy" decoding="async">
+    <div class="formulario-grade">
+      <div class="formulario-texto">
+        <div class="formulario-texto__card">
+          <h2 class="formulario-texto__titulo" id="formulario-titulo"><span class="formulario-texto__ponto">Descubra</span> onde o seu orgânico está deixando dinheiro na mesa<span class="formulario-texto__ponto">.</span></h2>
+          <div class="formulario-texto__corpo formulario-v5__corpo">
+            <p><strong>Uma conversa com quem acompanha de perto como a busca está mudando. Nela, a gente:</strong></p>
+            <ul class="formulario-v5__lista">
+              <li>Entende o seu contexto, os seus desafios e onde você quer chegar</li>
+              <li>Mostra como o GEO amplia o SEO e muda a forma como as marcas são encontradas</li>
+              <li>Apresenta uma proposta, se fizer sentido para o seu momento</li>
+            </ul>
+            <p class="formulario-v5__nota">Seu celular serve só para combinar o horário da conversa. Sem ligação de vendas. A resposta chega em até 2 dias úteis, por e-mail</p>
+          </div>
+        </div>
+      </div>
+      <form class="formulario-card formulario-v5" action="#" method="post" novalidate aria-labelledby="formulario-titulo" data-formulario>
+        <div class="formulario-v5__campos">
+          <div class="fcampo">
+            <label class="fcampo__rotulo" for="f-nome">Nome completo <span class="fcampo__obrigatorio" aria-hidden="true">*</span></label>
+            <input class="fcampo__entrada" id="f-nome" name="nome" type="text" placeholder="Seu nome completo" autocomplete="name" required aria-describedby="f-nome-erro">
+            <p class="fcampo__erro" id="f-nome-erro" hidden></p>
+          </div>
+          <div class="fcampo">
+            <label class="fcampo__rotulo" for="f-email">E-mail corporativo <span class="fcampo__obrigatorio" aria-hidden="true">*</span></label>
+            <input class="fcampo__entrada" id="f-email" name="email" type="email" placeholder="email@empresa.com" autocomplete="email" inputmode="email" spellcheck="false" required data-empresarial aria-describedby="f-email-erro">
+            <p class="fcampo__erro" id="f-email-erro" hidden></p>
+          </div>
+          <div class="fcampo">
+            <label class="fcampo__rotulo" for="f-empresa">Empresa <span class="fcampo__obrigatorio" aria-hidden="true">*</span></label>
+            <input class="fcampo__entrada" id="f-empresa" name="empresa" type="text" placeholder="Nome da empresa" autocomplete="organization" required aria-describedby="f-empresa-erro">
+            <p class="fcampo__erro" id="f-empresa-erro" hidden></p>
+          </div>
+          <div class="fcampo">
+            <label class="fcampo__rotulo" for="f-celular">Número de celular <span class="fcampo__obrigatorio" aria-hidden="true">*</span></label>
+            <input class="fcampo__entrada" id="f-celular" name="celular" type="tel" placeholder="(00)00000-0000" autocomplete="tel-national" inputmode="tel" maxlength="14" required data-celular aria-describedby="f-celular-erro">
+            <p class="fcampo__erro" id="f-celular-erro" hidden></p>
+          </div>
+          <div class="fcampo">
+            <label class="fcampo__rotulo" for="f-cargo">Qual seu cargo? <span class="fcampo__obrigatorio" aria-hidden="true">*</span></label>
+            <input class="fcampo__entrada" id="f-cargo" name="cargo" type="text" placeholder="Ex.: Head de Marketing" autocomplete="organization-title" required aria-describedby="f-cargo-erro">
+            <p class="fcampo__erro" id="f-cargo-erro" hidden></p>
+          </div>
+          <div class="fcampo">
+            <label class="fcampo__rotulo" for="f-ajuda">Qual é o seu principal desafio hoje?</label>
+            <textarea class="fcampo__entrada fcampo__entrada--texto fcampo__entrada--2l" id="f-ajuda" name="mensagem" placeholder="Ex.: o tráfego caiu, a marca não aparece no ChatGPT, o time não dá conta do conteúdo" rows="2"></textarea>
+          </div>
+        </div>
+        <p class="formulario-v5__aviso formulario-v5__aviso--erro" role="alert" hidden><strong>Não conseguimos enviar a sua mensagem.</strong> Os seus dados continuam preenchidos. Tente enviar de novo em alguns instantes ou, se preferir, escreva direto para <a href="mailto:contato@agenciapapoca.com.br">contato@agenciapapoca.com.br</a>.</p>
+        <button class="botao botao--primario botao--g formulario-card__cta" type="submit" style="min-width:min(494px, 100%)">Falar com um especialista</button>
+        <div class="formulario-v5__sucesso" role="status" tabindex="-1" hidden>
+          <p class="formulario-v5__sucesso-titulo">Recebemos a sua mensagem.</p>
+          <p>Em até 2 dias úteis, a gente responde por e-mail para marcar a conversa.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== 8 · VÍDEO · Home V5 (1341:11418) =====================
+       26/10: texto novo; o vídeo é o webinar do YouTube (comentário #54),
+       que entra no lugar da capa ao clicar, a partir dos 25s. -->
+  <section class="secao-video" data-tema="azul" aria-labelledby="video-titulo">
+    <img class="secao-video__fundo" src="/homologacao/img/fotos/video-fundo.jpg" alt="" width="2421" height="1874" loading="lazy" decoding="async">
+    <div class="secao-video__texto">
+      <h2 class="secao-video__titulo" id="video-titulo">Quer <span class="secao-video__realce">conhecer a Papoca mais de perto</span>? <br>Assista ao webinar</h2>
+      <p class="secao-video__apoio">No CMO Summit 2026, Pierre Veyrat, CEO da Papoca, mostrou para diretores de marketing <strong>como a gente mede a presença de uma marca nas respostas de IA, com um caso real de 140 mil prompts e 30 mil fontes analisadas</strong>.</p>
+    </div>
+    <button class="secao-video__capa" type="button" data-youtube="zt2QZYXKjlg" data-inicio="25">
+      <img class="secao-video__thumb" src="/homologacao/img/video/capa.jpg" alt="" width="744" height="418" loading="lazy" decoding="async">
+      <span class="secao-video__play" aria-hidden="true"><img src="/homologacao/img/icones/play.svg" alt="" width="253" height="267"></span>
+      <span class="visualmente-oculto">Assistir ao webinar da Papoca no CMO Summit 2026</span>
+    </button>
+  </section>
+
+  <!-- ===================== 9 · BLOG · Home V5 (1341:11419) =====================
+       26/10: texto novo. Links para o blog atual (comentário #55), até o blog
+       novo existir. -->
+  <section class="secao-blog" data-tema="branco" aria-labelledby="blog-titulo">
+    <div class="secao-blog__conteudo">
+      <div class="secao-blog__cabeca">
+        <h2 class="secao-blog__titulo" id="blog-titulo">O que a gente aprende nos projetos <span class="secao-blog__realce">vira conteúdo no blog</span>.</h2>
+        <p class="secao-blog__apoio">Análises de SERP, GEO, conteúdo e SEO técnico, <strong>escritos por quem executa esse trabalho nos projetos de clientes</strong>.</p>
+      </div>
+      <ul class="secao-blog__grade">
+          <li><article class="post">
+            <a class="post__midia" href="https://agenciapapoca.com/pt/blog/" tabindex="-1" aria-hidden="true">
+              <img class="post__img" src="/homologacao/img/blog/post-1.jpg" alt="" width="344" height="239" loading="lazy" decoding="async">
+              <span class="post__tag">Categoria</span>
+            </a>
+            <div class="post__corpo">
+              <div class="post__texto">
+                <p class="post__data"><time datetime="2025-01-28">28 de janeiro de 2025</time></p>
+                <h3 class="post__titulo"><a href="https://agenciapapoca.com/pt/blog/">Telemetria veicular: vale a pena adotar essa tecnologia?</a></h3>
+                <p class="post__resumo">A telemetria veicular é uma tecnologia que permite a coleta, o processamento e a transmissão de dados de desempenho de um veículo à distância.</p>
+              </div>
+              <a class="botao botao--primario botao--p post__cta botao--seta" href="https://agenciapapoca.com/pt/blog/" aria-label="Leia mais: Telemetria veicular: vale a pena adotar essa tecnologia?" style="--w0:117px;--w1:165px;--wr:69px"><span class="botao__rotulo">Leia mais</span><span class="botao__seta" aria-hidden="true">→</span></a>
+            </div>
+          </article></li>
+          <li><article class="post">
+            <a class="post__midia" href="https://agenciapapoca.com/pt/blog/" tabindex="-1" aria-hidden="true">
+              <img class="post__img" src="/homologacao/img/blog/post-2.jpg" alt="" width="344" height="239" loading="lazy" decoding="async">
+              <span class="post__tag">Categoria</span>
+            </a>
+            <div class="post__corpo">
+              <div class="post__texto">
+                <p class="post__data"><time datetime="2025-01-28">28 de janeiro de 2025</time></p>
+                <h3 class="post__titulo"><a href="https://agenciapapoca.com/pt/blog/">Telemetria veicular: vale a pena adotar essa tecnologia?</a></h3>
+                <p class="post__resumo">A telemetria veicular é uma tecnologia que permite a coleta, o processamento e a transmissão de dados de desempenho de um veículo à distância.</p>
+              </div>
+              <a class="botao botao--primario botao--p post__cta botao--seta" href="https://agenciapapoca.com/pt/blog/" aria-label="Leia mais: Telemetria veicular: vale a pena adotar essa tecnologia?" style="--w0:117px;--w1:165px;--wr:69px"><span class="botao__rotulo">Leia mais</span><span class="botao__seta" aria-hidden="true">→</span></a>
+            </div>
+          </article></li>
+          <li><article class="post">
+            <a class="post__midia" href="https://agenciapapoca.com/pt/blog/" tabindex="-1" aria-hidden="true">
+              <img class="post__img" src="/homologacao/img/blog/post-3.jpg" alt="" width="344" height="239" loading="lazy" decoding="async">
+              <span class="post__tag">Categoria</span>
+            </a>
+            <div class="post__corpo">
+              <div class="post__texto">
+                <p class="post__data"><time datetime="2025-01-28">28 de janeiro de 2025</time></p>
+                <h3 class="post__titulo"><a href="https://agenciapapoca.com/pt/blog/">Telemetria veicular: vale a pena adotar essa tecnologia?</a></h3>
+                <p class="post__resumo">A telemetria veicular é uma tecnologia que permite a coleta, o processamento e a transmissão de dados de desempenho de um veículo à distância.</p>
+              </div>
+              <a class="botao botao--primario botao--p post__cta botao--seta" href="https://agenciapapoca.com/pt/blog/" aria-label="Leia mais: Telemetria veicular: vale a pena adotar essa tecnologia?" style="--w0:117px;--w1:165px;--wr:69px"><span class="botao__rotulo">Leia mais</span><span class="botao__seta" aria-hidden="true">→</span></a>
+            </div>
+          </article></li>
+      </ul>
+      <a class="botao botao--primario botao--g secao-blog__cta" href="https://agenciapapoca.com/pt/blog/">Veja mais conteúdos →</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================ RODAPÉ · "Footer" (Página nova - V1) ============================ -->
+<!-- Refeito 06/10 contra o Dev Mode. Contrato: fidelidade/spec-rodape.json.
+     O fundo rosa e o da propria pagina no arquivo (Rosa novo #D92B8A); o
+     rodape sobe 40px por baixo dos cantos arredondados do blog. -->
+<footer class="rodape-papoca" data-tema="rosa">
+  <div class="rodape-papoca__linha">
+    <div class="rodape-papoca__marca">
+      <a class="rodape-papoca__logo" href="/homologacao" aria-label="Papoca, página inicial"><img src="/homologacao/img/logo-papoca.svg" alt="" width="56" height="51"></a>
+      <div class="rodape-papoca__texto">
+        <p>Orgulho de ser uma empresa 100% remota</p>
+        <p>Com base fixa em São Paulo - Brasil</p>
+      </div>
+    </div>
+    <div class="rodape-papoca__grupo">
+      <nav class="rodape-papoca__coluna" aria-labelledby="rod-servicos">
+        <p class="rodape-papoca__titulo" id="rod-servicos">Serviços</p>
+        <ul class="rodape-papoca__lista">
+            <li><a href="/homologacao/servicos">Diagnóstico de GEO</a></li>
+            <li><a href="/homologacao/servicos">SEO On-page &amp; Conteúdo</a></li>
+            <li><a href="/homologacao/servicos">SEO Técnico</a></li>
+            <li><a href="/homologacao/servicos">Criação e Otimização de Conteúdo</a></li>
+            <li><a href="/homologacao/servicos">Inbound Marketing</a></li>
+            <li><a href="/homologacao/servicos">SEO Off-site</a></li>
+            <li><a href="/homologacao/servicos">Monitoramento e Análises</a></li>
+        </ul>
+      </nav>
+      <nav class="rodape-papoca__coluna" aria-labelledby="rod-sobre">
+        <p class="rodape-papoca__titulo" id="rod-sobre">Sobre a Papoca</p>
+        <ul class="rodape-papoca__lista">
+            <li><a href="/homologacao/quem-somos">Quem somos</a></li>
+            <li><a href="/homologacao/manifesto">Manifesto</a></li>
+            <li><a href="/homologacao/cases">Casos de sucesso</a></li>
+            <li><a href="/homologacao/metodologia">Metodologia</a></li>
+            <li><a href="/homologacao/contato">Entre em contato</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="rodape-papoca__grupo rodape-papoca__grupo--b">
+      <nav class="rodape-papoca__coluna rodape-papoca__coluna--materiais" aria-labelledby="rod-materiais">
+        <p class="rodape-papoca__titulo" id="rod-materiais">Materiais úteis</p>
+        <ul class="rodape-papoca__lista">
+            <li><a href="https://agenciapapoca.com/pt/blog/">Materiais ricos</a></li>
+            <li><a href="https://agenciapapoca.com/pt/blog/">Blog</a></li>
+            <li><a href="https://agenciapapoca.com/pt/blog/">Newsletter</a></li>
+        </ul>
+      </nav>
+      <div class="rodape-papoca__coluna rodape-papoca__coluna--contato">
+        <p class="rodape-papoca__titulo">Onde nos encontrar</p>
+        <ul class="rodape-papoca__contatos">
+          <li><a class="rodape-papoca__contato" href="mailto:contato@agenciapapoca.com.br"><img src="/homologacao/img/icones/rodape/email.svg" alt="" width="14" height="10"><span>contato@agenciapapoca.com.br</span></a></li>
+          <li><a class="rodape-papoca__contato" href="https://www.instagram.com/agenciapapoca/" rel="noopener" target="_blank"><img src="/homologacao/img/icones/rodape/instagram.svg" alt="" width="14" height="14"><span>agenciapapoca</span><span class="visualmente-oculto"> no Instagram</span></a></li>
+          <li><a class="rodape-papoca__contato" href="https://www.linkedin.com/company/agencia-papoca/" rel="noopener" target="_blank"><img src="/homologacao/img/icones/rodape/linkedin.svg" alt="" width="14" height="14"><span>company/agencia-papoca</span><span class="visualmente-oculto"> no LinkedIn</span></a></li>
+          <li><a class="rodape-papoca__contato rodape-papoca__contato--news" href="https://agenciapapoca.com/pt/blog/"><img src="/homologacao/img/icones/rodape/newsletter.svg" alt="" width="14" height="13"><span>Inscreva-se em nossa newsletter</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p class="rodape-papoca__frase">Somos uma agência boutique. Unimos consultoria em SEO, GEO e excelência em criação de conteúdo.</p>
+  <hr class="rodape-papoca__divisor">
+  <div class="rodape-papoca__base">
+    <p class="rodape-papoca__copy">© 2026 Agência Papoca</p>
+    <span class="rodape-papoca__barra" aria-hidden="true">|</span>
+    <p class="rodape-papoca__cnpj">CNPJ: 23.008.081/0001-71</p>
+  </div>
+</footer>
+
+<script>
+/* Cabeçalho encolhe ao rolar, para 1008px (resposta D7).
+   requestAnimationFrame + flag: o listener de scroll dispara dezenas de vezes
+   por segundo e mexer em classe direto ali força layout a cada evento. */
+(function () {
+  var cab = document.querySelector(".cabecalho");
+  if (cab) {
+    var travado = false;
+    var marcar = function () {
+      if (travado) return;
+      travado = true;
+      requestAnimationFrame(function () {
+        cab.classList.toggle("is-reduzido", window.scrollY > 80);
+        travado = false;
+      });
+    };
+    marcar();
+    window.addEventListener("scroll", marcar, { passive: true });
+  }
+
+  /* Gaveta mobile */
+  var botao = document.querySelector(".cabecalho__botao-menu");
+  var gaveta = document.getElementById("gaveta");
+  if (botao && gaveta) {
+    botao.addEventListener("click", function () {
+      var aberto = botao.getAttribute("aria-expanded") === "true";
+      botao.setAttribute("aria-expanded", String(!aberto));
+      gaveta.hidden = aberto;
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && botao.getAttribute("aria-expanded") === "true") {
+        botao.setAttribute("aria-expanded", "false");
+        gaveta.hidden = true;
+        botao.focus();
+      }
+    });
+  }
+
+  /* Vídeo: troca a capa pelo player só no clique */
+  document.querySelectorAll(".video").forEach(function (v) {
+    v.addEventListener("click", function () {
+      var id = v.getAttribute("data-video");
+      if (!id) return;
+      var f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1";
+      f.title = "Vídeo";
+      f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture";
+      f.allowFullscreen = true;
+      f.style.cssText = "position:absolute;inset:0;width:100%;height:100%;border:0";
+      v.replaceChildren(f);
+    });
+  });
+
+  /* Carrossel de depoimentos: cada seta anda um cartão (largura + gap).
+     Nas pontas, volta para o outro lado. O passo e a volta NÃO estão no
+     Figma (o protótipo não liga as setas); é a leitura mais comum. */
+  document.querySelectorAll("[data-carrossel]").forEach(function (c) {
+    var janela = c.querySelector(".depo-janela");
+    var trilha = c.querySelector(".depo-trilha");
+    if (!janela || !trilha) return;
+    var reduzir = window.matchMedia("(prefers-reduced-motion: reduce)");
+    var passo = function () {
+      var item = trilha.firstElementChild;
+      var gap = parseFloat(getComputedStyle(trilha).columnGap) || 0;
+      return item ? item.getBoundingClientRect().width + gap : janela.clientWidth;
+    };
+    var andar = function (dir) {
+      var max = janela.scrollWidth - janela.clientWidth;
+      var alvo = janela.scrollLeft + dir * passo();
+      if (dir > 0 && janela.scrollLeft >= max - 2) alvo = 0;
+      if (dir < 0 && janela.scrollLeft <= 2) alvo = max;
+      janela.scrollTo({ left: alvo, behavior: reduzir.matches ? "auto" : "smooth" });
+    };
+    c.querySelector(".depo-seta--ant").addEventListener("click", function () { andar(-1); });
+    c.querySelector(".depo-seta--prox").addEventListener("click", function () { andar(1); });
+  });
+
+  /* Imagem que nao carregou (avatar ou logo ainda nao exportado) some em vez
+     de mostrar o icone de quebrado; o fundo lightgray do avatar fica. */
+  document.querySelectorAll(".depo img").forEach(function (img) {
+    var esconder = function () { img.style.visibility = "hidden"; };
+    if (img.complete && img.naturalWidth === 0) esconder();
+    img.addEventListener("error", esconder);
+  });
+})();
+
+/* Fotos que ainda nao existem somem (fica o fundo de cor da secao). */
+(function () {
+  document.querySelectorAll(".secao-formulario__fundo, .secao-video__fundo, .secao-video__thumb, .post__img").forEach(function (img) {
+    var some = function () { img.hidden = true; };
+    if (img.complete && !img.naturalWidth) some(); else img.addEventListener("error", some);
+  });
+  /* Vídeo (comentário #54 do Figma): o webinar do YouTube entra no lugar
+     da capa no clique, já tocando, a partir do segundo marcado. */
+  document.querySelectorAll("[data-youtube]").forEach(function (capa) {
+    capa.addEventListener("click", function () {
+      var f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/" + capa.getAttribute("data-youtube") +
+              "?autoplay=1&rel=0&start=" + (capa.getAttribute("data-inicio") || 0);
+      f.title = "Webinar da Papoca no CMO Summit 2026";
+      f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture";
+      f.allowFullscreen = true;
+      f.className = "secao-video__player";
+      capa.replaceWith(f);
+      f.focus();
+    });
+  });
+})();
+</script>
+<script src="/homologacao/js/formulario.js?v=20261026" defer></script>
+<script>
+/* Depoimentos, Mobile: um indicador por cartão; o ativo segue o cartão mais
+   próximo do início da janela, e o clique leva ao cartão. */
+(function () {
+  document.querySelectorAll("[data-carrossel]").forEach(function (c) {
+    var janela = c.querySelector(".depo-janela"), trilha = c.querySelector(".depo-trilha");
+    if (!janela || !trilha || c.querySelector(".depo-pontos")) return;
+    var itens = Array.prototype.slice.call(trilha.children);
+    var caixa = document.createElement("div");
+    caixa.className = "depo-pontos";
+    caixa.setAttribute("role", "group");
+    caixa.setAttribute("aria-label", "Escolher depoimento");
+    var reduzir = window.matchMedia("(prefers-reduced-motion: reduce)");
+    var pontos = itens.map(function (li, i) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "depo-ponto";
+      b.setAttribute("aria-label", "Depoimento " + (i + 1) + " de " + itens.length);
+      b.addEventListener("click", function () {
+        janela.scrollTo({ left: li.offsetLeft - trilha.offsetLeft, behavior: reduzir.matches ? "auto" : "smooth" });
+      });
+      caixa.appendChild(b);
+      return b;
+    });
+    janela.insertAdjacentElement("afterend", caixa);
+    var marcar = function () {
+      var x = janela.scrollLeft, melhor = 0, dist = Infinity;
+      itens.forEach(function (li, i) { var d = Math.abs(li.offsetLeft - trilha.offsetLeft - x); if (d < dist) { dist = d; melhor = i; } });
+      if (x >= janela.scrollWidth - janela.clientWidth - 2) melhor = itens.length - 1;
+      pontos.forEach(function (b, i) { if (i === melhor) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current"); });
+    };
+    var travado = false;
+    janela.addEventListener("scroll", function () {
+      if (travado) return; travado = true;
+      requestAnimationFrame(function () { marcar(); travado = false; });
+    }, { passive: true });
+    marcar();
+  });
+})();
+</script>
+<script>
+/* Newsletter do rodapé: o link vira campo de e-mail no hover e no clique
+   (Variant3 do "List → Item → Link") e volta ao sair o mouse se o campo
+   estiver vazio e sem foco. */
+(function () {
+  document.querySelectorAll("[data-news]").forEach(function (li) {
+    var a = li.querySelector("a"), f = li.querySelector("form"), c = f.querySelector("input");
+    var mostrar = function () { a.hidden = true; f.hidden = false; };
+    var abrir = function (e) { e.preventDefault(); mostrar(); c.focus(); };
+    /* 14/10, UX: o campo aparece já no hover (sem tirar o foco de nada) */
+    li.addEventListener("mouseenter", function () { if (window.matchMedia("(hover: hover)").matches) mostrar(); });
+    var fechar = function () { if (c.value || document.activeElement === c) return; f.hidden = true; a.hidden = false; };
+    a.addEventListener("click", abrir);
+    li.addEventListener("mouseleave", fechar);
+    c.addEventListener("blur", function () { setTimeout(fechar, 0); });
+    c.addEventListener("keydown", function (e) { if (e.key === "Escape") { c.value = ""; c.blur(); a.focus(); } });
+  });
+})();
+</script>
+</body>
+</html>

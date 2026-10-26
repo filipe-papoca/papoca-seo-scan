@@ -1,0 +1,25 @@
+/* =========================================================================
+   FONTES · Inter 3.19 auto-hospedada (SIL Open Font License 1.1, Rasmus
+   Andersson). REVISAO 06/10: o "Inter" do Figma e a versao 3.x; o Google
+   Fonts serve a 4.0, que tem metricas diferentes em alguns glifos (ex.:
+   "empresa 100% remota" a 12px mede 125 na 3.19, como no arquivo, e 130 na
+   4.0, que quebrava a linha do rodape). Subconjunto: latin, latin-ext,
+   pontuacao geral e setas (a seta U+2192 dos CTAs).
+   ========================================================================= */
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 300; font-display: swap; src: url("../fonts/inter-300.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/inter-400.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/inter-500.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/inter-600.woff2") format("woff2"); }  /* Semi Bold: so o "Enviar" da newsletter (09/10) */
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/inter-700.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 900; font-display: swap; src: url("../fonts/inter-900.woff2") format("woff2"); }
+
+/* Satoshi (Indian Type Foundry, ITF Free Font License 2.0, Fontshare),
+   auto-hospedada como a licença permite; texto da licença em
+   fonts/SATOSHI-LICENCA-FFL.txt. Entrou em 08/10 para o Hub de serviços
+   (título dos cards: Satoshi Bold 40/120 -6%). O 400 cobre a legenda dos
+   cases da home, que o arquivo também pede em Satoshi e caía na Inter. */
+@font-face { font-family: "Satoshi"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/satoshi-400.woff2") format("woff2"); }
+@font-face { font-family: "Satoshi"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/satoshi-700.woff2") format("woff2"); }
+/* Inter 3.19 Light Italic, mesmo subconjunto das outras. Entrou em 08/10
+   para os títulos das fontes do Manifesto ("Inter/Light Italic" 14). */
+@font-face { font-family: "Inter"; font-style: italic; font-weight: 300; font-display: swap; src: url("../fonts/inter-300-italic.woff2") format("woff2"); }
