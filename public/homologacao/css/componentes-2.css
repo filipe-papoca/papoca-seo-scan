@@ -5048,3 +5048,29 @@ main:has(.secao-eventos) { container-type: inline-size; }                       
 .titulo-secao--hub .titulo-secao__sub { max-width: none; margin: 0; color: var(--papoca-preto); }
 .secao-pessoas--azul .minibio__linkedin img { filter: brightness(0) invert(0.976); }   /* ícone Branco no Azul, MEDIDO */
 @media (max-width: 767px) { .fcampo__entrada--2l { min-height: 98px; } }   /* placeholder em 3 linhas no celular */
+
+/* Feedback de destaque, foto (26/10, 2ª versão): em vez de uma imagem
+   achatada do Figma, a foto original, o degradê e o logo montados aqui,
+   como no frame 33220 (528 x 562, traço Preto 1, raio 4). O logo fica
+   vetorial e o degradê não passa por JPEG. Degradê: do topo ao centro
+   (264, 0) até (53, 570), transparente até 19% e Preto no fim, MEDIDO
+   (gradientTransform convertido). Logo 207 x 72 a 25 da esquerda e 17
+   de baixo, MEDIDO. A foto de origem tem só 768 x 512: em tela retina ela
+   aparece ampliada ~2x, e isso só se resolve com um arquivo maior. */
+.feedback__foto {
+  position: relative;
+  aspect-ratio: 528 / 562;
+  border: 1px solid var(--papoca-preto);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--papoca-preto);
+}
+.feedback__foto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(200deg, rgba(25, 25, 25, 0) 19%, #191919 100%);
+  pointer-events: none;
+}
+.feedback__foto .feedback__foto-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+.feedback__foto .feedback__foto-logo { position: absolute; z-index: 1; left: 24px; bottom: 16px; width: 207px; height: auto; max-width: calc(100% - 48px); }
